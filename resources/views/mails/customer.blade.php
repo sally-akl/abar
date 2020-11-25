@@ -1,0 +1,1 @@
+{{ $emailMessageObj->message }}

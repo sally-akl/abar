@@ -1,0 +1,29 @@
+.alert-danger , .alert-success{
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top:10px;
+}
+.card-title{
+  width: 95%;
+}
+.fa-search{
+  margin-left: 5px;
+}
+.add_btn{
+  margin-bottom: 10px;
+}
+.icon_height{
+  width: 4rem !important;
+  height: 3rem !important;
+}
+.ch_htm_div{
+  margin-bottom: 10px;
+}
+.div_h_20{
+  height: 20px;
+}
+.square{
+  display:block;
+  width:20px;
+  height:20px;
+}
