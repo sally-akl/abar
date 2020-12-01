@@ -111,12 +111,12 @@
                 </div>
                 <ul id="menu-main" class="menu-main">
                     <li><a href="index.html" class="">الرئيسية </a></li>
-                    <li><a href="aboutus.html" class="current">عن المؤسسة</a></li>
+                    <li><a href="aboutus.html" class="">عن المؤسسة</a></li>
                     <li><a href="#" class="">اعمالنا السابقة </a></li>
                     <li><a href="blog.html" >مدونة ابار السقاية</a></li>
                     <li><a href="#" class="">المتجر الالكترونى</a></li>
 										  <li><a href="#" class="">طلب مشروع حسب الميزانية</a></li>
-                    <li><a href="contactus.html" class="">اتصل بنا</a></li>
+                    <li><a href="contactus.html" class="current">اتصل بنا</a></li>
                 </ul><!-- #menu-main end -->
 
                <a href="#" class="btn btn-transparent btn-borderd">تسجيل الدخول / التسجيل</a>
@@ -163,48 +163,79 @@
     <!-- end main header -->
 
     <!-- start blogs section -->
-    <section class="blogs-block  w-curve replace-mr no-bg">
+    <section class="contact-block   w-curve replace-mr no-bg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h3 class="main-title">عن المؤسسة</h3>
+                    <h3 class="main-title">اتصل بنا</h3>
 
                 </div>
             </div>
-            <div class="row about_us">
-              <div class="col-md-12 col-lg-12">
-                <h4><i class="fa fa-align-justify" aria-hidden="true"></i> أهداف المؤسسة</h4>
+            <div class="row" style="margin-top: 30px;">
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                 <form id="contact-form" class="contact__form" method="post" action="">
+                 <!-- form message -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                                Your message was sent successfully.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end message -->
 
-                <p>
-                   1- العمل على تزويد البلدان الفقيرة حول العالم بركائز الحياة الانسانية وعلى رأسها الماء العذب
-                </p>
-                <p>
-                  2- 	تسهيل تنفيذ مشاريع حفر الابار وبناء المساجد بالنيابة عن عملائنا وفقا للمواصفات والمعايير المعتمدة
-                </p>
-                <p>
-                  3- 	توسيع نطاق خدماتنا ليشمل المزيد من دول العالم
-                </p>
+                    <div class="form-group">
+                        <input name="name" type="text" class="form-control" placeholder="الاسم الثلاثى">
+                    </div>
+                    <div class="form-group">
+                        <input name="email" type="email" class="form-control" placeholder="البريد الالكترونى">
+                    </div>
+                    <div class="form-group-2 mb-4">
+                        <textarea name="message" class="form-control" rows="4" placeholder="محتوى الرسالة"></textarea>
+                    </div>
+                    <button class="btn btn-main" name="submit" type="submit">ارسال</button>
+                </form>
+            </div>
+            <div class="col-lg-5 col-sm-12">
+                <div class="contact-content pl-lg-5 mt-5 mt-lg-0">
+                    <span class="text-muted">نحن محترفون فى مجالنا</span>
+                    <h2 class="mb-5 mt-2">لا تتردد فى التواصل معنا للحصول على الاجابات</h2>
 
+                    <ul class="address-block list-unstyled">
+                        <li>
+                            <i class="fa fa-map-marker"></i>جده – حي الفيحاء – شارع عبدالله السليمان – بجوار جامع الحمودي
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope"></i>البريد الالكترونى: info@yahoo.com
+                        </li>
+                        <li>
+                            <i class="fa fa-phone"></i>الجوال:+0553006174
+                        </li>
+                    </ul>
 
-               <h4><i class="fa fa-thumbs-up" aria-hidden="true"></i> قيم المؤسسة</h4>
-                <p>1- الاتقان في العمل </p>
-                <p>2- التطوير المستمر </p>
-                <p>3- الأمانة </p>
-                <p>4- المصداقية والوضوح </p>
+                    <ul class="social-icons list-inline mt-5">
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/100647691526982"><i class="fab fa-facebook-square"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://twitter.com/abar66041292"><i class="fab fa-twitter-square"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.youtube.com/channel/UCk8zYF_K_uf9pxuiWBpxBHA"><i class="fab fa-youtube-square"></i></a>
+                        </li>
 
+                    </ul>
+                </div>
+            </div>
 
-                <h4><i class="fa fa-file" aria-hidden="true"></i> تراخيص المؤسسة الرسمية</h4>
-                <p>آبار السقاية مؤسسة رسمية ومرخصة من وزارة التجارة لمزاولة نشاط حفر الآبار وبناء المساجد داخل المملكة وخارجها
-رقم السجل التجاري 4030327198
-</p>
-
-
-               <h4><i class="fa fa-star" aria-hidden="true"></i> انجازات المؤسسة </h4>
-               <p>تم بحمد الله تنفيذ ما يزيد عن 750 مشروع في 8 دول في آسيا وأفريقيا مما مكننا من ايصال مشاريعنا إلى أكثر من50 ألف مستفيد وحزنا على ثقة أكثر من 600 عميل ولازالت المسيرة مستمرة نحو مزيد من الانتشار بتسهيل تنفيذ مشاريع الآبار والمساجد لعملائنا وإيصالها لأكبر عدد من المستفيدين </p>
-              </div>
             </div>
         </div>
     </section>
+
+    <div class="google-map">
+        <div id="map">
+        </div>
+    </div>
     <!-- end blogs section -->
 
 <!-- start footer -->
@@ -353,6 +384,8 @@
  <script src="js/scripts.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEuc8nZnZ7pKh8XkUjQg6DGsl0PUCNNXY&callback=initMap"></script> 
+
 
 </body>
 
