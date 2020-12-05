@@ -54,7 +54,7 @@
         <tbody>
           	@foreach ($banners as $key => $banner)
           <tr>
-            <td><img src="{{$banner->banner_img}}"  style="width:150px;height:80px;"/></td>
+            <td><img src="{{url($banner->banner_img)}}"  style="width:150px;height:80px;"/></td>
             <td>{{$banner->title}}</td>
             <td><a href="{{$banner->link}}" target="_blank">@lang('site.go_to')</a></td>
             <td>{{$banner->banner_size}}</td>

@@ -22,7 +22,7 @@
         <div class="mb-3">
            <label class="form-label">@lang('site.project_photo')</label>
            <input  name="proj_photo" type="file" id="imageInput" class="form-control-file">
-           <img src="{{$product->project_photo}}" />
+           <img src="{{url($product->project_photo)}}" />
         </div>
       </div>
     </div>

@@ -69,7 +69,7 @@
             <div id="signature"></div>
 						<a href="#" class="remove_signature" data-val="signature">@lang('site.remove_sign')</a>
             @if(!empty($contract->contract_signiture))
-              <img src="{{$contract->contract_signiture}}" />
+              <img src="{{url($contract->contract_signiture)}}" />
             @endif
           </div>
         </div>
@@ -81,7 +81,7 @@
             <div id="signature_second"></div>
 						<a href="#" class="remove_signature" data-val="signature_second">@lang('site.remove_sign')</a>
             @if(!empty($contract->contract_signiture_two))
-              <img src="{{$contract->contract_signiture_two}}" />
+              <img src="{{url($contract->contract_signiture_two)}}" />
             @endif
           </div>
         </div>

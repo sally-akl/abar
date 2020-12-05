@@ -113,10 +113,10 @@
                     <li><a href="index.html" class="">الرئيسية </a></li>
                     <li><a href="aboutus.html" class="">عن المؤسسة</a></li>
                     <li><a href="oldproject.html" class="">اعمالنا السابقة </a></li>
-                    <li><a href="blog.html" class="current">مدونة ابار السقاية</a></li>
+                    <li><a href="blog.html" >مدونة ابار السقاية</a></li>
                     <li><a href="#" class="">المتجر الالكترونى</a></li>
 										  <li><a href="#" class="">طلب مشروع حسب الميزانية</a></li>
-                    <li><a href="contactus.html" class="">اتصل بنا</a></li>
+                    <li><a href="contactus.html" >اتصل بنا</a></li>
                 </ul><!-- #menu-main end -->
 
                <a href="register_signin.html" class="btn btn-transparent btn-borderd">تسجيل الدخول / التسجيل</a>
@@ -136,7 +136,7 @@
                 <nav aria-label="breadcrumb" class="f-width">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">الرئيسية </a></li>
-                        <li class="breadcrumb-item active" aria-current="page">المدونة</li>
+                        <li class="breadcrumb-item active" aria-current="page">عن المؤسسة</li>
                     </ol>
                 </nav>
             </div>
@@ -163,57 +163,78 @@
     <!-- end main header -->
 
     <!-- start blogs section -->
-    <section class="blogs-block  w-curve replace-mr no-bg">
+    <section class="register-block   w-curve replace-mr no-bg">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h3 class="main-title">المدونة</h3>
+
+            <div class="row" style="margin-top: 30px;">
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <h3 class="main-title">تسجيل الدخول</h3>
+                 <form id="contact-form" class="contact__form" method="post" action="">
+                 <!-- form message -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                                Your message was sent successfully.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end message -->
+
+                    <div class="form-group">
+                        <input name="email" type="text" class="form-control" placeholder="البريد الالكترونى">
+                    </div>
+                    <div class="form-group">
+                        <input name="password" type="password" class="form-control" placeholder="الرقم السرى">
+                    </div>
+
+                    <button class="btn btn-main" name="submit" type="submit">تسجيل الدخول</button>
+                </form>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="contact-content pl-lg-5 mt-5 mt-lg-0">
+                    <h3 class="main-title">التسجيل فى الموقع</h3>
+                    <form id="contact-form" class="contact__form" method="post" action="">
+                    <!-- form message -->
+                       <div class="row">
+                           <div class="col-12">
+                               <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                                   Your message was sent successfully.
+                               </div>
+                           </div>
+                       </div>
+                       <!-- end message -->
+
+                       <div class="form-group">
+                           <input name="name" type="text" class="form-control" placeholder="الاسم الثلاثى">
+                       </div>
+
+                       <div class="form-group">
+                           <input name="email" type="text" class="form-control" placeholder="البريد الالكترونى">
+                       </div>
+                       <div class="form-group">
+                           <input name="password" type="password" class="form-control" placeholder="الرقم السرى">
+                       </div>
+                       <div class="form-group">
+                           <input name="cpassword" type="password" class="form-control" placeholder="تكرار الرقم السرى">
+                       </div>
+
+                       <div class="form-group">
+                           <input name="identity" type="text" class="form-control" placeholder="رقم الهوية">
+                       </div>
+                       <div class="form-group">
+                           <input name="mobile" type="text" class="form-control" placeholder="رقم الجوال">
+                       </div>
+
+                       <button class="btn btn-main" name="submit" type="submit"> التسجيل</button>
+                   </form>
 
                 </div>
             </div>
-            <div class="row">
-              <div class="col-md-4 col-sm-6 col-xs-12 clearfix ">
-                <div class="post-item">
-                  <div class="media-wrapper">
-                    <img src="img/1.jpeg" alt="" class="img-fluid">
-                  </div>
 
-                  <div class="content">
-                    <h3><a href="blog_details.html">مسجد - اندونيسيا</a></h3>
-                    <p>مسجد كبير مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير</p>
-                    <a class="btn btn-main" href="blog_details.html">قراءة المزيد</a>
-                  </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12  ">
-              <div class="post-item">
-                <div class="media-wrapper">
-                  <img src="img/1.jpeg" alt="" class="img-fluid">
-                </div>
-
-                <div class="content">
-                  <h3><a href="single-post.html">مسجد - اندونيسيا</a></h3>
-                  <p>مسجد كبير مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير</p>
-                  <a class="btn btn-main" href="">قراءة المزيد</a>
-                </div>
-              </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12  ">
-            <div class="post-item">
-              <div class="media-wrapper">
-                <img src="img/1.jpeg" alt="" class="img-fluid">
-              </div>
-
-              <div class="content">
-                <h3><a href="single-post.html">مسجد - اندونيسيا</a></h3>
-                <p>مسجد كبير مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير</p>
-                <a class="btn btn-main" href="">قراءة المزيد</a>
-              </div>
-            </div>
-        </div>
             </div>
         </div>
     </section>
+
     <!-- end blogs section -->
 
 <!-- start footer -->
@@ -362,6 +383,8 @@
  <script src="js/scripts.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEuc8nZnZ7pKh8XkUjQg6DGsl0PUCNNXY&callback=initMap"></script>
+
 
 </body>
 

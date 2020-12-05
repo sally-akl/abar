@@ -112,8 +112,8 @@
                 <ul id="menu-main" class="menu-main">
                     <li><a href="index.html" class="">الرئيسية </a></li>
                     <li><a href="aboutus.html" class="">عن المؤسسة</a></li>
-                    <li><a href="oldproject.html" class="">اعمالنا السابقة </a></li>
-                    <li><a href="blog.html" class="current">مدونة ابار السقاية</a></li>
+                    <li><a href="oldproject.html" class="current">اعمالنا السابقة </a></li>
+                    <li><a href="blog.html" >مدونة ابار السقاية</a></li>
                     <li><a href="#" class="">المتجر الالكترونى</a></li>
 										  <li><a href="#" class="">طلب مشروع حسب الميزانية</a></li>
                     <li><a href="contactus.html" class="">اتصل بنا</a></li>
@@ -136,7 +136,7 @@
                 <nav aria-label="breadcrumb" class="f-width">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">الرئيسية </a></li>
-                        <li class="breadcrumb-item active" aria-current="page">المدونة</li>
+                        <li class="breadcrumb-item active" aria-current="page">عن المؤسسة</li>
                     </ol>
                 </nav>
             </div>
@@ -163,54 +163,87 @@
     <!-- end main header -->
 
     <!-- start blogs section -->
-    <section class="blogs-block  w-curve replace-mr no-bg">
+    <section class="works-block no-flex" style="margin-top:10px;">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h3 class="main-title">المدونة</h3>
-
-                </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4 col-sm-6 col-xs-12 clearfix ">
-                <div class="post-item">
-                  <div class="media-wrapper">
-                    <img src="img/1.jpeg" alt="" class="img-fluid">
-                  </div>
-
-                  <div class="content">
-                    <h3><a href="blog_details.html">مسجد - اندونيسيا</a></h3>
-                    <p>مسجد كبير مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير</p>
-                    <a class="btn btn-main" href="blog_details.html">قراءة المزيد</a>
-                  </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12  ">
-              <div class="post-item">
-                <div class="media-wrapper">
-                  <img src="img/1.jpeg" alt="" class="img-fluid">
-                </div>
-
-                <div class="content">
-                  <h3><a href="single-post.html">مسجد - اندونيسيا</a></h3>
-                  <p>مسجد كبير مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير</p>
-                  <a class="btn btn-main" href="">قراءة المزيد</a>
-                </div>
-              </div>
+          <div class="center sm-width">
+              <h3 class="main-title">المشاريع الاكثر طلبا</h3>
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12  ">
-            <div class="post-item">
-              <div class="media-wrapper">
-                <img src="img/1.jpeg" alt="" class="img-fluid">
-              </div>
-
-              <div class="content">
-                <h3><a href="single-post.html">مسجد - اندونيسيا</a></h3>
-                <p>مسجد كبير مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير</p>
-                <a class="btn btn-main" href="">قراءة المزيد</a>
-              </div>
-            </div>
+          <div class="filters">
+              <ul>
+                  <li class="btn btn-light workClass active choose_project" data-filter="*" >
+                    <img src="" alt="all">مشاهدة الكل
+                  </li>
+                  <li data-filter=".apps1" class="btn btn-light workClass  choose_project" >
+                     الابار
+                  </li>
+                  <li data-filter=".apps2" class="btn btn-light workClass  choose_project" >
+                   المساجد
+                  </li>
+                  <li data-filter=".apps3" class="btn btn-light workClass  choose_project" >
+                   المراكز والمدارس
+                  </li>
+              </ul>
+          </div>
         </div>
+        <div class="filters-content">
+            <div class="row grid" id="post-works" >
+                <div class="col-md-6 col-lg-4 all apps3">
+                    <div class="single-content  card-overlay">
+                        <img src="img/1.jpeg" alt="">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">مساجد - اندونيسيا</h5>
+                            <div class="btns">
+                                <a href="" class="btn btn-second">
+                                    <i class="fa fa-arrow-left"></i>
+                                    مشاهدة المزيد                    </a>
+
+
+                                <a href="" class="btn btn-second request_btn">
+                                        <i class="fa fa-arrow-left"></i>
+                                        طلب مشروع مماثل                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 all apps2">
+                    <div class="single-content  card-overlay">
+                        <img src="img/2.jpeg" alt="">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">مساجد - اندونيسيا</h5>
+                            <div class="btns">
+                                <a href="" class="btn btn-second">
+                                    <i class="fa fa-arrow-left"></i>
+                                    مشاهدة المزيد                    </a>
+
+                                    <a href="" class="btn btn-second request_btn">
+                                            <i class="fa fa-arrow-left"></i>
+                                            طلب مشروع مماثل                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 all apps1">
+                    <div class="single-content  card-overlay">
+                        <img src="img/3.jpg" alt="">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">مساجد- توغا</h5>
+                            <div class="btns">
+                                <a href="" class="btn btn-second">
+                                    <i class="fa fa-arrow-left"></i>
+                                    مشاهدة المزيد
+                                 </a>
+                                 <a href="" class="btn btn-second request_btn">
+                                         <i class="fa fa-arrow-left"></i>
+                                         طلب مشروع مماثل                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
