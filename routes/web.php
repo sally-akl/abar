@@ -34,6 +34,9 @@ Route::group(['before' => 'auth.basic','prefix'=>'dashboard'],function () {
   Route::resource('blog','Dashboard\BlogController');
   Route::post('project/update/{id}',['uses'=>'Dashboard\ProjectController@update']);
   Route::post('blogs/update/{id}',['uses'=>'Dashboard\BlogController@update']);
+  Route::get('blogs/comments/{id}',['uses'=>'Dashboard\BlogController@comments']);
+  Route::get('blogs/comments/delete/{id}',['uses'=>'Dashboard\BlogController@delete_comments']);
+  Route::post('blogs/comments/update/{id}',['uses'=>'Dashboard\BlogController@update_comment']);
   Route::get('visit/accept/{id}',['uses'=>'Dashboard\VisitsController@acceptVisit']);
   Route::post('visit/reject/{id}',['uses'=>'Dashboard\VisitsController@rejectVisit']);
   Route::get('project/status/{id}',['uses'=>'Dashboard\ProjectController@projectByStatus']);

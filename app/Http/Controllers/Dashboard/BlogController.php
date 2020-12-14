@@ -93,6 +93,12 @@ class BlogController extends Controller
         return view('dashboard.blogs.update',compact('blog'));
     }
 
+    public function comments($id)
+    {
+      $blog = blog::findOrFail($id);
+      return view('dashboard.blogs.comments',compact('blog','id'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -141,5 +147,19 @@ class BlogController extends Controller
       $blog->delete();
       Session::put('message', trans('site.delete_sucessfully'));
       return json_encode(array("sucess"=>true));
+    }
+    public function delete_comments($id)
+    {
+      $comment = \App\Comments::findOrFail($id);
+      $comment->delete();
+      Session::put('message', trans('site.delete_sucessfully'));
+      return json_encode(array("sucess"=>true));
+    }
+    public function update_comment(Request $request , $id)
+    {
+      $comment = \App\Comments::findOrFail($id);
+      $comment->is_published = $request->comment_status;
+      $comment->save();
+      return redirect('dashboard/blogs/comments/'.$request->id)->with("message","تم تعديل حالة التعليق");
     }
 }

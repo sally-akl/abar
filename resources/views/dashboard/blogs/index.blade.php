@@ -73,6 +73,12 @@
     						<i class="far fa-trash-alt"></i>
     					</a>
 
+
+              <a href='{{url("/dashboard/blogs/comments")}}/{{$blog->id}}' class="btn  btn-xs " >
+    					  التعليقات
+    					</a>
+
+
             </td>
           </tr>
           @endforeach
