@@ -11,9 +11,13 @@
 |
 */
 
+Route::get('/',['uses'=>'HomeController@index']);
+
 Route::group(['before' => 'auth.basic','prefix'=>'dashboard'],function () {
 
   Route::get('/',['uses'=>'Dashboard\DashboardController@index']);
+  Route::get('/settings',['uses'=>'Dashboard\DashboardController@settings']);
+  Route::post('/settings/update',['uses'=>'Dashboard\DashboardController@settings']);
   Route::resource('country','Dashboard\CountryController');
   Route::resource('governate','Dashboard\GovernateController');
   Route::resource('region','Dashboard\RegionController');
@@ -26,7 +30,10 @@ Route::group(['before' => 'auth.basic','prefix'=>'dashboard'],function () {
   Route::resource('extrafields','Dashboard\ExtraFieldsController');
   Route::resource('media','Dashboard\MediaController');
   Route::resource('visits','Dashboard\VisitsController');
+  Route::resource('opionion','Dashboard\CustomerOpionController');
+  Route::resource('blog','Dashboard\BlogController');
   Route::post('project/update/{id}',['uses'=>'Dashboard\ProjectController@update']);
+  Route::post('blogs/update/{id}',['uses'=>'Dashboard\BlogController@update']);
   Route::get('visit/accept/{id}',['uses'=>'Dashboard\VisitsController@acceptVisit']);
   Route::post('visit/reject/{id}',['uses'=>'Dashboard\VisitsController@rejectVisit']);
   Route::get('project/status/{id}',['uses'=>'Dashboard\ProjectController@projectByStatus']);

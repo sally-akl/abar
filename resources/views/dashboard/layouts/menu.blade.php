@@ -1,10 +1,19 @@
 <ul class="navbar-nav">
-  <li class="nav-item {{$controller == 'DashboardController' ?'active':'' }}">
+  <li class="nav-item {{$controller == 'DashboardController'  && $action=='index' ?'active':'' }}">
     <a class="nav-link" href='{{url("/dashboard")}}' >
       <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
       </span>
       <span class="nav-link-title">
        @lang('site.dashboard')
+      </span>
+    </a>
+  </li>
+  <li class="nav-item {{$controller == 'DashboardController' && $action=='settings' ?'active':'' }}">
+    <a class="nav-link" href='{{url("/dashboard/settings")}}' >
+      <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6-6a6 6 0 0 1 -8 -8l3.5 3.5"></path></svg>
+      </span>
+      <span class="nav-link-title">
+        الاعدادات
       </span>
     </a>
   </li>
@@ -116,5 +125,23 @@
         </a>
       </li>
     </ul>
+  </li>
+  <li class="nav-item {{$controller == 'CustomerOpionController'  ?'active':'' }}">
+    <a class="nav-link" href='{{url("/dashboard/opionion")}}' >
+      <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="8.5" cy="7" r="4"></circle><path d="M2 21v-2a4 4 0 0 1 4 -4h5a4 4 0 0 1 4 4v2"></path><path d="M16 11l2 2l4 -4"></path></svg>
+      </span>
+      <span class="nav-link-title">
+        اراء العملاء
+      </span>
+    </a>
+  </li>
+  <li class="nav-item {{$controller == 'BlogController'  ?'active':'' }}">
+    <a class="nav-link" href='{{url("/dashboard/blog")}}' >
+      <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><rect x="5" y="3" width="14" height="18" rx="2"></rect><line x1="9" y1="7" x2="15" y2="7"></line><line x1="9" y1="11" x2="15" y2="11"></line><line x1="9" y1="15" x2="13" y2="15"></line></svg>
+      </span>
+      <span class="nav-link-title">
+        المدونة
+      </span>
+    </a>
   </li>
 </ul>

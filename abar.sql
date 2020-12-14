@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2020 at 09:12 PM
+-- Generation Time: Dec 14, 2020 at 08:00 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -49,6 +49,41 @@ INSERT INTO `bannerads` (`id`, `title`, `link`, `banner_img`, `banner_size`, `is
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `blog`
+--
+
+CREATE TABLE `blog` (
+  `id` int(11) NOT NULL,
+  `category_name` varchar(150) NOT NULL,
+  `publish_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `blog_img` varchar(150) NOT NULL,
+  `blog_title` varchar(150) NOT NULL,
+  `blog_desc` text NOT NULL,
+  `is_active` int(11) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_comments`
+--
+
+CREATE TABLE `blog_comments` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `comment_text` text NOT NULL,
+  `is_published` int(11) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `blog_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `contracts`
 --
 
@@ -89,6 +124,21 @@ CREATE TABLE `countries` (
 INSERT INTO `countries` (`id`, `title`, `created_at`, `updated_at`) VALUES
 (13, 'مصر', '2020-11-07 12:34:11', '2020-11-07 12:34:11'),
 (14, 'اليمن', '2020-11-08 16:21:34', '2020-11-08 16:21:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers_oponions`
+--
+
+CREATE TABLE `customers_oponions` (
+  `id` int(11) NOT NULL,
+  `customer_name` varchar(250) NOT NULL,
+  `country_name` varchar(100) DEFAULT NULL,
+  `cutomer_opionion` varchar(250) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -429,6 +479,36 @@ INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL,
+  `header_text` text NOT NULL,
+  `done_projects_num` varchar(250) NOT NULL,
+  `customer_num` varchar(250) NOT NULL,
+  `countries_num` varchar(250) NOT NULL,
+  `befend_num` varchar(250) NOT NULL,
+  `phone` varchar(250) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `facebook` varchar(250) NOT NULL,
+  `youtube` varchar(250) NOT NULL,
+  `instegrame` varchar(250) NOT NULL,
+  `twitter` varchar(250) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `header_text`, `done_projects_num`, `customer_num`, `countries_num`, `befend_num`, `phone`, `email`, `facebook`, `youtube`, `instegrame`, `twitter`, `updated_at`, `created_at`) VALUES
+(1, 'أحفر بئراً أو أبني مسجداً لدى جهة رسمية و مرخصة تُتقدر قيمة مشروعك', '700', '500', '8', '50,000', '+0553006174', 'info@yahoo.com', 'https://www.facebook.com/100647691526982', 'https://www.youtube.com/channel/UCk8zYF_K_uf9pxuiWBpxBHA', 'https://www.instagram.com/abar.alseqaya', 'https://twitter.com/abar66041292', '2020-12-14 13:49:20', '2020-12-14 15:49:15');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `specialize`
 --
 
@@ -599,6 +679,19 @@ ALTER TABLE `bannerads`
   ADD KEY `bannerads_user_id_foreign` (`user_id`);
 
 --
+-- Indexes for table `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `blog_comments`
+--
+ALTER TABLE `blog_comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_blog` (`blog_id`);
+
+--
 -- Indexes for table `contracts`
 --
 ALTER TABLE `contracts`
@@ -609,6 +702,12 @@ ALTER TABLE `contracts`
 -- Indexes for table `countries`
 --
 ALTER TABLE `countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customers_oponions`
+--
+ALTER TABLE `customers_oponions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -713,6 +812,12 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `specialize`
 --
 ALTER TABLE `specialize`
@@ -767,6 +872,18 @@ ALTER TABLE `bannerads`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `blog_comments`
+--
+ALTER TABLE `blog_comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `contracts`
 --
 ALTER TABLE `contracts`
@@ -777,6 +894,12 @@ ALTER TABLE `contracts`
 --
 ALTER TABLE `countries`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `customers_oponions`
+--
+ALTER TABLE `customers_oponions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `districts`
@@ -857,6 +980,12 @@ ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `specialize`
 --
 ALTER TABLE `specialize`
@@ -901,6 +1030,12 @@ ALTER TABLE `visits_requests`
 --
 ALTER TABLE `bannerads`
   ADD CONSTRAINT `bannerads_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `blog_comments`
+--
+ALTER TABLE `blog_comments`
+  ADD CONSTRAINT `fk_blog` FOREIGN KEY (`blog_id`) REFERENCES `blog` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `contracts`
