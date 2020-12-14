@@ -9,34 +9,40 @@
                 <div class="header-txt">
 
                     <p>
-                      آبار السقاية هي مؤسسة رسمية متخصصة في حفر الابار وبناء المساجد والمراكز الاسلامية داخل المملكة وخارجها
+                      {{\App\Settings::find(1)->header_text}}
                     </p>
                 </div>
                 <div class="header-btns">
                     <a href="#" class="btn btn-second">تعرف أكثر على مشاريعنا</a>
-                    <a href="https://api.whatsapp.com/send?phone=+0553006174&text="
+                    <a href="https://api.whatsapp.com/send?phone={{\App\Settings::find(1)->phone}}&text="
                        class="btn btn-white" target="_blank">
                         <img src="{{url('/')}}/img/whatsapp.png" class="img-fluid icon lozad">
                         طلب استشارة لاختيار مشروع
                     </a>
                 </div>
                 <div class="row counters">
-                  <div class="col-lg-4 col-6 text-center">
+                  <div class="col-lg-3 col-12 text-center">
                     <div class="card" >
-                      <span data-toggle="counter-up">700</span>
+                      <span data-toggle="counter-up">{{\App\Settings::find(1)->done_projects_num}}</span>
                       <p>المشاريع المنفذة</p>
                     </div>
                   </div>
-                  <div class="col-lg-4 col-6 text-center">
+                  <div class="col-lg-3 col-12 text-center">
                     <div class="card" style="background:#0bbfbf">
-                      <span data-toggle="counter-up">500</span>
+                      <span data-toggle="counter-up">{{\App\Settings::find(1)->customer_num}}</span>
                       <p>عميل</p>
                     </div>
                   </div>
-                  <div class="col-lg-4 col-6 text-center">
+                  <div class="col-lg-3 col-12 text-center">
                     <div class="card">
-                      <span data-toggle="counter-up">8</span>
+                      <span data-toggle="counter-up">{{\App\Settings::find(1)->countries_num}}</span>
                       <p>الدول التي نخدمها</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-12 text-center">
+                    <div class="card">
+                      <span data-toggle="counter-up">{{\App\Settings::find(1)->befend_num}}</span>
+                      <p>عدد المستفيدين</p>
                     </div>
                   </div>
                 </div>
@@ -271,45 +277,22 @@
 
         </div>
         <div class="row">
+          @php  $articles = \App\blog::where("publish_date","<=",date("Y-m-d"))->where("is_active",1)->orderby("id","desc")->take(3)->get();  @endphp
+          @foreach($articles as $article)
           <div class="col-md-4 col-sm-6 col-xs-12 clearfix ">
             <div class="post-item">
               <div class="media-wrapper">
-                <img src="img/1.jpeg" alt="" class="img-fluid">
+                <img src="{{$article->blog_img}}" alt="" class="img-fluid">
               </div>
 
               <div class="content">
-                <h3><a href="single-post.html">مسجد - اندونيسيا</a></h3>
-                <p>مسجد كبير مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير</p>
+                <h3><a href="">{{$article->blog_title}}</a></h3>
+                <p>@php  echo   ltrim(substr($article->blog_desc,69)) ;  @endphp</p>
                 <a class="btn btn-main" href="">قراءة المزيد</a>
               </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-6 col-xs-12  ">
-          <div class="post-item">
-            <div class="media-wrapper">
-              <img src="img/1.jpeg" alt="" class="img-fluid">
-            </div>
-
-            <div class="content">
-              <h3><a href="single-post.html">مسجد - اندونيسيا</a></h3>
-              <p>مسجد كبير مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير</p>
-              <a class="btn btn-main" href="">قراءة المزيد</a>
-            </div>
-          </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-xs-12  ">
-        <div class="post-item">
-          <div class="media-wrapper">
-            <img src="img/1.jpeg" alt="" class="img-fluid">
-          </div>
-
-          <div class="content">
-            <h3><a href="single-post.html">مسجد - اندونيسيا</a></h3>
-            <p>مسجد كبير مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير  مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير</p>
-            <a class="btn btn-main" href="">قراءة المزيد</a>
-          </div>
-        </div>
-    </div>
+        @endforeach
         </div>
 
     </div>
@@ -322,35 +305,22 @@
         <div id="testimonialCarousel" class="carousel slide" data-ride="carousel">
                   <!-- Slide Indicators -->
                   <ol class="carousel-indicators">
-                      <li data-target="#testimonialCarousel" data-slide-to="0" class="active"></li>
-                      <li data-target="#testimonialCarousel" data-slide-to="1"></li>
-                      <li data-target="#testimonialCarousel" data-slide-to="2"></li>
+                      @php  $customer_option = \App\Oponions::all(); @endphp
+                      @foreach($customer_option as $k=>$option)
+                        <li data-target="#testimonialCarousel" data-slide-to="{{$k}}" class="{{$k == 0?'active':''}}"></li>
+                      @endforeach
                   </ol>
                   <div class="carousel-inner" role="listbox">
+                    @foreach($customer_option as $k=>$option)
                       <!-- Slide 1 -->
-                      <div class="carousel-item active">
+                      <div class="carousel-item {{$k == 0?'active':''}}">
                           <div class="carousel-content">
-                              <div class="client-img"><img src="img/user.png" alt="Testimonial Slider"></div>
-                              <h3>احمد محمد<br><span>السعودية </span></h3>
-                              <p class="col-md-8 offset-md-2">تم  المشروع بنجاح تم  المشروع بنجاح تم  المشروع بنجاح تم  المشروع بنجاح تم  المشروع بنجاح تم  المشروع بنجاح تم  المشروع بنجاح تم  المشروع بنجاح تم  المشروع بنجاح تم  المشروع بنجاح تم  المشروع بنجاح تم  المشروع بنجاح تم  المشروع بنجاح</p>
+                              <div class="client-img"><img src="{{url('/')}}/img/user.png" alt="Testimonial Slider"></div>
+                              <h3>{{$option->customer_name}}<br><span>{{$option->country_name}} </span></h3>
+                              <p class="col-md-8 offset-md-2">{{$option->cutomer_opionion}}</p>
                           </div>
                       </div>
-                      <!-- Slide 2 -->
-                      <div class="carousel-item">
-                          <div class="carousel-content">
-                              <div class="client-img"><img src="img/user.png" alt="Testimonial Slider"></div>
-                              <h3>محمد احمد<br><span>السعودية </span></h3>
-                              <p class="col-md-8 offset-md-2">مشروع رائع   مشروع رائع مشروع رائع مشروع رائع مشروع رائع مشروع رائع مشروع رائع مشروع رائع مشروع رائع مشروع رائع مشروع رائع مشروع رائع مشروع رائع مشروع رائع</p>
-                          </div>
-                      </div>
-                      <!-- Slide 3 -->
-                      <div class="carousel-item">
-                          <div class="carousel-content">
-                              <div class="client-img"><img src="img/user.png" alt="Testimonial Slider"></div>
-                              <h3>محمد محمد <br><span>اندونيسيا</span></h3>
-                              <p class="col-md-8 offset-md-2">تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح تم بنجاح</p>
-                          </div>
-                      </div>
+                      @endforeach
                       <!-- Slider pre and next arrow -->
                       <a class="carousel-control-prev text-white" href="#testimonialCarousel" role="button" data-slide="prev">
                       <i class="fas fa-chevron-left"></i>

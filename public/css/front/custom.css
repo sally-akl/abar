@@ -4,7 +4,7 @@
 .counters span {
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
-    font-size: 48px;
+    font-size: 25px;
     display: block;
     color: #fff;
 }
@@ -12,19 +12,18 @@
     padding: 0;
     margin: 0 0 20px 0;
     font-family: "Montserrat", sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     color: #cce5ff;
 }
 .counters .card {
     background: #00458f;
     border-color: #00458f;
     border-radius: 10px;
-    margin: 8px 5px;
+    margin: 8px 0px;
     padding: 15px 0;
     text-align: center;
     color: #fff;
     transition: 0.3s ease-in-out;
-    height: 100%;
 }
 .section-header h3 {
     font-size: 36px;

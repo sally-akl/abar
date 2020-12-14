@@ -3,10 +3,10 @@
         <div class="container d-flex justify-content-between">
             <ul class="list-unstyled d-flex align-items-center head-contact-list right">
                 <li class="head-item">
-                    <a href="tel:+0553006174" class="tel"> +0553006174</a>
+                    <a href="tel:{{\App\Settings::find(1)->phone}}" class="tel">{{\App\Settings::find(1)->phone}}</a>
                 </li>
                 <li class="head-item">
-                    <a href="mailto:info@yahoo.com">info@yahoo.com</a>
+                    <a href="mailto:{{\App\Settings::find(1)->email}}">{{\App\Settings::find(1)->email}}</a>
                 </li>
 								<li class="head-item">
                     <a href="#" class="">طلب مشروع</a>
@@ -17,16 +17,16 @@
             </ul>
             <ul class="list-unstyled d-flex align-items-center head-social-list left">
                 <li class="head-item facebook">
-                    <a href="https://www.facebook.com/100647691526982" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="{{\App\Settings::find(1)->facebook}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 </li>
                 <li class="head-item youtube">
-                    <a href="https://www.youtube.com/channel/UCk8zYF_K_uf9pxuiWBpxBHA" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="{{\App\Settings::find(1)->youtube}}" target="_blank"><i class="fab fa-youtube"></i></a>
                 </li>
                 <li class="head-item instagram">
-                    <a href="https://www.instagram.com/abar.alseqaya" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="{{\App\Settings::find(1)->instegrame}}" target="_blank"><i class="fab fa-instagram"></i></a>
                 </li>
                 <li class="head-item twitter">
-                    <a href="https://twitter.com/abar66041292" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="{{\App\Settings::find(1)->twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
                 </li>
             </ul>
         </div>
