@@ -80,6 +80,20 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-lg-6 deep">
+          <div class="mb-3">
+            <label class="form-label">العنوان</label>
+            <input type="text" class="form-control" name="address" value="{{$settings->address}}">
+          </div>
+        </div>
+        <div class="col-lg-6 deep">
+          <div class="mb-3">
+            <label class="form-label">الفيديو</label>
+            <input type="text" class="form-control" name="vedio_intro" value="{{$settings->vedio_intro}}">
+          </div>
+        </div>
+      </div>
 
     <div class="row masged">
       <div class="col-lg-12">

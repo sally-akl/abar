@@ -5,20 +5,20 @@
             <div class="col-md-4 col-lg-4">
                 <div class="single-col">
                     <div class="header-col" style="height:100px;">
-                        <img src="img/logo.png" alt="tahaqom" class="img-fluid lozad">
+                        <img src="{{url('/')}}/img/logo.png" alt="tahaqom" class="img-fluid lozad">
                     </div>
                     <ul class="list-unstyled">
                         <li class="footer-link">
                             <span class="icon"><i class="fa fa-envelope"></i></span>
-                            <a href="mailto:info@yahoo.com" class="link">info@yahoo.com</a>
+                            <a href="mailto:{{\App\Settings::find(1)->email}}" class="link">{{\App\Settings::find(1)->email}}</a>
                         </li>
                         <li class="footer-link">
                             <span class="icon"><i class="fa fa-phone"></i></span>
-                            <a href="tel:+0553006174" class="link phone-number">+0553006174</a>
+                            <a href="tel:{{\App\Settings::find(1)->phone}}" class="link phone-number">{{\App\Settings::find(1)->phone}}</a>
                         </li>
                         <li class="footer-link">
                             <span class="icon"><i class="fa fa-map-marker"></i></span>
-                            <a href="#" class="link">جده – حي الفيحاء – شارع عبدالله السليمان – بجوار جامع الحمودي
+                            <a href="#" class="link">{{\App\Settings::find(1)->address}}
                                 </a>
                         </li>
                     </ul>

@@ -12,7 +12,7 @@
                     <a href="#" class="">طلب مشروع</a>
                 </li>
 								<li class="head-item">
-                    <a href="#">طلب استشارة</a>
+                    <a href="https://api.whatsapp.com/send?phone={{\App\Settings::find(1)->phone}}&text=">طلب استشارة</a>
                 </li>
             </ul>
             <ul class="list-unstyled d-flex align-items-center head-social-list left">
@@ -50,8 +50,8 @@
                     </a>
                 </div>
                 <ul id="menu-main" class="menu-main">
-                    <li><a href="index.html" class="current">الرئيسية </a></li>
-                    <li><a href="aboutus.html" class="">عن المؤسسة</a></li>
+                    <li><a href="{{url('/')}}"  {{$controller == "HomeController" && $action=="index"?'class=current':''}} >الرئيسية </a></li>
+                    <li><a href="{{url('/')}}/عن المؤسسة" {{$controller == "HomeController" && $action=="aboutus"?'class=current':''}}>عن المؤسسة</a></li>
                     <li><a href="oldproject.html" class="">اعمالنا السابقة </a></li>
                     <li><a href="blog.html" class="">مدونة ابار السقاية</a></li>
                     <li><a href="#" class="">المتجر الالكترونى</a></li>

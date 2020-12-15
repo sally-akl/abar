@@ -63,7 +63,7 @@
             <path fill-rule="evenodd" fill="#013a67" d="M360.207,1.854 L352.209,1.791 C357.283,1.714 360.207,1.854 360.207,1.854 ZM270.002,17.615 C270.002,17.615 248.285,27.586 239.933,34.332 C239.933,34.332 210.342,52.184 192.682,54.393 C192.682,54.393 184.915,55.662 180.097,55.164 C175.279,55.662 167.512,54.393 167.512,54.393 C149.853,52.184 120.262,34.332 120.262,34.332 C111.909,27.586 90.193,17.615 90.193,17.615 C57.316,4.160 23.104,2.018 7.986,1.791 L178.364,0.448 L178.364,0.420 L180.097,0.434 L181.831,0.420 L181.831,0.448 L352.209,1.791 C337.091,2.018 302.878,4.160 270.002,17.615 ZM7.986,1.791 L-0.013,1.854 C-0.013,1.854 2.912,1.714 7.986,1.791 Z"></path>
         </svg>
         <!-- video player -->
-                        <a class="btn video-player lightbox-iframe" href="https://www.youtube.com/watch?v=Gjv0pzacn6c">
+                        <a class="btn video-player lightbox-iframe" href="{{\App\Settings::find(1)->vedio_intro}}">
                 <svg class="svg-inline--fa fa-caret-right fa-w-6" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" data-fa-i2svg=""><path fill="currentColor" d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"></path></svg><!-- <i class="fas fa-caret-right"></i> -->
                 <span></span>
             </a>
@@ -86,13 +86,15 @@
     </div>
     <div class="row">
       <!-- start project -->
+      @php $projects =  \App\Project::selectRaw("projects.*,requests.project_status,requests.user_id,requests.id as related_request_id")->join("requests","requests.project_id","projects.id")->where("requests.project_status",2)->orderBy("projects.id","desc")->take(3)->get();   @endphp
+      @foreach($projects as $project)
       <div class="col-lg-4 col-md-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
         <div class="project">
-          <img src="img/1.jpeg" class="img-fluid" alt="">
+          <img src="{{$project->project_photo}}" class="img-fluid" alt="">
           <div class="project-info">
             <div class="project-info-content">
-              <h4>مساجد – أندونيسيا</h4>
-              <span>زنك</span>
+              <h4>{{$project->project_name}} - {{$project->project_category}}</h4>
+              <span>{{$project->country->title}}</span>
             </div>
           </div>
           <div class="overlay">
@@ -101,38 +103,7 @@
         </div>
       </div>
       <!-- end project -->
-      <!-- start project -->
-      <div class="col-lg-4 col-md-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-        <div class="project">
-          <img src="img/2.jpeg" class="img-fluid" alt="">
-          <div class="project-info">
-            <div class="project-info-content">
-              <h4>مساجد – أندونيسيا</h4>
-              <span>زنك</span>
-            </div>
-          </div>
-          <div class="overlay">
-              <div class="text">المزيد</div>
-          </div>
-        </div>
-      </div>
-      <!-- end project -->
-      <!-- start project -->
-      <div class="col-lg-4 col-md-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-        <div class="project">
-          <img src="img/3.jpg" class="img-fluid" alt="">
-          <div class="project-info">
-            <div class="project-info-content">
-              <h4>مساجد-توغو</h4>
-              <span>خرسانة</span>
-            </div>
-          </div>
-          <div class="overlay">
-              <div class="text">المزيد</div>
-          </div>
-        </div>
-      </div>
-      <!-- end project -->
+      @endforeach
     </div>
   </div>
 </section>
@@ -199,6 +170,7 @@
             <h3 class="main-title">المشاريع الاكثر طلبا</h3>
 
         </div>
+        @php  $more_reqested_projects = \App\Project::selectRaw("projects.project_name,projects.project_photo,projects.id,projects.category_id,projects.project_category,count(requests.project_id) as project_count")->join("requests","requests.project_id","projects.id")->where("projects.project_status","مفعل")->orderBy("project_count","desc")->groupby("projects.project_name","projects.project_photo","projects.id","projects.category_id","projects.project_category")->get();  @endphp
         <div class="filters">
             <ul>
                 <li class="btn btn-light workClass active choose_project" data-filter="*" >
@@ -218,11 +190,19 @@
     </div>
     <div class="filters-content">
         <div class="row grid" id="post-works" >
-            <div class="col-md-6 col-lg-4 all apps3">
+
+          @foreach($more_reqested_projects as $m_project)
+            @if($m_project->project_category == "ابار")
+            <div class="col-md-6 col-lg-4 all  apps1">
+            @elseif($m_project->project_category == "مساجد")
+            <div class="col-md-6 col-lg-4 all  apps2">
+            @else
+            <div class="col-md-6 col-lg-4 all  apps3">
+            @endif
                 <div class="single-content  card-overlay">
-                    <img src="img/1.jpeg" alt="">
+                    <img src="{{$m_project->project_photo}}" alt="">
                     <div class="card-img-overlay">
-                        <h5 class="card-title">مساجد - اندونيسيا</h5>
+                        <h5 class="card-title">{{$m_project->project_name}} - {{$m_project->project_category}}</h5>
                         <div class="btns">
                             <a href="" class="btn btn-second">
                                 <i class="fa fa-arrow-left"></i>
@@ -232,39 +212,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-6 col-lg-4 all apps2">
-                <div class="single-content  card-overlay">
-                    <img src="img/2.jpeg" alt="">
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">مساجد - اندونيسيا</h5>
-                        <div class="btns">
-                            <a href="" class="btn btn-second">
-                                <i class="fa fa-arrow-left"></i>
-                                مشاهدة المزيد                    </a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 all apps1">
-                <div class="single-content  card-overlay">
-                    <img src="img/3.jpg" alt="">
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">مساجد- توغا</h5>
-                        <div class="btns">
-                            <a href="" class="btn btn-second">
-                                <i class="fa fa-arrow-left"></i>
-                                مشاهدة المزيد
-                             </a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+          @endforeach
         </div>
     </div>
     <a href="" class="btn btn btn-main auto-width mt-30 center-horizontal">شاهد جميع مشارعنا</a>

@@ -108,7 +108,7 @@
         </div>
       </div>
     </div>
-    <div class="row masged" style="display:none;">
+    <div class="row masged" {{$product->project_category == "مساجد" ?'':'style=display:none'}}>
       <div class="col-lg-12">
         <div class="mb-3">
           <label class="form-label">@lang('site.pro_details')</label>
@@ -116,7 +116,7 @@
         </div>
       </div>
     </div>
-    <div class="row abar" style="display:none;">
+    <div class="row abar" {{$product->project_category == "ابار"?'':'style=display:none'}}>
       <div class="col-lg-6 deep">
         <div class="mb-3">
           <label class="form-label">@lang('site.deep')</label>
@@ -213,7 +213,7 @@
       @else
           @php  $count = count($sp_prices);  @endphp
       @endif
-      <input type="hidden" name="character_num" value="{{$count>0?$count:1}}" />
+      <input type="hidden" name="character_num" value="{{$count>0?$count:0}}" />
     <button type="submit" class="btn btn-primary">+ {{ __('site.save') }} </button>
   </form>
   </div>

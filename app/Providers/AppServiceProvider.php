@@ -29,5 +29,11 @@ class AppServiceProvider extends ServiceProvider
           list($controller, $action) = explode('@', $controller);
           $view->with(compact('controller', 'action'));
       });
+      app('view')->composer('layouts.app', function ($view) {
+          $action = app('request')->route()->getAction();
+          $controller = class_basename($action['controller']);
+          list($controller, $action) = explode('@', $controller);
+          $view->with(compact('controller', 'action'));
+      });
     }
 }

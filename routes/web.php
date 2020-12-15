@@ -12,6 +12,7 @@
 */
 
 Route::get('/',['uses'=>'HomeController@index']);
+Route::get('/{text}',['uses'=>'HomeController@aboutus']);
 
 Route::group(['before' => 'auth.basic','prefix'=>'dashboard'],function () {
 

@@ -58,6 +58,8 @@ class DashboardController extends Controller
         $settings->instegrame = $request->instegrame;
         $settings->twitter = $request->twitter;
         $settings->header_text = $request->header_text;
+        $settings->address =  $request->address;
+        $settings->vedio_intro =  $request->vedio_intro;
         $settings->save();
 
         return redirect('dashboard/settings')->with("message","تم الحفظ بنجاح");
