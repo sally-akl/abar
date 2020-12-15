@@ -24,5 +24,13 @@ class Project extends Model
     {
         return $this->belongsTo("App\Districts", 'district_id');
     }
+    public function specialize()
+    {
+      return $this->hasMany('App\Specialize','project_id');
+    }
+    public function extracharacters()
+    {
+      return $this->hasMany('App\ProjectPrices','project_id');
+    }
 
 }

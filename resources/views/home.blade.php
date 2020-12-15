@@ -236,7 +236,7 @@
               <div class="content">
                 <h3><a href="">{{$article->blog_title}}</a></h3>
                 <p>@php  echo   ltrim(substr($article->blog_desc,69)) ;  @endphp</p>
-                <a class="btn btn-main" href="">قراءة المزيد</a>
+                <a class="btn btn-main" href="{{url('/')}}/blog/details/{{$article->id}}/{{$article->blog_title}}">قراءة المزيد</a>
               </div>
             </div>
         </div>

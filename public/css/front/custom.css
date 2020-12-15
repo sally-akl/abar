@@ -421,3 +421,58 @@
 .name_login{
   margin-left: 5px;
 }
+.store_block_headers{
+  background: #013a67;
+  color:#fff;
+  padding: 4px;
+  font-size: 18px;
+}
+.store_block_content{
+  background: #e6f5f2;
+  padding: 10px;
+}
+.store_block_content i
+{
+  color: #f8af39 !important;
+}
+.store_block_content .chara_list span{
+  color:#024f66;
+}
+.store_block_content .chara_list svg
+{
+  color: #f8af39 !important;
+}
+.store_block_content .chara_list div{
+  margin-top: 8px;
+}
+.store_block_content .details_m{
+  background-color: #f8af39 !important;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+.store_block_content .details_m .details_m_m{
+  text-align: center;
+  color: #024f66;
+  padding: 20px;
+}
+.store_block_content .details_m .details_m_m span{
+  font-size: 25px;
+}
+.store_block_content .details_m .details_m_m .details_price{
+  font-size: 35px;
+}
+.abar_list{
+  margin-top:15px;
+}
+.msg_details_sm div{
+  text-align: center;
+  color: #024f66;
+  padding: 5px;
+  background-color: #f8af39 !important;
+  margin-top: 5px;
+}
+.mor_btn_projects{
+  background: #013a67 !important;
+  border: none !important; 
+  border-radius: 5px;
+}
