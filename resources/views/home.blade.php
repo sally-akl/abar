@@ -215,7 +215,7 @@
           @endforeach
         </div>
     </div>
-    <a href="" class="btn btn btn-main auto-width mt-30 center-horizontal">شاهد جميع مشارعنا</a>
+    <a href="{{url('/')}}/store" class="btn btn btn-main auto-width mt-30 center-horizontal">شاهد جميع مشارعنا</a>
 </section>
 <!-- end our works -->
 <section class="parnters-block w-curve">

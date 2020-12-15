@@ -117,7 +117,7 @@
         </div>
 @endforeach
 
- <a href="" class="btn btn btn-main auto-width mt-30 center-horizontal mor_btn_projects">المزيد من مشاريع الابار</a>
+ <a href="{{url('/')}}/store/ابار" class="btn btn btn-main auto-width mt-30 center-horizontal mor_btn_projects">المزيد من مشاريع الابار</a>
 
 
 
@@ -219,7 +219,7 @@
         </div>
         @endforeach
 
-        <a href="" class="btn btn btn-main auto-width mt-30 center-horizontal mor_btn_projects">المزيد من مشاريع المساجد</a>
+        <a href="{{url('/')}}/store/مساجد" class="btn btn btn-main auto-width mt-30 center-horizontal mor_btn_projects">المزيد من مشاريع المساجد</a>
 
         <div class="row" style="margin-top: 50px;">
               <div class="col-lg-6">
@@ -289,7 +289,7 @@
           </div>
           @endforeach
 
-          <a href="" class="btn btn btn-main auto-width mt-30 center-horizontal mor_btn_projects">المزيد من مشاريع المراكز والمدارس</a>
+          <a href="{{url('/')}}/store/المراكز والمدارس" class="btn btn btn-main auto-width mt-30 center-horizontal mor_btn_projects">المزيد من مشاريع المراكز والمدارس</a>
 
 
 

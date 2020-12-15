@@ -446,33 +446,27 @@
   margin-top: 8px;
 }
 .store_block_content .details_m{
-  background-color: #f8af39 !important;
+  background-color: #013a67  !important;
   margin-top: 5px;
   border-radius: 10px;
 }
 .store_block_content .details_m .details_m_m{
   text-align: center;
-  color: #024f66;
+  color: #fff;
   padding: 20px;
-}
-.store_block_content .details_m .details_m_m span{
-  font-size: 25px;
-}
-.store_block_content .details_m .details_m_m .details_price{
-  font-size: 35px;
 }
 .abar_list{
   margin-top:15px;
 }
 .msg_details_sm div{
   text-align: center;
-  color: #024f66;
+  color: #fff;
   padding: 5px;
-  background-color: #f8af39 !important;
+  background-color: #013a67  !important;
   margin-top: 5px;
 }
 .mor_btn_projects{
   background: #013a67 !important;
-  border: none !important; 
+  border: none !important;
   border-radius: 5px;
 }

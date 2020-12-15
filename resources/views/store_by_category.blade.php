@@ -7,7 +7,8 @@
             <nav aria-label="breadcrumb" class="f-width">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{url('/')}}">الرئيسية </a></li>
-                    <li class="breadcrumb-item active" aria-current="page">المتجر الالكترونى</li>
+                    <li class="breadcrumb-item" ><a href="{{url('/')}}/store">المتجر الالكترونى </a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{$type}}</li>
                 </ol>
             </nav>
         </div>
@@ -37,101 +38,102 @@
 <!-- start blogs section -->
 <section class="works-block no-flex" style="margin-top:10px;">
     <div class="container">
-      <div class="row">
-            <div class="col-lg-6">
-                <h3 class="main-title">ابار</h3>
 
-            </div>
+      @php   $cities = \App\Country::all();  @endphp
+      @if($type == "ابار")
+       @foreach($cities as $city)
+       <div class="row">
+             <div class="col-lg-6">
+                 <h3 class="main-title">{{$city->title}}</h3>
+
+             </div>
         </div>
 
-        @php $projects = \App\Project::where("project_category","ابار")->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(4)->get();   @endphp
+        @php $projects = $city->projects()->where("project_category","ابار")->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->get();    @endphp
+        @foreach($projects as $project)
+         <div class="row abar_list">
+           <div class="col-lg-12">
 
-       @foreach($projects as $project)
-        <div class="row abar_list">
-          <div class="col-lg-12">
-
-            <div class="row store_block_headers">
-              <div class="col-lg-3">
-                {{$project->project_name}}
-              </div>
-              <div class="col-lg-6" style="text-align: center;">
-                مواصفات المشروع
-              </div>
-              <div class="col-lg-3" style="text-align: center;">
-                العمق والسعر
-              </div>
-            </div>
+             <div class="row store_block_headers">
+               <div class="col-lg-3">
+                 {{$project->project_name}}
+               </div>
+               <div class="col-lg-6" style="text-align: center;">
+                 مواصفات المشروع
+               </div>
+               <div class="col-lg-3" style="text-align: center;">
+                 العمق والسعر
+               </div>
+             </div>
 
 
-            <div class="row store_block_content">
-              <div class="col-lg-3">
-                <img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded">
-              </div>
-              <div class="col-lg-6">
-                <div class="row chara_list">
-                  @php  $count = 0; @endphp
-                  @foreach($project->specialize as $k=>$special)
-                      @php  $count++; @endphp
-                      @if($k == 0)
-                        <div class="col-lg-6">
-                      @endif
-
-                      @if($k != 0 && $k%5 == 0)
-                         </div>
+             <div class="row store_block_content">
+               <div class="col-lg-3">
+                 <img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded">
+               </div>
+               <div class="col-lg-6">
+                 <div class="row chara_list">
+                   @php  $count = 0; @endphp
+                   @foreach($project->specialize as $k=>$special)
+                       @php  $count++; @endphp
+                       @if($k == 0)
                          <div class="col-lg-6">
-                      @endif
+                       @endif
 
-                      <div><i class="fa fa-square"></i> <span>{{$special->title}}</span></div>
-                  @endforeach
+                       @if($k != 0 && $k%5 == 0)
+                          </div>
+                          <div class="col-lg-6">
+                       @endif
 
-                  @if($count%5 != 0)
-                    </div>
-                  @endif
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="row details_m">
-                  <div class="col-lg-12">
-                    <div class="details_m_m">
-                    <span>  العمق  </span>
-                    <span class="details_price">{{$project->deep}}</span>
-                    </div>
+                       <div><i class="fa fa-square"></i> <span>{{$special->title}}</span></div>
+                   @endforeach
 
-                  </div>
-                </div>
-                <div class="row details_m">
-                  <div class="col-lg-12">
-                    <div class="details_m_m">
-                    <span>   السعر </span>
-                    <span class="details_price">{{$project->first_price}}</span>
-                    </div>
+                   @if($count%5 != 0)
+                     </div>
+                   @endif
+                 </div>
+               </div>
+               <div class="col-lg-3">
+                 <div class="row details_m">
+                   <div class="col-lg-12">
+                     <div class="details_m_m">
+                     <span>  العمق  </span>
+                     <span class="details_price">{{$project->deep}}</span>
+                     </div>
 
-
-                  </div>
-                </div>
-              </div>
-            </div>
+                   </div>
+                 </div>
+                 <div class="row details_m">
+                   <div class="col-lg-12">
+                     <div class="details_m_m">
+                     <span>   السعر </span>
+                     <span class="details_price">{{$project->first_price}}</span>
+                     </div>
 
 
-          </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+
+
+           </div>
+         </div>
+         @endforeach
+       @endforeach
+      @endif
+
+
+     @if($type == "مساجد")
+       @foreach($cities as $city)
+       <div class="row">
+             <div class="col-lg-6">
+                 <h3 class="main-title">{{$city->title}}</h3>
+
+             </div>
         </div>
-@endforeach
 
- <a href="" class="btn btn btn-main auto-width mt-30 center-horizontal mor_btn_projects">المزيد من مشاريع الابار</a>
-
-
-
-
-
-      <div class="row" style="margin-top: 50px;">
-            <div class="col-lg-6">
-                <h3 class="main-title">مساجد</h3>
-
-            </div>
-        </div>
-
-        @php $projects = \App\Project::where("project_category","مساجد")->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(4)->get();   @endphp
-
+        @php $projects = $city->projects()->where("project_category","مساجد")->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(4)->get();   @endphp
         @foreach($projects as $project)
         <div class="row abar_list">
           <div class="col-lg-12">
@@ -218,78 +220,87 @@
           </div>
         </div>
         @endforeach
+        @endforeach
 
-        <a href="" class="btn btn btn-main auto-width mt-30 center-horizontal mor_btn_projects">المزيد من مشاريع المساجد</a>
+     @endif
 
-        <div class="row" style="margin-top: 50px;">
+
+
+     @if($type == "المراكز والمدارس")
+       @foreach($cities as $city)
+       <div class="row">
+             <div class="col-lg-6">
+                 <h3 class="main-title">{{$city->title}}</h3>
+
+             </div>
+        </div>
+        @php $projects = $city->projects()->where("project_category","مراكز ومدارس")->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(4)->get();   @endphp
+        @foreach($projects as $project)
+        <div class="row abar_list">
+          <div class="col-lg-12">
+
+            <div class="row store_block_headers">
+              <div class="col-lg-3">
+                {{$project->project_name}}
+              </div>
+              <div class="col-lg-6" style="text-align: center;">
+                مواصفات المشروع
+              </div>
+              <div class="col-lg-3" style="text-align: center;">
+                العمق والسعر
+              </div>
+            </div>
+
+
+            <div class="row store_block_content">
+              <div class="col-lg-3">
+                <img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded">
+              </div>
               <div class="col-lg-6">
-                  <h3 class="main-title">المراكز والمدارس</h3>
+                <div class="row chara_list">
+                  @php  $count = 0; @endphp
+                  @foreach($project->specialize as $k=>$special)
+                      @php  $count++; @endphp
+                      @if($k == 0)
+                        <div class="col-lg-6">
+                      @endif
 
+                      @if($k != 0 && $k%5 == 0)
+                         </div>
+                         <div class="col-lg-6">
+                      @endif
+
+                      <div><i class="fa fa-square"></i> <span>{{$special->title}}</span></div>
+                  @endforeach
+
+                  @if($count%5 != 0)
+                    </div>
+                  @endif
+                </div>
               </div>
-          </div>
-
-          @php $projects = \App\Project::where("project_category","مراكز ومدارس")->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(4)->get();   @endphp
-          @foreach($projects as $project)
-          <div class="row abar_list">
-            <div class="col-lg-12">
-
-              <div class="row store_block_headers">
-                <div class="col-lg-3">
-                  {{$project->project_name}}
-                </div>
-                <div class="col-lg-6" style="text-align: center;">
-                  مواصفات المشروع
-                </div>
-                <div class="col-lg-3" style="text-align: center;">
-                  العمق والسعر
-                </div>
-              </div>
-
-
-              <div class="row store_block_content">
-                <div class="col-lg-3">
-                  <img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded">
-                </div>
-                <div class="col-lg-6">
-                  <div class="row chara_list">
-                    @php  $count = 0; @endphp
-                    @foreach($project->specialize as $k=>$special)
-                        @php  $count++; @endphp
-                        @if($k == 0)
-                          <div class="col-lg-6">
-                        @endif
-
-                        @if($k != 0 && $k%5 == 0)
-                           </div>
-                           <div class="col-lg-6">
-                        @endif
-
-                        <div><i class="fa fa-square"></i> <span>{{$special->title}}</span></div>
-                    @endforeach
-
-                    @if($count%5 != 0)
-                      </div>
-                    @endif
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="row details_m">
-                    <div class="col-lg-12">
-                      <div class="details_m_m">
-                      <span>   السعر </span>
-                      <span class="details_price">{{$project->first_price}}</span>
-                      </div>
+              <div class="col-lg-3">
+                <div class="row details_m">
+                  <div class="col-lg-12">
+                    <div class="details_m_m">
+                    <span>   السعر </span>
+                    <span class="details_price">{{$project->first_price}}</span>
                     </div>
                   </div>
                 </div>
               </div>
-
-
             </div>
-          </div>
-          @endforeach
 
-          <a href="" class="btn btn btn-main auto-width mt-30 center-horizontal mor_btn_projects">المزيد من مشاريع المراكز والمدارس</a>
+
+          </div>
+        </div>
+
+        @endforeach
+      @endforeach
+    @endif
+
+
+
+
 
 
 
