@@ -32,15 +32,7 @@
              <th>
                 @lang('site.under_country')
              </th>
-             <th>
-                @lang('site.under_gov')
-             </th>
-             <th>
-                @lang('site.under_reg')
-             </th>
-             <th>
-                @lang('site.under_district')
-             </th>
+
             <th></th>
           </tr>
         </thead>
@@ -57,9 +49,7 @@
             @endif
             <td>{{$project->first_price}}</td>
             <td>{{$project->country->title}}</td>
-            <td>{{$project->gov->title}}</td>
-            <td>{{$project->reg->title}}</td>
-            <td>{{$project->district->title}}</td>
+            
 
           </tr>
           @endforeach

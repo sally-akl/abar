@@ -15,7 +15,7 @@
 <!-- end footer -->
 
   @include('layouts.js')
-    @yield('footerjscontent')
+@yield('footerjscontent')
 </body>
 
 </html>

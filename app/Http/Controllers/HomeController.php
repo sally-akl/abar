@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\CustomerFav;
 use Validator;
 use Session;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -139,5 +141,30 @@ class HomeController extends Controller
     public function request_project($type , $id)
     {
       return view('request_project_form',compact('type','id'));
+    }
+    public function add_to_fav(Request $request)
+    {
+       $project_id = $request->id;
+       if(Auth::user())
+       {
+          $user_id = Auth::user()->id;
+          $already_fav = CustomerFav::where("project_id",$project_id)->where("user_id",$user_id)->get();
+          if(count($already_fav) == 0)
+          {
+            if(Auth::user()->role->name=="customer")
+            {
+              $customer_fav = new CustomerFav();
+              $customer_fav->project_id  = $project_id;
+              $customer_fav->user_id   = $user_id;
+              $customer_fav->save();
+            }
+            else{
+              return json_encode(array("errors"=>array("not_login"=>"العملاء فقط هم الذين يستطيعوا ان يضيفوا الى المفضلة")));
+            }
+
+          }
+        return  json_encode(array("sucess"=>true,"sucess_text"=>'تم الاضافة الى المفضلة'));
+       }
+       return json_encode(array("errors"=>array("not_login"=>"لابد من تسجيل الدخول اولا لاضافته الى المفضلة")));
     }
 }

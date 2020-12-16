@@ -91,8 +91,15 @@
 
                   <div class="mb-3">
                      <i class="fas fa-heart"></i>
-                    <a href=""> <strong>اضافة الى المفضلة</strong> </a>
+                    <a href="#" data-ref="{{url('/')}}/project/add/favorate" class="add_to_fav"> <strong>اضافة الى المفضلة</strong> </a>
+                    <div class="alert alert-danger alert-danger-modal" style="display:none">
+                    </div>
+                    <div class="alert alert-success alert-success-modal" style="display:none">
+                    </div>
                   </div>
+
+                  <input type="hidden" name="hidden_d" value="{{$project->id}}" />
+                  <input type="hidden" name="csrf" value="{{ csrf_token() }}" />
 
 
               </div>
@@ -258,7 +265,7 @@
                 <div class="row">
                   <div class="col-lg-12 msg_details_sm">
                     @foreach($project->extracharacters as $extra )
-                    <div>طلب المشروع</div>
+                    <div> <a href="{{url('/')}}/project/request/{{$project->project_category}}/{{$extra->id}}">  طلب المشروع  </a></div>
                     @endforeach
                   </div>
                 </div>
@@ -306,4 +313,55 @@
     </div>
 </section>
 <!-- end blogs section -->
+@endsection
+@section('footerjscontent')
+<script type="text/javascript">
+$(".add_to_fav").on("click",function(){
+
+var url = $(this).attr("data-ref");
+var $method_is = "POST";
+var formData = new FormData();
+formData.append("id",$("input[name='hidden_d']").val());
+formData.append("_token",$('input[name="csrf"]').val());
+$(".alert-success-modal").css("display","none");
+$(".alert-danger-modal").css("display","none");
+$.ajax({
+    url: url,
+    type: $method_is,
+    data: formData,
+    async: false,
+    dataType: 'json',
+    success: function (response) {
+      if(response.sucess)
+      {
+        $(".alert-success-modal").html(response.sucess_text);
+        $(".alert-success-modal").css("display","block");
+      }
+      else
+      {
+        var $error_text = "";
+        var errors = response.errors;
+
+        $.each(errors, function (key, value) {
+          $error_text +=value+"<br>";
+        });
+
+        $(".alert-danger-modal").html($error_text);
+        $(".alert-danger-modal").css("display","block");
+
+      }
+    },
+    error : function( data )
+    {
+
+    },
+    cache: false,
+    contentType: false,
+    processData: false
+});
+
+return false;
+});
+</script>
+
 @endsection
