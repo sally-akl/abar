@@ -56,7 +56,7 @@
 
              <div class="row store_block_headers">
                <div class="col-lg-3">
-                 {{$project->project_name}}
+                <a href="{{url('/')}}/project/details/{{$project->id}}/{{$project->project_name}}"> {{$project->project_name}} </a>
                </div>
                <div class="col-lg-6" style="text-align: center;">
                  مواصفات المشروع
@@ -161,7 +161,7 @@
 
             <div class="row store_block_content">
               <div class="col-lg-2">
-                <img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded">
+                <a href="{{url('/')}}/project/details/{{$project->id}}/{{$project->project_name}}"><img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded"></a>
               </div>
               <div class="col-lg-2">
                 <div class="row">
@@ -241,7 +241,7 @@
 
             <div class="row store_block_headers">
               <div class="col-lg-3">
-                {{$project->project_name}}
+                <a href="{{url('/')}}/project/details/{{$project->id}}/{{$project->project_name}}">{{$project->project_name}}</a>
               </div>
               <div class="col-lg-6" style="text-align: center;">
                 مواصفات المشروع

@@ -88,4 +88,9 @@ class HomeController extends Controller
     {
       return view('store_by_category',compact('type'));
     }
+    public function project_details($id)
+    {
+      $project = \App\Project::find($id);
+      return view('project_details',compact('project'));
+    }
 }

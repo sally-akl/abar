@@ -32,5 +32,9 @@ class Project extends Model
     {
       return $this->hasMany('App\ProjectPrices','project_id');
     }
+    public function requests()
+    {
+      return $this->hasMany('App\CustomerRequests','project_id');
+    }
 
 }

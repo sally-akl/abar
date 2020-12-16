@@ -20,6 +20,7 @@ Route::middleware(['XSS'])->group(function () {
   Route::post('/blog/comments',['before' => 'csrf','uses'=>'HomeController@add_blog_comment']);
   Route::get('/store',['uses'=>'HomeController@store']);
   Route::get('/store/{type}',['uses'=>'HomeController@store_by_category']);
+  Route::get('/project/details/{id}/{title}',['uses'=>'HomeController@project_details']);
 
 });
 

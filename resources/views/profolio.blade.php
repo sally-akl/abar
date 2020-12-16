@@ -73,7 +73,7 @@
                     <div class="card-img-overlay">
                         <h5 class="card-title">{{$m_project->project_name}} - {{$m_project->project_category}}</h5>
                         <div class="btns">
-                            <a href="" class="btn btn-second">
+                            <a href="{{url('/')}}/project/details/{{$m_project->id}}/{{$m_project->project_name}}" class="btn btn-second">
                                 <i class="fa fa-arrow-left"></i>
                                 مشاهدة المزيد                    </a>
 

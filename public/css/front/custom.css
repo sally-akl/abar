@@ -470,3 +470,46 @@
   border: none !important;
   border-radius: 5px;
 }
+
+.project_row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.project_period{
+  color: #024f66;
+  margin-right:20px;
+}
+.project_period svg{
+  margin-left:5px;
+}
+.additional_details{
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(235, 235, 235);
+  padding: 30px;
+  margin-top:20px;
+}
+.additional_details .chara_list span  , .additional_details  h4{
+    color: #024f66;
+}
+.additional_details .chara_list svg {
+    color: #f8af39 !important;
+    margin-left: 10px;
+}
+.other_details svg{
+  color: #f8af39 !important;
+  margin-left: 10px;
+}
+.other_details span , .other_details strong , .chara_list p{
+  color: #024f66;
+}
+.project_block{
+  margin-top:10px;
+}
+.project_block div{
+  color: #024f66;
+}
+.project_block svg {
+    color: #f8af39 !important;
+    margin-left: 10px;
+}
