@@ -504,7 +504,7 @@
   color: #024f66;
 }
 .project_block{
-  margin-top:10px;
+  margin-top:15px;
 }
 .project_block div{
   color: #024f66;
@@ -512,4 +512,8 @@
 .project_block svg {
     color: #f8af39 !important;
     margin-left: 10px;
+}
+.request_form input.form-control{
+    background-color: #e6f5f2 !important;
+    color: #024f66;
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
+use Session;
 class HomeController extends Controller
 {
     /**
@@ -21,25 +22,52 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+      if(isset($request->code))
+      {
+        $market_code = $request->code;
+        Session::put('market_code', $market_code);
+      }
       return view('home');
     }
-    public function aboutus()
+    public function aboutus($text , Request $request)
     {
+      if(isset($request->code))
+      {
+        $market_code = $request->code;
+        Session::put('market_code', $market_code);
+      }
       return view('aboutus');
     }
-    public function profolio()
+    public function profolio($text , Request $request)
     {
+      if(isset($request->code))
+      {
+        $market_code = $request->code;
+        Session::put('market_code', $market_code);
+      }
       return view('profolio');
     }
-    public function blog()
+    public function blog($text , Request $request)
     {
+      if(isset($request->code))
+      {
+        $market_code = $request->code;
+        Session::put('market_code', $market_code);
+      }
       $articles = \App\blog::where("publish_date","<=",date("Y-m-d"))->where("is_active",1)->orderby("id","desc")->paginate(9);
       return view('blog',compact('articles'));
     }
-    public function blog_details($id,Request $request)
+    public function blog_details($id,$text,Request $request)
     {
+      $market_code = "";
+      if(isset($request->code))
+      {
+        $market_code = $request->code;
+        Session::put('market_code', $market_code);
+      }
+
       if(isset($request->search))
       {
         $query = \App\blog::where("publish_date","<=",date("Y-m-d"))->where("is_active",1);
@@ -51,7 +79,7 @@ class HomeController extends Controller
       }
       else{
         $blog = \App\blog::find($id);
-        return view('blog_details',compact('blog'));
+        return view('blog_details',compact('blog','market_code'));
       }
     }
 
@@ -79,18 +107,37 @@ class HomeController extends Controller
       return json_encode(array("sucess"=>true,"sucess_text"=>'تم اضافة تعليقك بنجاح'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
+      if(isset($request->code))
+      {
+        $market_code = $request->code;
+        Session::put('market_code', $market_code);
+      }
       return view('store');
     }
 
-    public function store_by_category($type)
+    public function store_by_category($type,Request $request)
     {
+      if(isset($request->code))
+      {
+        $market_code = $request->code;
+        Session::put('market_code', $market_code);
+      }
       return view('store_by_category',compact('type'));
     }
-    public function project_details($id)
+    public function project_details($id,$title,Request $request)
     {
+      if(isset($request->code))
+      {
+        $market_code = $request->code;
+        Session::put('market_code', $market_code);
+      }
       $project = \App\Project::find($id);
       return view('project_details',compact('project'));
+    }
+    public function request_project($type , $id)
+    {
+      return view('request_project_form',compact('type','id'));
     }
 }

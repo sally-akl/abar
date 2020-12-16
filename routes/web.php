@@ -14,13 +14,14 @@
 Route::middleware(['XSS'])->group(function () {
   Route::get('/',['uses'=>'HomeController@index']);
   Route::get('/aboutus/{text}',['uses'=>'HomeController@aboutus']);
-  Route::get('/profile/{text}',['uses'=>'HomeController@profolio']);
+  Route::get('/profile/{text}/{marker_code?}',['uses'=>'HomeController@profolio']);
   Route::get('/blog/{text}',['uses'=>'HomeController@blog']);
   Route::get('/blog/details/{id}/{text}',['before' => 'csrf','uses'=>'HomeController@blog_details']);
   Route::post('/blog/comments',['before' => 'csrf','uses'=>'HomeController@add_blog_comment']);
-  Route::get('/store',['uses'=>'HomeController@store']);
-  Route::get('/store/{type}',['uses'=>'HomeController@store_by_category']);
+  Route::get('/store/{title}',['uses'=>'HomeController@store']);
+  Route::get('/store/category/show/{type}',['uses'=>'HomeController@store_by_category']);
   Route::get('/project/details/{id}/{title}',['uses'=>'HomeController@project_details']);
+  Route::get('/project/request/{type}/{id}',['uses'=>'HomeController@request_project']);
 
 });
 

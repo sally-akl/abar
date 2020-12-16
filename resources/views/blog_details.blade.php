@@ -81,6 +81,7 @@
                         <input  name="title" placeholder="البحث" class="form-control search_input">
                       </div>
                       <input type="hidden" name="search" value="search" />
+                      <input type="hidden" name="code" value="{{$market_code}}" />
                       <button type="submit" class="btn btn-lg search_btnn"><i class="fa fa-search"></i> بحث</button>
                     </form>
 

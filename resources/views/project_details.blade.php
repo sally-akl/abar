@@ -108,36 +108,36 @@
                   </div>
                   <div class="row">
                     <div class="col-lg-12">
-                      @php $projects = \App\Project::where("project_category",$project->project_category)->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(4)->get();    @endphp
-                      @foreach($projects as $project)
+                      @php $projects = \App\Project::where("project_category",$project->project_category)->where("id","!=",$project->id)->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(4)->get();    @endphp
+                      @foreach($projects as $relatedproject)
                         <div class="row project_block">
                           <div class="col-lg-4">
-                            <a href="{{url('/')}}/project/details/{{$project->id}}/{{$project->project_name}}"><img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded"></a>
+                            <a href="{{url('/')}}/project/details/{{$relatedproject->id}}/{{$relatedproject->project_name}}"><img src="{{url('/')}}{{$relatedproject->project_photo}}" alt="" class="img-fluid rounded"></a>
                           </div>
                           <div class="col-lg-8">
-                            <div>{{$project->project_name}}</div>
-                            <div class="row">
+                            <div><h5>{{$relatedproject->project_name}}</h5></div>
+                            <div class="row" >
                               <div class="col-lg-6">
                                 <i class="fas fa-globe-americas"></i>
-                                <strong>{{$project->country->title}}</strong>
+                                <strong>{{$relatedproject->country->title}}</strong>
                               </div>
                               <div class="col-lg-6">
                                 <i class="fas fa-project-diagram"></i>
-                                 <strong>{{$project->project_category}}</strong>
+                                 <strong>{{$relatedproject->project_category}}</strong>
                               </div>
 
                             </div>
                             <div class="row">
                               <div class="col-lg-6">
-                                  @if($project->project_category == "ابار")
+                                  @if($relatedproject->project_category == "ابار")
                                   <i class="fas fa-arrow-alt-circle-down"></i>
-                                   <strong>{{$project->deep}}</strong>
+                                   <strong>{{$relatedproject->deep}}</strong>
                                     @endif
                               </div>
                               <div class="col-lg-6">
-                                  @if($project->project_category == "ابار" || $project->project_category == "مراكز ومدارس")
+                                  @if($relatedproject->project_category == "ابار" || $relatedproject->project_category == "مراكز ومدارس")
                                   <i class="fas fa-money-bill-wave"></i>
-                                    <strong>{{$project->first_price}}</strong>
+                                    <strong>{{$relatedproject->first_price}}</strong>
                                     @endif
                               </div>
                             </div>
@@ -294,7 +294,7 @@
         <div class="row" style="margin-top:20px;">
           <div class="col-lg-2">
             @if($project->is_require_for_request == 1)
-            <a href="#" class="btn  btn-block">
+            <a href="{{url('/')}}/project/request/{{$project->project_category}}/{{$project->id}}" class="btn  btn-block">
                       اطلب
                       </a>
             @endif
