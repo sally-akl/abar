@@ -105,11 +105,35 @@
                     <i class="fas fa-pray"></i>
                     <span>عدد المصليين</span>    <strong>{{$extra->prayer_num}}</strong>
                 </div>
+                <div class="mb-3">
+                    <i class="fas fa-border-none"></i>
+                    <span>نوع السقف :- </span>    <strong>{{$extra->ceil_type}}</strong>
+                </div>
+                <div class="mb-3">
+                    <i class="fas fa-warehouse"></i>
+                    <span>المساحة :- </span>    <strong>{{$extra->area}}</strong>
+                </div>
+                <div class="mb-3">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>السعر :- </span>    <strong>{{$extra->price}}</strong>
+                </div>
                 @endif
 
 
               </div>
             </div>
+
+            <div class="card other_details" style="margin-top:20px;">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h4>وسائل الدفع</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
           </div>
           <div class="col-lg-6 col-sm-12">
             <div class="card other_details">
