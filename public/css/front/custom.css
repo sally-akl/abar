@@ -521,3 +521,9 @@
   margin-top: 10px;
   color: #024f66;
 }
+.payment_methods h4 , .payment_methods span{
+  color: #024f66;
+}
+.payment_methods span{
+  margin-right:5px;
+}

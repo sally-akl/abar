@@ -123,11 +123,20 @@
               </div>
             </div>
 
-            <div class="card other_details" style="margin-top:20px;">
+            <div class="card payment_methods" style="margin-top:20px;">
               <div class="card-body">
                 <div class="row">
                   <div class="col-lg-12">
                     <h4>وسائل الدفع</h4>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                  <div><input type="radio" value="حوالة بنكية" name="payment_method" checked/><span>حوالة بنكية</span></div>
+                  <div><input type="radio" value="مدى"  name="payment_method" /><span>مدى</span></div>
+                  <div><input type="radio" value=" البطاقة الائتمانية"  name="payment_method" /><span> البطاقة الائتمانية</span></div>
+                  <div><input type="radio" value="APPLE PAY"  name="payment_method" /><span>APPLE PAY</span></div>
+
                   </div>
                 </div>
               </div>
@@ -138,30 +147,34 @@
           <div class="col-lg-6 col-sm-12">
             <div class="card other_details">
               <div class="card-body">
-                <form id="contact-form" class="contact__form request_form" method="post" action="">
+                <div class="alert alert-danger alert-danger-modal" style="display:none">
+                </div>
+                <div class="alert alert-success alert-success-modal" style="display:none">
+                </div>
+                <form id="contact-form" class="contact__form request_form" method="post" action="{{ url('request/customer/add') }}">
                   @csrf
                   <div class="form-group row">
                     <label class="col-sm-3 form-control-label label-sm">الاسم الثلاثى</label>
                     <div class="col-sm-9">
-                      <input id="inputHorizontalSuccess" name= "name"  value="{{ old('name') }}" placeholder="" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }} form-control-success" type="text">
+                      <input id="inputHorizontalSuccess" name= "name"  value="{{ Auth::user()?Auth::user()->name:'' }}" placeholder="" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }} form-control-success" type="text">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-3 form-control-label label-sm">البريد الالكترونى</label>
                     <div class="col-sm-9">
-                      <input id="inputHorizontalSuccess" name= "email"  value="{{ old('email') }}" placeholder="" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }} form-control-success" type="email">
+                      <input id="inputHorizontalSuccess" name= "email"  value="{{ Auth::user()?Auth::user()->email:'' }}" placeholder="" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }} form-control-success" type="email">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-3 form-control-label label-sm">رقم الهوية</label>
                     <div class="col-sm-9">
-                      <input id="inputHorizontalSuccess" name= "hawaya"  value="{{ old('hawaya') }}" placeholder="" class="form-control {{ $errors->has('hawaya') ? ' is-invalid' : '' }} form-control-success" type="text">
+                      <input id="inputHorizontalSuccess" name= "hawaya"  value="{{ Auth::user()?Auth::user()->identity_num:'' }}" placeholder="" class="form-control {{ $errors->has('hawaya') ? ' is-invalid' : '' }} form-control-success" type="text">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-3 form-control-label label-sm">رقم الجوال</label>
                     <div class="col-sm-9">
-                      <input id="inputHorizontalSuccess" name= "phone"  value="{{ old('phone') }}" placeholder="" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }} form-control-success" type="text">
+                      <input id="inputHorizontalSuccess" name= "phone"  value="{{ Auth::user()?Auth::user()->mobile:'' }}" placeholder="" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }} form-control-success" type="text">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -182,20 +195,74 @@
                       <input  name= "agree_to"  class="{{ $errors->has('how_to_know_us') ? ' is-invalid' : '' }} form-control-success" type="checkbox"> <a href="" target="_blank">الموافقة على الشروط والاحكام</a>
                     </div>
                   </div>
-                  <button class="btn btn-main" name="submit" type="submit">طلب المشروع</button>
+                  <input type="hidden" name="select_payment_method" value="حوالة بنكية" />
+                  <button class="btn btn-main request_btn" name="submit" type="submit">طلب المشروع</button>
                </form>
               </div>
             </div>
 
           </div>
         </div>
-
-
-
-
-
-
     </div>
 </section>
 <!-- end blogs section -->
+@endsection
+@section('footerjscontent')
+<script type="text/javascript">
+$("input[name='payment_method']").on("change",function(){
+   $("input[name='select_payment_method']").val($(this).val());
+   if($(this).val() == "حوالة بنكية")
+   {
+     $(".request_btn").attr("disabled",false);
+   }
+   else{
+     $(".request_btn").attr("disabled",true);
+   }
+});
+$(".request_form").submit(function(e){
+
+    e.preventDefault();
+    var submit_form_url = $(this).attr('action');
+    var $method_is = "POST";
+    var formData = new FormData($(this)[0]);
+    $(".alert-success-modal").css("display","none");
+    $(".alert-danger-modal").css("display","none");
+    $.ajax({
+        url: submit_form_url,
+        type: $method_is,
+        data: formData,
+        async: false,
+        dataType: 'json',
+        success: function (response) {
+          if(response.sucess)
+          {
+            $(".alert-success-modal").html(response.sucess_text);
+            $(".alert-success-modal").css("display","block");
+          }
+          else
+          {
+            var $error_text = "";
+            var errors = response.errors;
+
+            $.each(errors, function (key, value) {
+              $error_text +=value+"<br>";
+            });
+
+            $(".alert-danger-modal").html($error_text);
+            $(".alert-danger-modal").css("display","block");
+
+          }
+        },
+        error : function( data )
+        {
+
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+
+      return false;
+});
+</script>
 @endsection

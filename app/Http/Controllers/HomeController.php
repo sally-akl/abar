@@ -167,4 +167,64 @@ class HomeController extends Controller
        }
        return json_encode(array("errors"=>array("not_login"=>"لابد من تسجيل الدخول اولا لاضافته الى المفضلة")));
     }
+
+    public function add_customer_request(Request $request)
+    {
+      $messages = [
+          'name.required' => 'قم بادخال الاسم الثلاثى',
+          'email.required' => 'قم بادخال البريد الالكترونى',
+          'hawaya.required' => 'قم بادخال رقم الهوية',
+          'phone.required' => 'قم بادخال رقم الجوال',
+          'name_in_board.required' => 'قم بادخال اسمك على اللوحة',
+          'agree_to.required' => 'لابد من الموافقة على الشروط والاحكام',
+      ];
+      $validator = Validator::make($request->all(), [
+             'name' => 'required|max:100',
+             'email' => 'required|email',
+             'hawaya'=>'required',
+             'phone'=>'required',
+             'name_in_board'=>'required',
+             'agree_to'=>'required',
+      ],$messages);
+      if ($validator->fails())
+        return json_encode(array("sucess"=>false ,"errors"=> $validator->errors()));
+
+      $user_id
+      if(Auth::user())
+      {
+        $user_id = Auth::user()->id;
+      }
+      else{
+
+        $user = new \App\User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($this->getCode(8));
+        $user->role_id  = 2;
+        $user->identity_num = $request->hawaya;
+        $user->mobile = $request->phone;
+        $user->save();
+        auth()->login($user);
+        $user_id = Auth::user()->id;
+
+        // send email with login data in email
+      }
+
+      // create request and transaction
+      $request = new \App\CustomerRequests();
+      
+
+
+    }
+    private  function getCode($length = 10)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+
+    }
 }

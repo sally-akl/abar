@@ -23,6 +23,7 @@ Route::middleware(['XSS'])->group(function () {
   Route::get('/project/details/{id}/{title}',['uses'=>'HomeController@project_details']);
   Route::get('/project/request/{type}/{id}',['uses'=>'HomeController@request_project']);
   Route::post('/project/add/favorate',['uses'=>'HomeController@add_to_fav']);
+  Route::post('/request/customer/add',['uses'=>'HomeController@add_customer_request']);
 });
 
 
