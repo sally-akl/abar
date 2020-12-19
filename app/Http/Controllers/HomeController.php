@@ -349,11 +349,49 @@ class HomeController extends Controller
     public function sign_out(Request $request)
     {
       if(\Auth::check())
-   {
-       \Auth::logout();
-       $request->session()->invalidate();
-   }
-   return  redirect('/');
+      {
+        \Auth::logout();
+        $request->session()->invalidate();
+      }
+      return  redirect('/');
+    }
+    public function signup(Request $request)
+    {
+      $messages = [
+          'name.required' => 'لابد من ادخال الاسم الثلاثى',
+          'name.string' => 'لابد ان يحتوى الاسم الثلاثى على حروف',
+          'name.max'=>'لابد ان يكون عدد حروف الاسم الثلاثى لا تزيد عن 250 حرف',
+          'email.required' => 'لابد من ادخال البريد الالكترونى ',
+          'email.string' => 'لابد ان يحتوى البريد الالكترونى على حروف',
+          'email.max'=>'لابد ان لايزيد البريد الالكترونى عن 250 حرف',
+          'password.required'=>'لابد من ادخال الرقم السرى ',
+          'password.string'=>'لابد ان يحتوى الرقم السرى على حروف وارقام ',
+          'password.min'=>'لابد ان لا يقل طول الرقم السرى عن 8 ارقام او حروف',
+          'password.confirmed'=>'لابد ان يكون كل من الرقم السرى وتكرار الرقم السرى متماثلتين',
+          'identity.required' => 'لابد من ادخال رقم الهوية',
+          'mobile.required' => 'لابد من ادخال رقم الجوال',
+
+      ];
+      $validator = Validator::make($request->all(), [
+          'name' => ['required', 'string', 'max:255'],
+          'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+          'password' => ['required', 'string', 'min:8', 'confirmed'],
+          'identity' => ['required'],
+          'mobile' => ['required'],
+      ],$messages);
+      if ($validator->fails())
+        return json_encode(array("sucess"=>false ,"errors"=> $validator->errors()));
+
+      $user = new \App\User();
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->password = Hash::make($request->password);
+      $user->role_id = 2;
+      $user->identity_num = $request->identity;
+      $user->mobile = $request->mobile;
+      $user->save();
+      auth()->login($user);
+      return json_encode(array("sucess"=>true));
     }
     private  function getCode($length = 10)
     {

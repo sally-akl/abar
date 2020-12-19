@@ -60,7 +60,12 @@
         <div class="col-lg-6 col-sm-12">
             <div class="contact-content pl-lg-5 mt-5 mt-lg-0">
                 <h3 class="main-title">التسجيل فى الموقع</h3>
-                <form id="contact-form" class="contact__form" method="post" action="">
+                <form id="contact-form" class="form_submit_signup" method="post" action="{{ url('signup') }}">
+                  <div class="alert alert-danger alert-danger-modal-signup" style="display:none">
+                  </div>
+                  <div class="alert alert-success alert-success-modal-signup" style="display:none">
+                  </div>
+                  @csrf
                 <!-- form message -->
                    <div class="row">
                        <div class="col-12">
@@ -106,6 +111,8 @@
 @endsection
 @section('footerjscontent')
 <script type="text/javascript">
+
+
 $(".form_submit_login").submit(function(e){
 
     e.preventDefault();

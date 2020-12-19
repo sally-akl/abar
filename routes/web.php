@@ -32,9 +32,7 @@ Route::middleware(['XSS'])->group(function () {
   Route::get('/auth-customer',['uses'=>'HomeController@auth_customer']);
   Route::post('/signin',['uses'=>'HomeController@sign_in']);
   Route::post('/signout',['uses'=>'HomeController@sign_out']);
-
-
-
+  Route::post('/signup',['uses'=>'HomeController@signup']);
 });
 
 
