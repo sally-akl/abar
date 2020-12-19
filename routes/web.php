@@ -26,6 +26,12 @@ Route::middleware(['XSS'])->group(function () {
   Route::post('/request/customer/add',['uses'=>'HomeController@add_customer_request']);
   Route::get('/request/done',['uses'=>'HomeController@done']);
   Route::get('/store/city/show',['uses'=>'HomeController@store_by_city']);
+  Route::get('/contact-us',['uses'=>'HomeController@contactus']);
+  Route::post('/contactus/send',['uses'=>'HomeController@send_contact_us']);
+  Route::get('/questions',['uses'=>'HomeController@questions']);
+
+
+
 });
 
 

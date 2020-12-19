@@ -50,7 +50,7 @@
           <div class="col-md-4 col-sm-6 col-xs-12 clearfix ">
             <div class="post-item">
               <div class="media-wrapper">
-                <img src="{{$article->blog_img}}" alt="" class="img-fluid">
+                <img src="{{url('/')}}{{$article->blog_img}}" alt="" class="img-fluid">
               </div>
 
               <div class="content">

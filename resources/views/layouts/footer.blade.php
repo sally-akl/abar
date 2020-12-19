@@ -32,7 +32,7 @@
                     <ul class="list-unstyled center-list">
                         <li class="footer-link">
                             <span class="icon"><i class="fa fa-chevron-left"></i></span>
-                            <a href="questions.html" class="link">اسئلة شائعة</a>
+                            <a href="{{url('/')}}/questions" class="link">اسئلة شائعة</a>
                         </li>
                         <li class="footer-link">
                             <span class="icon"><i class="fa fa-chevron-left"></i></span>
@@ -41,7 +41,7 @@
 
                         <li class="footer-link">
                             <span class="icon"><i class="fa fa-chevron-left"></i></span>
-                            <a href="contactus.html" class="link">اتصل بنا </a>
+                            <a href="{{url('/')}}/contact-us" class="link">اتصل بنا </a>
                         </li>
                     </ul>
                 </div>

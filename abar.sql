@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2020 at 08:00 PM
+-- Generation Time: Dec 19, 2020 at 07:48 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -64,6 +64,13 @@ CREATE TABLE `blog` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `blog`
+--
+
+INSERT INTO `blog` (`id`, `category_name`, `publish_date`, `blog_img`, `blog_title`, `blog_desc`, `is_active`, `updated_at`, `created_at`) VALUES
+(2, 'المساجد', '2020-12-13 22:00:00', '/img/project/eba2bc82e0c84c548f98e23cb85a4563.jpeg', 'مسجد اندونيسيا', 'مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير مسجد كبير', 1, '2020-12-14 17:04:24', '2020-12-14 17:04:24');
+
 -- --------------------------------------------------------
 
 --
@@ -80,6 +87,14 @@ CREATE TABLE `blog_comments` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `blog_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `blog_comments`
+--
+
+INSERT INTO `blog_comments` (`id`, `name`, `email`, `comment_text`, `is_published`, `updated_at`, `created_at`, `blog_id`) VALUES
+(1, 'احمد محمد', 'aa@yahoo.com', 'تعليقات تعليقات تعليقات تعليقات تعليقات تعليقات ر تعليقات تعليقات تعليقات تعليقات تعليقات ر ر تعليقات تعليقات', 1, '2020-12-14 17:42:49', '2020-12-14 19:37:35', 2),
+(2, 'احمد احمد', '', 'هذا تعليقى', 1, '2020-12-15 10:42:21', '2020-12-15 10:42:05', 2);
 
 -- --------------------------------------------------------
 
@@ -139,6 +154,14 @@ CREATE TABLE `customers_oponions` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customers_oponions`
+--
+
+INSERT INTO `customers_oponions` (`id`, `customer_name`, `country_name`, `cutomer_opionion`, `updated_at`, `created_at`) VALUES
+(2, 'محمد احمد', 'اندونيسيا', 'تم العمل معهم بنجاح', '2020-12-14 19:07:37', '2020-12-14 19:07:37'),
+(3, 'محمد محمد', 'غانا', 'شركة محترمة وتم العمل بنجاح', '2020-12-14 19:08:16', '2020-12-14 19:08:16');
 
 -- --------------------------------------------------------
 
@@ -320,9 +343,10 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `project_num`, `project_name`, `project_photo`, `project_status`, `project_category`, `is_require_for_request`, `add_to_store`, `first_price`, `category_id`, `gov_id`, `region_id`, `district_id`, `created_at`, `updated_at`, `deep`, `from`, `to`, `period_type`, `details`) VALUES
-(1, 'gahsdha', 'project1', '', 'active', 'ابار', 1, 1, 100.00, 13, 2, 2, 3, NULL, NULL, NULL, 0, 0, '', NULL),
-(3, 'FeMRymTetj', 'بئر سطحى بالدلو', '/img/project/149bcbfed899ea5cec407282d12c4ab8.jpg', 'مفعل', 'ابار', 1, 1, 3500.00, 14, NULL, NULL, NULL, '2020-11-21 14:31:02', '2020-11-22 15:47:39', '10-17', 10, 15, 'ايام', NULL),
-(7, 'H7eVsN1KmP', 'مسجد', '/img/project/f71c23b7422181254a7e387ba176371c.jpg', 'مفعل', 'مساجد', 1, 1, NULL, 13, NULL, NULL, NULL, '2020-11-22 16:15:51', '2020-11-22 16:16:43', NULL, 6, 12, 'اشهر', 'مسجد');
+(1, 'sFX5lvi3do', 'حفر بئرا جديدا', '/img/project/e541356fa6085e9dc9e27f40ef5c2e37.jpg', 'مفعل', 'ابار', 1, 1, 100.00, 13, 2, 2, 3, NULL, '2020-12-15 05:59:05', '10-17', 3, 6, 'اشهر', NULL),
+(3, 'ye6b9cSJm2', 'بئر سطحى بالدلو', '/img/project/33fde366eff6e62242564bfe827b6044.jpeg', 'مفعل', 'ابار', 1, 1, 3500.00, 14, NULL, NULL, NULL, '2020-11-21 14:31:02', '2020-12-15 18:57:26', '10-17', 10, 15, 'ايام', NULL),
+(7, 'pRxDqPYeIq', 'مسجد', '/img/project/ced9c7e40d0b13231051af26f7df3647.jpeg', 'مفعل', 'مساجد', 1, 1, NULL, 13, NULL, NULL, NULL, '2020-11-22 16:15:51', '2020-12-15 16:06:00', NULL, 6, 12, 'اشهر', 'مسجد'),
+(8, 'sV6STF4pEK', 'مدرسة جديدة', '/img/project/5009ec217aec709c4ad232b00632b10a.jpeg', 'مفعل', 'مراكز ومدارس', 1, 1, 2000.00, 13, NULL, NULL, NULL, '2020-12-15 15:59:09', '2020-12-15 15:59:09', NULL, 3, 6, 'اشهر', NULL);
 
 -- --------------------------------------------------------
 
@@ -361,9 +385,9 @@ CREATE TABLE `project_multi_prices` (
 --
 
 INSERT INTO `project_multi_prices` (`id`, `project_id`, `project_details`, `prayer_num`, `ceil_type`, `area`, `price`, `created_at`, `updated_at`) VALUES
-(3, 7, 'مسجد صغير', 90, 'زنك', 60, 22000.00, '2020-11-22 16:16:43', '2020-11-22 16:16:43'),
-(4, 7, 'مسجد متوسط', 120, 'زنك', 100, 33000.00, '2020-11-22 16:16:43', '2020-11-22 16:16:43'),
-(5, 7, 'مسجد كبير', 450, 'زنك', 225, 50000.00, '2020-11-22 16:16:43', '2020-11-22 16:16:43');
+(6, 7, 'مسجد صغير', 90, 'زنك', 60, 2200.00, '2020-12-15 16:06:00', '2020-12-15 16:06:00'),
+(7, 7, 'مسجد متوسط', 120, 'زنك', 100, 33000.00, '2020-12-15 16:06:00', '2020-12-15 16:06:00'),
+(8, 7, 'مسجد كبير', 450, 'زنك', 225, 50000.00, '2020-12-15 16:06:00', '2020-12-15 16:06:00');
 
 -- --------------------------------------------------------
 
@@ -378,6 +402,13 @@ CREATE TABLE `project_user_fav` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `project_user_fav`
+--
+
+INSERT INTO `project_user_fav` (`id`, `project_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 3, 3, '2020-12-16 16:04:00', '2020-12-16 16:04:00');
 
 -- --------------------------------------------------------
 
@@ -419,15 +450,18 @@ CREATE TABLE `requests` (
   `request_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `board_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `location_request` tinyint(1) NOT NULL DEFAULT 0,
-  `location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sub_project` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `requests`
 --
 
-INSERT INTO `requests` (`id`, `user_id`, `project_id`, `how_know_me`, `request_date`, `created_at`, `updated_at`, `request_num`, `project_status`, `request_status`, `board_name`, `location_request`, `location`) VALUES
-(1, 3, 1, 'google', '2020-11-23 17:13:38', NULL, '2020-11-23 15:13:38', 'kjdjfkdjg', 2, 'حجز', 'board 1', 1, '16.734623882642484,50.05448593750001');
+INSERT INTO `requests` (`id`, `user_id`, `project_id`, `how_know_me`, `request_date`, `created_at`, `updated_at`, `request_num`, `project_status`, `request_status`, `board_name`, `location_request`, `location`, `sub_project`) VALUES
+(1, 3, 1, 'google', '2020-11-23 17:13:38', NULL, '2020-11-23 15:13:38', 'kjdjfkdjg', 2, 'حجز', 'board 1', 1, '16.734623882642484,50.05448593750001', NULL),
+(2, 11, 7, '', '2020-12-16 22:00:00', '2020-12-17 10:58:46', '2020-12-17 10:58:46', '11_yCJHe6sbwJ', 1, 'طلب', 'احمد احمد محمد', 0, NULL, 6),
+(3, 11, 3, '', '2020-12-16 22:00:00', '2020-12-17 11:26:22', '2020-12-17 11:26:22', '11_wKSaghu19Q', 1, 'طلب', 'احمد احمد محمد', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -496,15 +530,17 @@ CREATE TABLE `settings` (
   `instegrame` varchar(250) NOT NULL,
   `twitter` varchar(250) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `address` varchar(150) NOT NULL,
+  `vedio_intro` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `header_text`, `done_projects_num`, `customer_num`, `countries_num`, `befend_num`, `phone`, `email`, `facebook`, `youtube`, `instegrame`, `twitter`, `updated_at`, `created_at`) VALUES
-(1, 'أحفر بئراً أو أبني مسجداً لدى جهة رسمية و مرخصة تُتقدر قيمة مشروعك', '700', '500', '8', '50,000', '+0553006174', 'info@yahoo.com', 'https://www.facebook.com/100647691526982', 'https://www.youtube.com/channel/UCk8zYF_K_uf9pxuiWBpxBHA', 'https://www.instagram.com/abar.alseqaya', 'https://twitter.com/abar66041292', '2020-12-14 13:49:20', '2020-12-14 15:49:15');
+INSERT INTO `settings` (`id`, `header_text`, `done_projects_num`, `customer_num`, `countries_num`, `befend_num`, `phone`, `email`, `facebook`, `youtube`, `instegrame`, `twitter`, `updated_at`, `created_at`, `address`, `vedio_intro`) VALUES
+(1, 'أحفر بئراً أو أبني مسجداً لدى جهة رسمية و مرخصة تُتقدر قيمة مشروعك', '700', '500', '8', '50,000', '+0553006174', 'info@yahoo.com', 'https://www.facebook.com/100647691526982', 'https://www.youtube.com/channel/UCk8zYF_K_uf9pxuiWBpxBHA', 'https://www.instagram.com/abar.alseqaya', 'https://twitter.com/abar66041292', '2020-12-15 06:37:15', '2020-12-14 15:49:15', 'جده – حي الفيحاء – شارع عبدالله السليمان – بجوار جامع الحمودي', 'https://www.youtube.com/watch?v=F6mvChPzuV8');
 
 -- --------------------------------------------------------
 
@@ -526,8 +562,17 @@ CREATE TABLE `specialize` (
 --
 
 INSERT INTO `specialize` (`id`, `title`, `spec_type`, `project_id`, `created_at`, `updated_at`) VALUES
-(25, 'صالح للشرب والاستخدام الادامى', 'character', 3, '2020-11-22 15:47:39', '2020-11-22 15:47:39'),
-(26, 'محمى من الاتربة', 'character', 3, '2020-11-22 15:47:39', '2020-11-22 15:47:39');
+(31, 'صالح للشرب والاستخدام الادامى', 'character', 1, '2020-12-15 05:59:06', '2020-12-15 05:59:06'),
+(34, 'مدرسة  كبيرة', 'character', 8, '2020-12-15 15:59:09', '2020-12-15 15:59:09'),
+(35, 'سور كبير', 'character', 8, '2020-12-15 15:59:09', '2020-12-15 15:59:09'),
+(36, 'فصول متعددة', 'character', 8, '2020-12-15 15:59:09', '2020-12-15 15:59:09'),
+(37, 'صالح للشرب والاستخدام الادامى', 'character', 3, '2020-12-15 18:57:26', '2020-12-15 18:57:26'),
+(38, 'محمى من الاتربة', 'character', 3, '2020-12-15 18:57:26', '2020-12-15 18:57:26'),
+(39, 'محمى من الاتربة', 'character', 3, '2020-12-15 18:57:26', '2020-12-15 18:57:26'),
+(40, 'محمى من الاتربة', 'character', 3, '2020-12-15 18:57:26', '2020-12-15 18:57:26'),
+(41, 'محمى من الاتربة', 'character', 3, '2020-12-15 18:57:26', '2020-12-15 18:57:26'),
+(42, 'محمى من الاتربة', 'character', 3, '2020-12-15 18:57:26', '2020-12-15 18:57:26'),
+(43, 'محمى من الاتربة', 'character', 3, '2020-12-15 18:57:26', '2020-12-15 18:57:26');
 
 -- --------------------------------------------------------
 
@@ -571,19 +616,24 @@ CREATE TABLE `transactions` (
   `transfer_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `is_payable` int(11) NOT NULL,
   `transfer_payment_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `paymentToken` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `paymentId` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `paymentToken` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paymentId` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `amount` double(8,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `bank_name` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bank_account_number` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bank_ibn` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `transactions`
 --
 
-INSERT INTO `transactions` (`id`, `transaction_num`, `project_id`, `request_id`, `transfer_date`, `is_payable`, `transfer_payment_type`, `paymentToken`, `paymentId`, `amount`, `created_at`, `updated_at`) VALUES
-(1, '#try_88575mj', 1, 1, '2020-11-17 12:06:34', 0, 'bank transfer', '', '', 200.00, NULL, NULL);
+INSERT INTO `transactions` (`id`, `transaction_num`, `project_id`, `request_id`, `transfer_date`, `is_payable`, `transfer_payment_type`, `paymentToken`, `paymentId`, `amount`, `created_at`, `updated_at`, `bank_name`, `bank_account_number`, `bank_ibn`) VALUES
+(1, '#try_88575mj', 1, 1, '2020-12-18 08:15:55', 0, 'حوالة بنكية', '', '', 200.00, NULL, NULL, 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000'),
+(2, '#AXGvhaGqsL', 7, 2, '2020-12-16 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 22000.00, '2020-12-17 10:58:46', '2020-12-17 10:58:46', 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000'),
+(3, '#Y5sF0mm8CP', 3, 3, '2020-12-16 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 3500.00, '2020-12-17 11:26:22', '2020-12-17 11:26:22', 'البنك الاهلى ', ' 12600000352800 ', ' SA9210000012600000352800');
 
 -- --------------------------------------------------------
 
@@ -613,7 +663,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (2, 'admin', 'admin@admin.com', NULL, '$2y$10$T1HpU833cwqKxqHTr0nXCOvQLMs0w19Z.Vg0I6WZzSEut//qQX7z2', NULL, '2020-11-05 14:06:33', '2020-11-05 14:06:33', 1, NULL, NULL),
 (3, 'customer1', 'customer@yahoo.com', NULL, '$2y$10$.XAPL924rhMXsUsy4kQyFuCEdRw7eZFp/.ZBZfj2twPK/lDOYhSNC', NULL, '2020-11-05 20:01:09', '2020-11-09 08:15:06', 2, '12345678465', '01009875647'),
 (5, 'customer2', 'customer2@yahoo.com', NULL, '$2y$10$MfWhrIop0/RfYcm4cpF8MODIXUbCTlur1r3EhVbktCvm8KV3NZJZG', NULL, '2020-11-09 08:26:48', '2020-11-09 08:26:48', 2, '12345678465', '01009876543'),
-(9, 'المسوق1', 'marketer1@yahoo.com', NULL, '$2y$10$6/UnkMQhcrukKA.Z1wopIOLmwZyss4.ZGqCeaYV1MvvBwLq0kGMJy', NULL, '2020-11-09 09:55:05', '2020-11-09 09:55:05', 3, '12345678465', '01007654345');
+(9, 'المسوق1', 'marketer1@yahoo.com', NULL, '$2y$10$6/UnkMQhcrukKA.Z1wopIOLmwZyss4.ZGqCeaYV1MvvBwLq0kGMJy', NULL, '2020-11-09 09:55:05', '2020-11-09 09:55:05', 3, '12345678465', '01007654345'),
+(11, 'احمد احمد محمد', 'customer3@yahoo.com', NULL, '$2y$10$DUMPYXv/GT/vvdt5NgPwEecYH5FDZxtmTXH5/WjSJdIRo.l.DN51W', NULL, '2020-12-17 10:53:39', '2020-12-17 10:53:39', 2, '66426476247624', '7384782648264');
 
 -- --------------------------------------------------------
 
@@ -875,13 +926,13 @@ ALTER TABLE `bannerads`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `blog_comments`
 --
 ALTER TABLE `blog_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `contracts`
@@ -899,7 +950,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `customers_oponions`
 --
 ALTER TABLE `customers_oponions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `districts`
@@ -935,7 +986,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `project_extra_field`
@@ -947,13 +998,13 @@ ALTER TABLE `project_extra_field`
 -- AUTO_INCREMENT for table `project_multi_prices`
 --
 ALTER TABLE `project_multi_prices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `project_user_fav`
 --
 ALTER TABLE `project_user_fav`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `regions`
@@ -965,7 +1016,7 @@ ALTER TABLE `regions`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `request_media`
@@ -989,7 +1040,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `specialize`
 --
 ALTER TABLE `specialize`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `textads`
@@ -1001,13 +1052,13 @@ ALTER TABLE `textads`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `vedioads`

@@ -69,7 +69,7 @@
             <div class="col-md-6 col-lg-4 all  apps3">
             @endif
                 <div class="single-content  card-overlay">
-                    <img src="{{$m_project->project_photo}}" alt="">
+                    <img src="{{url('/')}}{{$m_project->project_photo}}" alt="">
                     <div class="card-img-overlay">
                         <h5 class="card-title">{{$m_project->project_name}} - {{$m_project->project_category}}</h5>
                         <div class="btns">

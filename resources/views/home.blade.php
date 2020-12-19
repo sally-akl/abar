@@ -13,7 +13,7 @@
                     </p>
                 </div>
                 <div class="header-btns">
-                    <a href="#" class="btn btn-second">تعرف أكثر على مشاريعنا</a>
+                    <a href="{{url('/')}}/store/متجر" class="btn btn-second">تعرف أكثر على مشاريعنا</a>
                     <a href="https://api.whatsapp.com/send?phone={{\App\Settings::find(1)->phone}}&text="
                        class="btn btn-white" target="_blank">
                         <img src="{{url('/')}}/img/whatsapp.png" class="img-fluid icon lozad">
@@ -90,7 +90,7 @@
       @foreach($projects as $project)
       <div class="col-lg-4 col-md-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
         <div class="project">
-          <img src="{{$project->project_photo}}" class="img-fluid" alt="">
+          <img src="{{url('/')}}{{$project->project_photo}}" class="img-fluid" alt="">
           <div class="project-info">
             <div class="project-info-content">
               <h4>{{$project->project_name}} - {{$project->project_category}}</h4>
@@ -200,7 +200,7 @@
             <div class="col-md-6 col-lg-4 all  apps3">
             @endif
                 <div class="single-content  card-overlay">
-                    <img src="{{$m_project->project_photo}}" alt="">
+                    <img src="{{url('/')}}{{$m_project->project_photo}}" alt="">
                     <div class="card-img-overlay">
                         <h5 class="card-title">{{$m_project->project_name}} - {{$m_project->project_category}}</h5>
                         <div class="btns">
@@ -230,7 +230,7 @@
           <div class="col-md-4 col-sm-6 col-xs-12 clearfix ">
             <div class="post-item">
               <div class="media-wrapper">
-                <img src="{{$article->blog_img}}" alt="" class="img-fluid">
+                <img src="{{url('/')}}{{$article->blog_img}}" alt="" class="img-fluid">
               </div>
 
               <div class="content">

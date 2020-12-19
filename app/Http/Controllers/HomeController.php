@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\contactusEmail;
+use Illuminate\Support\Facades\Mail;
 use App\CustomerFav;
 use Validator;
 use Session;
@@ -285,6 +287,38 @@ class HomeController extends Controller
     public function done()
     {
       return view('request_done');
+    }
+    public function contactus()
+    {
+      return view('contactus');
+    }
+    public function questions()
+    {
+      return view('questions');
+    }
+    public function send_contact_us(Request $request)
+    {
+      $messages = [
+          'name.required' => 'لابد من ادخال الاسم الثلاثى',
+          'email.required' => 'لابد من ادخال البريد الالكترونى',
+          'message.required' => 'لابد من ادخال محتوى الرسالة',
+          'email.email' => 'تم ادخال البريد الالكترونى بطريقة غير صحيحة',
+      ];
+      $validator = Validator::make($request->all(), [
+             'name' => 'required|max:100',
+             'email' => 'required|email',
+             'message' => 'required',
+      ],$messages);
+      if ($validator->fails())
+        return json_encode(array("sucess"=>false ,"errors"=> $validator->errors()));
+      $send_obj = new \stdClass();
+      $send_obj->name = $request->name;
+      $send_obj->from = $request->email;
+      $send_obj->to =\App\Settings::find(1)->email;
+      $send_obj->subject = "اتصل بنا";
+      $send_obj->message = $request->message;
+      Mail::send(new contactusEmail($send_obj));
+      return json_encode(array("sucess"=>true,"sucess_text"=>'تم ارسال رسالتك بنجاح'));
     }
     private  function getCode($length = 10)
     {
