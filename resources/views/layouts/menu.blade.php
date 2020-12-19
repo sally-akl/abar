@@ -9,7 +9,7 @@
                     <a href="mailto:{{\App\Settings::find(1)->email}}">{{\App\Settings::find(1)->email}}</a>
                 </li>
 								<li class="head-item">
-                    <a href="#" class="">طلب مشروع</a>
+                    <a href="{{url('/')}}/store/city/show" class="">طلب مشروع</a>
                 </li>
 								<li class="head-item">
                     <a href="https://api.whatsapp.com/send?phone={{\App\Settings::find(1)->phone}}&text=">طلب استشارة</a>

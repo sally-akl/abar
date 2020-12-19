@@ -92,7 +92,7 @@
         @endphp
         @foreach($projects as $project)
 
-        @if($project->project_category == 'ابار' || $project->project_category == "مراكز ومدارس")
+        @if(($project->project_category == 'ابار' || $project->project_category == "مراكز ومدارس") && $project->category_id == $city->id)
 
          <div class="row abar_list">
            <div class="col-lg-12">
@@ -160,7 +160,7 @@
            </div>
          </div>
          @endif
-         @if($project->project_category == "مساجد")
+         @if($project->project_category == "مساجد" && $project->category_id == $city->id)
          <div class="row abar_list">
            <div class="col-lg-12">
 
@@ -197,7 +197,6 @@
                      @endforeach
                    </div>
                  </div>
-
                </div>
                <div class="col-lg-2">
                  <div class="row">
