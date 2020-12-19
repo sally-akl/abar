@@ -29,6 +29,9 @@ Route::middleware(['XSS'])->group(function () {
   Route::get('/contact-us',['uses'=>'HomeController@contactus']);
   Route::post('/contactus/send',['uses'=>'HomeController@send_contact_us']);
   Route::get('/questions',['uses'=>'HomeController@questions']);
+  Route::get('/auth-customer',['uses'=>'HomeController@auth_customer']);
+  Route::post('/signin',['uses'=>'HomeController@sign_in']);
+  Route::post('/signout',['uses'=>'HomeController@sign_out']);
 
 
 

@@ -296,6 +296,10 @@ class HomeController extends Controller
     {
       return view('questions');
     }
+    public function auth_customer()
+    {
+      return view('auth_customer');
+    }
     public function send_contact_us(Request $request)
     {
       $messages = [
@@ -319,6 +323,37 @@ class HomeController extends Controller
       $send_obj->message = $request->message;
       Mail::send(new contactusEmail($send_obj));
       return json_encode(array("sucess"=>true,"sucess_text"=>'تم ارسال رسالتك بنجاح'));
+    }
+    public function sign_in(Request $request)
+    {
+      $messages = [
+          'email.required' => 'لابد من ادخال البريد الالكترونى',
+          'password.required' => 'لابد من ادخال الرقم السرى',
+      ];
+      $validator = Validator::make($request->all(), [
+             'password' => 'required',
+             'email' => 'required|email',
+      ],$messages);
+      if ($validator->fails())
+        return json_encode(array("sucess"=>false ,"errors"=> $validator->errors()));
+
+      if (\Auth::attempt([
+         'email' => $request->email,
+         'password' => $request->password])
+        ){
+          return json_encode(array("sucess"=>true));
+        }
+       return json_encode(array("errors"=>array("not_login"=>"البريد الالكترونى او الرقم السرى غير صحيح")));
+
+    }
+    public function sign_out(Request $request)
+    {
+      if(\Auth::check())
+   {
+       \Auth::logout();
+       $request->session()->invalidate();
+   }
+   return  redirect('/');
     }
     private  function getCode($length = 10)
     {

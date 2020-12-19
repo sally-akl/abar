@@ -59,13 +59,13 @@
                     <li><a href="{{url('/')}}/contact-us" class="">اتصل بنا</a></li>
                 </ul><!-- #menu-main end -->
                  @guest
-                  <a href="" class="btn btn-transparent btn-borderd">تسجيل الدخول / التسجيل</a>
+                  <a href="{{url('/')}}/auth-customer" class="btn btn-transparent btn-borderd">تسجيل الدخول / التسجيل</a>
                  @else
-                   <a href="" class="btn btn-transparent btn-borderd name_login">{{ Auth::user()->name }}</a>
+                   <a href="{{url('/')}}/dashboard" target="_blank" class="btn btn-transparent btn-borderd name_login">{{ Auth::user()->name }}</a>
                    <a href="{{ route('logout') }}"
                       onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();" class="btn btn-transparent btn-borderd">تسجيل الخروج</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ url('/') }}/signout" method="POST" style="display: none;">
                       @csrf
                     </form>
                  @endguest
