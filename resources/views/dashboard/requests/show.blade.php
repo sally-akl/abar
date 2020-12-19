@@ -160,6 +160,18 @@
             </th>
 
             <th>
+               اسم البنك
+            </th>
+
+            <th>
+              رقم الحساب
+            </th>
+
+            <th>
+              رقم الايبان
+            </th>
+
+            <th>
                @lang('site.amount')
             </th>
             <th></th>
@@ -185,6 +197,21 @@
             </td>
             <td>
               {{$transaction->transfer_payment_type}}
+            </td>
+            <td>
+              @if($transaction->transfer_payment_type == "حوالة بنكية")
+                <span>{{$transaction->bank_name}}</span>
+              @endif
+            </td>
+            <td>
+              @if($transaction->transfer_payment_type == "حوالة بنكية")
+                <span>{{$transaction->bank_account_number}}</span>
+              @endif
+            </td>
+            <td>
+              @if($transaction->transfer_payment_type == "حوالة بنكية")
+                <span>{{$transaction->bank_ibn}}</span>
+              @endif
             </td>
             <td>
               {{$transaction->amount}}

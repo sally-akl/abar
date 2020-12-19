@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\CustomerFav;
 use Validator;
 use Session;
@@ -128,6 +129,20 @@ class HomeController extends Controller
       }
       return view('store_by_category',compact('type'));
     }
+    public function store_by_city(Request $request)
+    {
+      $price = "";
+      if(isset($request->code))
+      {
+        $market_code = $request->code;
+        Session::put('market_code', $market_code);
+      }
+      if(isset($request->search))
+      {
+        $price = $request->amount;
+      }
+      return view('store_by_city',compact('price'));
+    }
     public function project_details($id,$title,Request $request)
     {
       if(isset($request->code))
@@ -177,19 +192,28 @@ class HomeController extends Controller
           'phone.required' => 'قم بادخال رقم الجوال',
           'name_in_board.required' => 'قم بادخال اسمك على اللوحة',
           'agree_to.required' => 'لابد من الموافقة على الشروط والاحكام',
+          'email.unique' =>'البريد الالكترونى موجود مسبقا ارجو ادخال بريد الالكترونى اخر',
       ];
-      $validator = Validator::make($request->all(), [
+
+      $validator_arr =  [
              'name' => 'required|max:100',
-             'email' => 'required|email',
              'hawaya'=>'required',
              'phone'=>'required',
              'name_in_board'=>'required',
              'agree_to'=>'required',
-      ],$messages);
+      ];
+      if(Auth::user())
+      {
+        $validator_arr["email"] = 'required|email|unique:users,email,'.Auth::user()->id;
+      }
+      else{
+        $validator_arr["email"] = 'required|email|unique:users';
+      }
+      $validator = Validator::make($request->all(),$validator_arr,$messages);
       if ($validator->fails())
         return json_encode(array("sucess"=>false ,"errors"=> $validator->errors()));
 
-      $user_id
+      $user_id = "";
       if(Auth::user())
       {
         $user_id = Auth::user()->id;
@@ -210,11 +234,57 @@ class HomeController extends Controller
         // send email with login data in email
       }
 
+      $type = $request->project_type;
+      if($type == "ابار" || $type == "مراكز ومدارس"){
+        $project_id  = $request->project_d;
+        $price = \App\Project::find($project_id)->first_price;
+      }
+      else{
+        $extra = \App\ProjectPrices::find($request->project_d);
+        $project_id  = $extra->project->id;
+        $sub_id  = $request->project_d;
+        $price = $extra->price;
+      }
+
       // create request and transaction
-      $request = new \App\CustomerRequests();
-      
+      $request_customer = new \App\CustomerRequests();
+      $request_customer->user_id  = $user_id;
 
 
+      if($type == "ابار" || $type == "مراكز ومدارس"){
+        $request_customer->project_id  = $project_id;
+      }
+      else{
+        $request_customer->project_id  = $project_id;
+        $request_customer->sub_project  = $sub_id;
+      }
+
+      $request_customer->how_know_me = $request->how_to_know_us;
+      $request_customer->request_date = date("Y-m-d");
+      $request_customer->request_num = $user_id."_".$this->getCode(10);
+      $request_customer->request_status = "طلب";
+      $request_customer->project_status= 1;
+      $request_customer->board_name = $request->name_in_board;
+      $request_customer->save();
+
+      $transaction = new \App\Transactions();
+      $transaction->transaction_num ="#".$this->getCode(10);
+      $transaction->project_id   = $project_id;
+      $transaction->request_id = $request_customer->id;
+      $transaction->transfer_date = date("Y-m-d");
+      $transaction->is_payable = 0;
+      $transaction->transfer_payment_type = $request->select_payment_method;
+      $transaction->amount =$price;
+      $bank_values = explode("-",$request->bank_transfer_val);
+      $transaction->bank_name = $bank_values[0];
+      $transaction->bank_account_number =$bank_values[1];
+      $transaction->bank_ibn =$bank_values[2];
+      $transaction->save();
+      return  json_encode(array("sucess"=>true));
+    }
+    public function done()
+    {
+      return view('request_done');
     }
     private  function getCode($length = 10)
     {

@@ -226,7 +226,7 @@
 
 
 
-     @if($type == "المراكز والمدارس")
+     @if($type == "مراكز ومدارس")
        @foreach($cities as $city)
        <div class="row">
              <div class="col-lg-6">

@@ -527,3 +527,16 @@
 .payment_methods span{
   margin-right:5px;
 }
+.other_details p{
+  color: #024f66;
+}
+.choose_bank_transfer .choose_bank_transfer_div{
+      margin-top: 25px;
+}
+.search_amount_form .form-control-label{
+  color: #024f66;
+}
+.amount_search_box{
+  background: #e6f5f2;
+  padding: 10px;
+}

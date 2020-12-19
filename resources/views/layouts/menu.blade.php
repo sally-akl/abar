@@ -55,7 +55,7 @@
                     <li><a href="{{url('/')}}/profile/اعمالنا السابقة" {{$controller == "HomeController" && $action=="profolio"?'class=current':''}}>اعمالنا السابقة </a></li>
                     <li><a href="{{url('/')}}/blog/المدونة"  {{$controller == "HomeController" && ($action=="blog" || $action=="blog_details")?'class=current':''}}>مدونة ابار السقاية</a></li>
                     <li><a href="{{url('/')}}/store/متجر"{{$controller == "HomeController" && ($action=="store" || $action == "store_by_category")?'class=current':''}}>المتجر الالكترونى</a></li>
-										  <li><a href="#" class="">طلب مشروع حسب الميزانية</a></li>
+										  <li><a href="{{url('/')}}/store/city/show" {{$controller == "HomeController" && $action=="store_by_city"?'class=current':''}}>طلب مشروع حسب الميزانية</a></li>
                     <li><a href="contactus.html" class="">اتصل بنا</a></li>
                 </ul><!-- #menu-main end -->
                  @guest

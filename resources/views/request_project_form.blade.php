@@ -192,14 +192,48 @@
                   <div class="form-group row">
 
                     <div class="col-sm-12">
-                      <input  name= "agree_to"  class="{{ $errors->has('how_to_know_us') ? ' is-invalid' : '' }} form-control-success" type="checkbox"> <a href="" target="_blank">الموافقة على الشروط والاحكام</a>
+                      <input  name= "agree_to"  class="{{ $errors->has('agree_to') ? ' is-invalid' : '' }} form-control-success" type="checkbox"> <a href="" target="_blank">الموافقة على الشروط والاحكام</a>
+                    </div>
+                  </div>
+                  <div class="form-group row choose_bank_transfer">
+                    <div class="col-sm-6">
+                      <div class="choose_bank_transfer_div"><input type="radio" value="مصرف الانماء - 68202442131000 - SA3705000068202442131000" name="bank_transfer_val" checked/> <img src="{{url('/')}}/img/anm.png" class="img-fluid">  </div>
+                      <div class="choose_bank_transfer_div"><input type="radio" value="البنك الاهلى - 12600000352800 - SA9210000012600000352800"  name="bank_transfer_val" /> <img src="{{url('/')}}/img/ncb.png" class="img-fluid"></div>
+                      <div class="choose_bank_transfer_div"><input type="radio" value="مصرف الراجحى - 525608010459960 - SA2280000525608010459960"  name="bank_transfer_val" /> <img src="{{url('/')}}/img/raj.jpg" class="img-fluid" width="200" height="100"></div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="choose_bank_transfer_div"><span>رقم الحساب: 68202442131000</span> <br><span> رقم اآليبان: SA3705000068202442131000</span></div>
+                      <div class="choose_bank_transfer_div"><span>رقم الحساب: 12600000352800</span>  <br> <span>رقم اآليبان: SA9210000012600000352800</span></div>
+                      <div class="choose_bank_transfer_div"><span>رقم الحساب: 525608010459960</span> <br> <span>رقم اآليبان: SA2280000525608010459960</span></div>
+
                     </div>
                   </div>
                   <input type="hidden" name="select_payment_method" value="حوالة بنكية" />
+                  <input type="hidden" name="project_type" value="{{$type}}" />
+                  <input type="hidden" name="project_d" value="{{$id}}" />
                   <button class="btn btn-main request_btn" name="submit" type="submit">طلب المشروع</button>
                </form>
               </div>
             </div>
+
+
+            <div class="card other_details bank_transfer_div" style="margin-top:20px;">
+              <div class="card-body">
+                <p>
+                  تصنف جميع مشاريع وخدمات آبار السقاية للمقاولات داخل المملكة العربية السعودية أو
+ خارجـهــا تحت بند المقاولات العامة لذا نأمل عند التحويل ضرورة اتباع التعليمات الواردة
+ أدناه لتفادي إرجـاع الحوالة وحـــفاظـاً على وقــتــكم:
+ يرجى اختيار شراء بضاعة أو مشتريات , و عدم عدم اختيار سبب التحويل تبرع أو خيري
+ بعد عملية التحويل يرجى ارسال صورة الإيصال أو صورة واضحة للشاشة إلى :
+ واتس آب : 00966553006174
+ او البريد الالكترونى :- {{\App\Settings::find(1)->email}}
+
+
+                </p>
+              </div>
+            </div>
+
+
 
           </div>
         </div>
@@ -214,9 +248,13 @@ $("input[name='payment_method']").on("change",function(){
    if($(this).val() == "حوالة بنكية")
    {
      $(".request_btn").attr("disabled",false);
+     $(".bank_transfer_div").css("display","block");
+     $(".choose_bank_transfer").css("display","flex");
    }
    else{
      $(".request_btn").attr("disabled",true);
+     $(".bank_transfer_div").css("display","none");
+      $(".choose_bank_transfer").css("display","none");
    }
 });
 $(".request_form").submit(function(e){
@@ -236,8 +274,9 @@ $(".request_form").submit(function(e){
         success: function (response) {
           if(response.sucess)
           {
-            $(".alert-success-modal").html(response.sucess_text);
-            $(".alert-success-modal").css("display","block");
+            //$(".alert-success-modal").html(response.sucess_text);
+            //$(".alert-success-modal").css("display","block");
+            window.location.href = '{{url("/request/done")}}';
           }
           else
           {
