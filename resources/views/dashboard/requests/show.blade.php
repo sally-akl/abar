@@ -90,6 +90,62 @@
     </div>
   </div>
 </div>
+@if($crequest->project->project_category == 'مساجد')
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">وصف المسجد فى الطلب</h3>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table card-table table-vcenter text-nowrap datatable">
+        <tbody>
+          <tr>
+            <th>وصف المسجد</th>
+            <td>
+              @if($crequest->extraproject != null)
+               <span>{{$crequest->extraproject->project_details}}</span>
+              @endif
+            </td>
+          </tr>
+          <tr>
+            <th>عدد المصلين</th>
+            <td>
+              @if($crequest->extraproject != null)
+               <span>{{$crequest->extraproject->prayer_num}}</span>
+              @endif
+            </td>
+          </tr>
+          <tr>
+            <th>نوع السقف</th>
+            <td>
+              @if($crequest->extraproject != null)
+               <span>{{$crequest->extraproject->ceil_type}}</span>
+              @endif
+            </td>
+          </tr>
+          <tr>
+            <th>المساحة</th>
+            <td>
+              @if($crequest->extraproject != null)
+               <span>{{$crequest->extraproject->area}}</span>
+              @endif
+            </td>
+          </tr>
+          <tr>
+            <th>السعر</th>
+            <td>
+              @if($crequest->extraproject != null)
+               <span>{{$crequest->extraproject->price}}</span>
+              @endif
+            </td>
+          </tr>
+        </body>
+      </table>
+    </div>
+  </div>
+</div>
+
+@endif
 <div class="card">
   <div class="card-header">
     <h3 class="card-title">@lang('site.visit_requests')</h3>

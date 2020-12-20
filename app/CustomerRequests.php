@@ -28,4 +28,8 @@ class CustomerRequests extends Model
     {
         return $this->hasMany("App\RequestsMedia", 'request_id');
     }
+    public function  extraproject()
+    {
+        return $this->belongsTo("App\ProjectPrices", 'sub_project');
+    }
 }
