@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2020 at 07:48 PM
+-- Generation Time: Dec 20, 2020 at 11:19 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -225,6 +225,29 @@ INSERT INTO `governate` (`id`, `title`, `country_id`, `created_at`, `updated_at`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `queue`, `payload`, `attempts`, `reserved_at`, `available_at`, `created_at`) VALUES
+(1, 'default', '{\"displayName\":\"App\\\\Jobs\\\\SendEmailPasswordJob\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"delay\":null,\"timeout\":null,\"timeoutAt\":null,\"data\":{\"commandName\":\"App\\\\Jobs\\\\SendEmailPasswordJob\",\"command\":\"O:29:\\\"App\\\\Jobs\\\\SendEmailPasswordJob\\\":8:{s:15:\\\"emailMessageObj\\\";O:8:\\\"stdClass\\\":5:{s:4:\\\"from\\\";s:14:\\\"info@yahoo.com\\\";s:2:\\\"to\\\";s:19:\\\"sally_akl@yahoo.com\\\";s:7:\\\"subject\\\";s:70:\\\"\\u0628\\u064a\\u0627\\u0646\\u0627\\u062a \\u062f\\u062e\\u0648\\u0644\\u0643 \\u0627\\u0644\\u0649 \\u0644\\u0648\\u062d\\u0629 \\u0627\\u0644\\u062a\\u062d\\u0643\\u0645 \\u0627\\u0644\\u062e\\u0627\\u0635\\u0629 \\u0628\\u0643\\\";s:5:\\\"email\\\";s:19:\\\"sally_akl@yahoo.com\\\";s:8:\\\"password\\\";s:8:\\\"5Rtpz9ds\\\";}s:6:\\\"\\u0000*\\u0000job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:5:\\\"delay\\\";N;s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1608458870, 1608458870);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `linkads`
 --
 
@@ -295,7 +318,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (32, '2020_11_23_221313_add_link_ads_marketing', 25),
 (33, '2020_11_23_221616_add_banner_ads_marketing', 25),
 (34, '2020_11_23_221756_add_text_ads_marketing', 25),
-(35, '2020_11_23_222015_add_vedio_ads_marketing', 25);
+(35, '2020_11_23_222015_add_vedio_ads_marketing', 25),
+(36, '2020_12_20_094659_create_jobs_table', 26);
 
 -- --------------------------------------------------------
 
@@ -408,7 +432,8 @@ CREATE TABLE `project_user_fav` (
 --
 
 INSERT INTO `project_user_fav` (`id`, `project_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 3, 3, '2020-12-16 16:04:00', '2020-12-16 16:04:00');
+(1, 3, 3, '2020-12-16 16:04:00', '2020-12-16 16:04:00'),
+(2, 1, 12, '2020-12-20 06:56:26', '2020-12-20 06:56:26');
 
 -- --------------------------------------------------------
 
@@ -461,7 +486,9 @@ CREATE TABLE `requests` (
 INSERT INTO `requests` (`id`, `user_id`, `project_id`, `how_know_me`, `request_date`, `created_at`, `updated_at`, `request_num`, `project_status`, `request_status`, `board_name`, `location_request`, `location`, `sub_project`) VALUES
 (1, 3, 1, 'google', '2020-11-23 17:13:38', NULL, '2020-11-23 15:13:38', 'kjdjfkdjg', 2, 'حجز', 'board 1', 1, '16.734623882642484,50.05448593750001', NULL),
 (2, 11, 7, '', '2020-12-16 22:00:00', '2020-12-17 10:58:46', '2020-12-17 10:58:46', '11_yCJHe6sbwJ', 1, 'طلب', 'احمد احمد محمد', 0, NULL, 6),
-(3, 11, 3, '', '2020-12-16 22:00:00', '2020-12-17 11:26:22', '2020-12-17 11:26:22', '11_wKSaghu19Q', 1, 'طلب', 'احمد احمد محمد', 0, NULL, NULL);
+(3, 11, 3, '', '2020-12-16 22:00:00', '2020-12-17 11:26:22', '2020-12-17 11:26:22', '11_wKSaghu19Q', 1, 'طلب', 'احمد احمد محمد', 0, NULL, NULL),
+(4, 3, 7, '', '2020-12-19 22:00:00', '2020-12-20 06:58:22', '2020-12-20 06:58:22', '3_5PEgKUz3r1', 1, 'طلب', 'customer1', 0, NULL, 6),
+(5, 15, 7, '', '2020-12-19 22:00:00', '2020-12-20 08:07:50', '2020-12-20 08:07:50', '15_me9LEyrZP6', 1, 'طلب', 'customer 5555', 0, NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -633,7 +660,9 @@ CREATE TABLE `transactions` (
 INSERT INTO `transactions` (`id`, `transaction_num`, `project_id`, `request_id`, `transfer_date`, `is_payable`, `transfer_payment_type`, `paymentToken`, `paymentId`, `amount`, `created_at`, `updated_at`, `bank_name`, `bank_account_number`, `bank_ibn`) VALUES
 (1, '#try_88575mj', 1, 1, '2020-12-18 08:15:55', 0, 'حوالة بنكية', '', '', 200.00, NULL, NULL, 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000'),
 (2, '#AXGvhaGqsL', 7, 2, '2020-12-16 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 22000.00, '2020-12-17 10:58:46', '2020-12-17 10:58:46', 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000'),
-(3, '#Y5sF0mm8CP', 3, 3, '2020-12-16 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 3500.00, '2020-12-17 11:26:22', '2020-12-17 11:26:22', 'البنك الاهلى ', ' 12600000352800 ', ' SA9210000012600000352800');
+(3, '#Y5sF0mm8CP', 3, 3, '2020-12-16 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 3500.00, '2020-12-17 11:26:22', '2020-12-17 11:26:22', 'البنك الاهلى ', ' 12600000352800 ', ' SA9210000012600000352800'),
+(4, '#kbTLEsFiVJ', 7, 4, '2020-12-19 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 2200.00, '2020-12-20 06:58:22', '2020-12-20 06:58:22', 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000'),
+(5, '#nXDZ4x60xp', 7, 5, '2020-12-19 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 2200.00, '2020-12-20 08:07:50', '2020-12-20 08:07:50', 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000');
 
 -- --------------------------------------------------------
 
@@ -664,7 +693,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (3, 'customer1', 'customer@yahoo.com', NULL, '$2y$10$.XAPL924rhMXsUsy4kQyFuCEdRw7eZFp/.ZBZfj2twPK/lDOYhSNC', NULL, '2020-11-05 20:01:09', '2020-11-09 08:15:06', 2, '12345678465', '01009875647'),
 (5, 'customer2', 'customer2@yahoo.com', NULL, '$2y$10$MfWhrIop0/RfYcm4cpF8MODIXUbCTlur1r3EhVbktCvm8KV3NZJZG', NULL, '2020-11-09 08:26:48', '2020-11-09 08:26:48', 2, '12345678465', '01009876543'),
 (9, 'المسوق1', 'marketer1@yahoo.com', NULL, '$2y$10$6/UnkMQhcrukKA.Z1wopIOLmwZyss4.ZGqCeaYV1MvvBwLq0kGMJy', NULL, '2020-11-09 09:55:05', '2020-11-09 09:55:05', 3, '12345678465', '01007654345'),
-(11, 'احمد احمد محمد', 'customer3@yahoo.com', NULL, '$2y$10$DUMPYXv/GT/vvdt5NgPwEecYH5FDZxtmTXH5/WjSJdIRo.l.DN51W', NULL, '2020-12-17 10:53:39', '2020-12-17 10:53:39', 2, '66426476247624', '7384782648264');
+(11, 'احمد احمد محمد', 'customer3@yahoo.com', NULL, '$2y$10$DUMPYXv/GT/vvdt5NgPwEecYH5FDZxtmTXH5/WjSJdIRo.l.DN51W', NULL, '2020-12-17 10:53:39', '2020-12-17 10:53:39', 2, '66426476247624', '7384782648264'),
+(12, 'اية محمد', 'customer4@yahoo.com', NULL, '$2y$10$KoGv62OXhhn4HaefL.FWEu/0BQiqjilfinMCp8Hdv5oS0CLnQhngy', NULL, '2020-12-20 06:50:36', '2020-12-20 06:50:36', 2, '48623682638', '374374834'),
+(15, 'customer 5555', 'sally_akl@yahoo.com', NULL, '$2y$10$gWzTBFbQpmBRglReg1fx6.1UDxCj3rFs3C4hg6TDnXzLfogFFyMBC', NULL, '2020-12-20 08:07:50', '2020-12-20 08:07:50', 2, '82394823', '2340820438234');
 
 -- --------------------------------------------------------
 
@@ -780,6 +811,13 @@ ALTER TABLE `extra_fields`
 ALTER TABLE `governate`
   ADD PRIMARY KEY (`id`),
   ADD KEY `governate_country_id_foreign` (`country_id`);
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_queue_index` (`queue`);
 
 --
 -- Indexes for table `linkads`
@@ -971,6 +1009,12 @@ ALTER TABLE `governate`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `linkads`
 --
 ALTER TABLE `linkads`
@@ -980,7 +1024,7 @@ ALTER TABLE `linkads`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `projects`
@@ -1004,7 +1048,7 @@ ALTER TABLE `project_multi_prices`
 -- AUTO_INCREMENT for table `project_user_fav`
 --
 ALTER TABLE `project_user_fav`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `regions`
@@ -1016,7 +1060,7 @@ ALTER TABLE `regions`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `request_media`
@@ -1052,13 +1096,13 @@ ALTER TABLE `textads`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `vedioads`

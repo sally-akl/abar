@@ -64,6 +64,11 @@
             @endif
             <td>{{\App\User::find($project->user_id)->name}}</td>
             <td>
+              <div class="social-likes" data-url="{{url('/')}}/project/details/{{$project->id}}/{{$project->project_name}}" data-title="{{$project->project_name}}">
+              	<div class="facebook" title="Share link on Facebook">Facebook</div>
+              	<div class="twitter" title="Share link on Twitter">Twitter</div>
+              	<div class="plusone" title="Share link on Google+">Google+</div>
+              </div>
               <a href="{{ url('dashboard/customers/projects/details') }}/{{$project->related_request_id}}" class='btn  btn-secondary btn-xs'>
                 @lang('site.details')
               </a>

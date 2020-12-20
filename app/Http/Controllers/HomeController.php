@@ -225,7 +225,8 @@ class HomeController extends Controller
         $user = new \App\User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($this->getCode(8));
+        $password_is = $this->getCode(8);
+        $user->password = Hash::make($password_is);
         $user->role_id  = 2;
         $user->identity_num = $request->hawaya;
         $user->mobile = $request->phone;
@@ -234,6 +235,14 @@ class HomeController extends Controller
         $user_id = Auth::user()->id;
 
         // send email with login data in email
+        $send_obj = new \stdClass();
+        $send_obj->from = \App\Settings::find(1)->email;
+        $send_obj->to = $request->email;
+        $send_obj->subject = "بيانات دخولك الى لوحة التحكم الخاصة بك";
+        $send_obj->email = $request->email;
+        $send_obj->password = $password_is;
+
+        dispatch(new \App\Jobs\SendEmailPasswordJob($send_obj));
       }
 
       $type = $request->project_type;
