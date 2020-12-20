@@ -66,16 +66,7 @@
                   <div class="alert alert-success alert-success-modal-signup" style="display:none">
                   </div>
                   @csrf
-                <!-- form message -->
-                   <div class="row">
-                       <div class="col-12">
-                           <div class="alert alert-success contact__msg" style="display: none" role="alert">
-                               Your message was sent successfully.
-                           </div>
-                       </div>
-                   </div>
-                   <!-- end message -->
-
+                <
                    <div class="form-group">
                        <input name="name" type="text" class="form-control" placeholder="الاسم الثلاثى">
                    </div>
@@ -112,50 +103,62 @@
 @section('footerjscontent')
 <script type="text/javascript">
 
+_prepareform = function(form , sucess_modal , fail_modal)
+{
+  var submit_form_url = form.attr('action');
+  var $method_is = "POST";
+  var formData = new FormData(form[0]);
+  $(sucess_modal).css("display","none");
+  $(fail_modal).css("display","none");
+  $.ajax({
+      url: submit_form_url,
+      type: $method_is,
+      data: formData,
+      async: false,
+      dataType: 'json',
+      success: function (response) {
+        if(response.sucess)
+        {
+          window.location.href = '{{url("/")}}';
+        }
+        else
+        {
+          var $error_text = "";
+          var errors = response.errors;
+
+          $.each(errors, function (key, value) {
+            $error_text +=value+"<br>";
+          });
+
+          $(fail_modal).html($error_text);
+          $(fail_modal).css("display","block");
+
+        }
+      },
+      error : function( data )
+      {
+
+      },
+      cache: false,
+      contentType: false,
+      processData: false
+  });
+
+
+}
+
 
 $(".form_submit_login").submit(function(e){
 
     e.preventDefault();
-    var submit_form_url = $(this).attr('action');
-    var $method_is = "POST";
-    var formData = new FormData($(this)[0]);
-    $(".alert-success-modal").css("display","none");
-    $(".alert-danger-modal").css("display","none");
-    $.ajax({
-        url: submit_form_url,
-        type: $method_is,
-        data: formData,
-        async: false,
-        dataType: 'json',
-        success: function (response) {
-          if(response.sucess)
-          {
-            window.location.href = '{{url("/")}}';
-          }
-          else
-          {
-            var $error_text = "";
-            var errors = response.errors;
+    _prepareform($(this) ,".alert-success-modal" ,  ".alert-danger-modal");
+    return false;
+});
+$(".form_submit_signup").submit(function(e){
 
-            $.each(errors, function (key, value) {
-              $error_text +=value+"<br>";
-            });
-
-            $(".alert-danger-modal").html($error_text);
-            $(".alert-danger-modal").css("display","block");
-
-          }
-        },
-        error : function( data )
-        {
-
-        },
-        cache: false,
-        contentType: false,
-        processData: false
-    });
-
-      return false;
+    e.preventDefault();
+    _prepareform($(this) ,".alert-success-modal-signup" ,  ".alert-danger-modal-signup");
+    return false;
 });
 
 </script>
