@@ -370,6 +370,7 @@ class HomeController extends Controller
           'password.confirmed'=>'لابد ان يكون كل من الرقم السرى وتكرار الرقم السرى متماثلتين',
           'identity.required' => 'لابد من ادخال رقم الهوية',
           'mobile.required' => 'لابد من ادخال رقم الجوال',
+          'email.unique'=>'البريد الالكترونى موجود مسبقا',
 
       ];
       $validator = Validator::make($request->all(), [

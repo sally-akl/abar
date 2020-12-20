@@ -66,7 +66,7 @@
                   <div class="alert alert-success alert-success-modal-signup" style="display:none">
                   </div>
                   @csrf
-                <
+
                    <div class="form-group">
                        <input name="name" type="text" class="form-control" placeholder="الاسم الثلاثى">
                    </div>
@@ -78,7 +78,7 @@
                        <input name="password" type="password" class="form-control" placeholder="الرقم السرى">
                    </div>
                    <div class="form-group">
-                       <input name="cpassword" type="password" class="form-control" placeholder="تكرار الرقم السرى">
+                       <input name="password_confirmation" type="password" class="form-control" placeholder="تكرار الرقم السرى">
                    </div>
 
                    <div class="form-group">
