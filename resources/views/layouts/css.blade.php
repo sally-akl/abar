@@ -40,7 +40,7 @@
 <link href="{{ asset('js/front/lib/animate/animate.min.css') }}" rel="stylesheet">
 <link href="{{ asset('js/front/lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
 
-<title>{{ config('app.name', 'ابار السقاية') }}</title>
+<title>آبار السقاية </title>
 <link rel="shortcut icon" href="" type="image/x-icon" />
 
     <!--[if lt IE 9]>

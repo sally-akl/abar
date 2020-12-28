@@ -111,13 +111,11 @@
 <!-- start services section -->
 <section class="services-block blue-color w-curve">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-6">
-                <h3 class="main-title">مميزات خدماتنا</h3>
-                <p class="font-color"></p>
-            </div>
+        <div class="center sm-width">
+            <h3 class="main-title">مميزات خدماتنا</h3>
+
         </div>
-        <div class="row">
+        <div class="row feature_blocks">
           <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s" style="visibility: visible; animation-duration: 1.4s; animation-name: bounceInUp;">
             <div class="box">
               <div class="icon" style="background: #fceef3;"><i class="ion-ios-paper-outline" style="color: #ff689b;"></i></div>
@@ -145,7 +143,7 @@
           <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s" style="visibility: visible; animation-duration: 1.4s; animation-name: bounceInUp;">
             <div class="box">
               <div class="icon" style="background: #eafde7;"><i class="ion-clipboard" style="color:#41cf2e;"></i></div>
-              <h4 class="title"><a href="">تطبيق استراتيجيا تفعالة لاستدامة المشروع </a></h4>
+              <h4 class="title"><a href="">نطبق استراتيجيات فعالة لاستدامة المشاريع</a></h4>
               <p class="description"></p>
             </div>
           </div>
@@ -157,6 +155,14 @@
               <p class="description"></p>
             </div>
           </div>
+          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s" style="visibility: visible; animation-duration: 1.4s; animation-name: bounceInUp;">
+            <div class="box">
+              <div class="icon" style="background: #eafde7;"><i class=" ion-arrow-down-a" style="color:#41cf2e;"></i></div>
+              <h4 class="title"><a href="">تنسيق وتسهيل زيارة عملائنا لمواقع مشاريعهم</a></h4>
+              <p class="description"></p>
+            </div>
+          </div>
+
         </div>
 
     </div>

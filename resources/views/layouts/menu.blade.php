@@ -45,17 +45,17 @@
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="top-block only-mobile">
-                    <a class="navbar-brand" href="">
+                    <a class="navbar-brand" href="{{url('/')}}">
                         <img src="{{url('/')}}/img/logo.png" class="lozad" alt="آبار السقاية">
                     </a>
                 </div>
                 <ul id="menu-main" class="menu-main">
                     <li><a href="{{url('/')}}"  {{$controller == "HomeController" && $action=="index"?'class=current':''}} >الرئيسية </a></li>
-                    <li><a href="{{url('/')}}/aboutus/عن المؤسسة" {{$controller == "HomeController" && $action=="aboutus"?'class=current':''}}>عن المؤسسة</a></li>
+                    <li><a href="{{url('/')}}/aboutus/عن المؤسسة"  {{$controller == "HomeController" && $action=="aboutus"?'class=current':''}}>عن المؤسسة</a></li>
                     <li><a href="{{url('/')}}/profile/اعمالنا السابقة" {{$controller == "HomeController" && $action=="profolio"?'class=current':''}}>اعمالنا السابقة </a></li>
-                    <li><a href="{{url('/')}}/blog/المدونة"  {{$controller == "HomeController" && ($action=="blog" || $action=="blog_details")?'class=current':''}}>مدونة ابار السقاية</a></li>
-                    <li><a href="{{url('/')}}/store/متجر"{{$controller == "HomeController" && ($action=="store" || $action == "store_by_category")?'class=current':''}}>المتجر الالكترونى</a></li>
-										  <li><a href="{{url('/')}}/store/city/show" {{$controller == "HomeController" && $action=="store_by_city"?'class=current':''}}>طلب مشروع حسب الميزانية</a></li>
+                    <li><a href="{{url('/')}}/store/متجر" {{$controller == "HomeController" && ($action=="store" || $action == "store_by_category")?'class=current':''}}>المتجر الالكترونى</a></li>
+										<li><a href="{{url('/')}}/store/city/show" {{$controller == "HomeController" && $action=="store_by_city"?'class=current':''}}>طلب مشروع حسب الميزانية</a></li>
+                    <li><a href="{{url('/')}}/questions" {{$controller == "HomeController" && $action=="questions"?'class=current':''}} >اسئلة شائعة</a></li>
                     <li><a href="{{url('/')}}/contact-us" class="">اتصل بنا</a></li>
                 </ul><!-- #menu-main end -->
                  @guest

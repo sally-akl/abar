@@ -32,8 +32,29 @@
                     <ul class="list-unstyled center-list">
                         <li class="footer-link">
                             <span class="icon"><i class="fa fa-chevron-left"></i></span>
+                            <a  class="link" href="{{url('/')}}/aboutus/عن المؤسسة" >عن المؤسسة</a>
+                        </li>
+                        <li class="footer-link">
+                            <span class="icon"><i class="fa fa-chevron-left"></i></span>
+                            <a  class="link" href="{{url('/')}}/blog/المدونة" > المدونة</a>
+                        </li>
+                        <li class="footer-link">
+                            <span class="icon"><i class="fa fa-chevron-left"></i></span>
+                            <a  class="link" href="{{url('/')}}/profile/اعمالنا السابقة">اعمالنا السلبقة </a>
+                        </li>
+                        <li class="footer-link">
+                            <span class="icon"><i class="fa fa-chevron-left"></i></span>
+                            <a href="{{url('/')}}/store/متجر" class="link">المتجر الالكترونى</a>
+                        </li>
+                        <li class="footer-link">
+                            <span class="icon"><i class="fa fa-chevron-left"></i></span>
+                            <a href="{{url('/')}}/store/city/show" class="link">طلب حسب ميزانية المشروع</a>
+                        </li>
+                        <li class="footer-link">
+                            <span class="icon"><i class="fa fa-chevron-left"></i></span>
                             <a href="{{url('/')}}/questions" class="link">اسئلة شائعة</a>
                         </li>
+                      
                         <li class="footer-link">
                             <span class="icon"><i class="fa fa-chevron-left"></i></span>
                             <a href="" class="link">سياسة الخصوصية</a>

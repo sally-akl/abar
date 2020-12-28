@@ -131,9 +131,9 @@
                        <div><i class="fa fa-square"></i> <span>{{$special->title}}</span></div>
                    @endforeach
 
-                   @if($count%5 != 0)
+
                      </div>
-                   @endif
+                   
                  </div>
                </div>
                <div class="col-lg-3">

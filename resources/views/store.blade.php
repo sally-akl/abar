@@ -69,14 +69,14 @@
               </div>
               <div class="col-lg-6">
                 <div class="row chara_list">
-                  @php  $count = 0; @endphp
+                  @php  $count = 1; @endphp
                   @foreach($project->specialize as $k=>$special)
                       @php  $count++; @endphp
                       @if($k == 0)
                         <div class="col-lg-6">
                       @endif
 
-                      @if($k != 0 && $k%5 == 0)
+                      @if($k != 0 && $k%6 == 0)
                          </div>
                          <div class="col-lg-6">
                       @endif
@@ -84,9 +84,9 @@
                       <div><i class="fa fa-square"></i> <span>{{$special->title}}</span></div>
                   @endforeach
 
-                  @if($count%5 != 0)
+
                     </div>
-                  @endif
+                
                 </div>
               </div>
               <div class="col-lg-3">
