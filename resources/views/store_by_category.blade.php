@@ -69,7 +69,7 @@
 
              <div class="row store_block_content">
                <div class="col-lg-3">
-                 <img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded">
+                 <a href="{{url('/')}}/project/details/{{$project->id}}/{{$project->project_name}}"> <img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded"> </a>
                </div>
                <div class="col-lg-6">
                  <div class="row chara_list">
@@ -275,7 +275,7 @@
 
 
                     </div>
-                
+
                 </div>
               </div>
               <div class="col-lg-3">

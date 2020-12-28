@@ -37,14 +37,13 @@
 <!-- start blogs section -->
 <section class="works-block no-flex" style="margin-top:10px;">
     <div class="container">
-      <div class="row">
-            <div class="col-lg-6">
-                <h3 class="main-title">ابار</h3>
+      <div class="center sm-width">
+          <h3 class="main-title">مشاريع الابار</h3>
 
-            </div>
-        </div>
+      </div>
 
-        @php $projects = \App\Project::where("project_category","ابار")->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(4)->get();   @endphp
+
+       @php $projects = \App\Project::where("project_category","ابار")->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(4)->get();   @endphp
 
        @foreach($projects as $project)
         <div class="row abar_list">
@@ -65,7 +64,7 @@
 
             <div class="row store_block_content">
               <div class="col-lg-3">
-                <img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded">
+              <a href="{{url('/')}}/project/details/{{$project->id}}/{{$project->project_name}}">  <img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded"> </a>
               </div>
               <div class="col-lg-6">
                 <div class="row chara_list">
@@ -86,7 +85,7 @@
 
 
                     </div>
-                
+
                 </div>
               </div>
               <div class="col-lg-3">
@@ -123,11 +122,10 @@
 
 
 
-      <div class="row" style="margin-top: 50px;">
-            <div class="col-lg-6">
-                <h3 class="main-title">مساجد</h3>
 
-            </div>
+        <div class="center sm-width"  style="margin-top: 50px;">
+            <h3 class="main-title">مشاريع المساجد</h3>
+
         </div>
 
         @php $projects = \App\Project::where("project_category","مساجد")->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(4)->get();   @endphp
@@ -221,11 +219,9 @@
 
         <a href="{{url('/')}}/store/category/show/مساجد" class="btn btn btn-main auto-width mt-30 center-horizontal mor_btn_projects">المزيد من مشاريع المساجد</a>
 
-        <div class="row" style="margin-top: 50px;">
-              <div class="col-lg-6">
-                  <h3 class="main-title">المراكز والمدارس</h3>
+          <div class="center sm-width"  style="margin-top: 50px;">
+              <h3 class="main-title">مشاريع المراكز والمدارس</h3>
 
-              </div>
           </div>
 
           @php $projects = \App\Project::where("project_category","مراكز ومدارس")->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(4)->get();   @endphp
@@ -248,7 +244,7 @@
 
               <div class="row store_block_content">
                 <div class="col-lg-3">
-                  <img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded">
+                  <a href="{{url('/')}}/project/details/{{$project->id}}/{{$project->project_name}}"><img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded"> </a>
                 </div>
                 <div class="col-lg-6">
                   <div class="row chara_list">
