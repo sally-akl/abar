@@ -51,7 +51,7 @@
 
             <div class="row store_block_headers">
               <div class="col-lg-3">
-                <a href="{{url('/')}}/project/details/{{$project->id}}/{{$project->project_name}}">{{$project->project_name}}</a>
+                <a href="{{url('/')}}/project/details/{{$project->id}}/{{$project->project_name}}">{{$project->project_name}} - {{$project->country->title}}</a>
               </div>
               <div class="col-lg-6" style="text-align: center;">
                 مواصفات المشروع

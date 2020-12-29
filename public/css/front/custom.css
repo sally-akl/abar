@@ -543,3 +543,6 @@
 .feature_blocks{
   margin-top:15px;
 }
+.project_block strong{
+  font-size: 12px;
+}

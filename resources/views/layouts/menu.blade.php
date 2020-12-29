@@ -39,7 +39,7 @@
                     aria-label="Toggle navigation">
                 <span class="hamburger-menu"></span>
             </button>
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" href="{{url('/')}}">
                 <img src="{{url('/')}}/img/logo.png" class="hidden-mobile lozad" alt="آبار السقاية">
                 <img src="{{url('/')}}/img/logo.png" class="only-mobile lozad" alt="آبار السقاية">
             </a>

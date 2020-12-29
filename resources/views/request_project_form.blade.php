@@ -132,10 +132,10 @@
                 </div>
                 <div class="row">
                   <div class="col-lg-12">
-                  <div><input type="radio" value="حوالة بنكية" name="payment_method" checked/><span>حوالة بنكية</span></div>
-                  <div><input type="radio" value="مدى"  name="payment_method" /><span>مدى</span></div>
-                  <div><input type="radio" value=" البطاقة الائتمانية"  name="payment_method" /><span> البطاقة الائتمانية</span></div>
-                  <div><input type="radio" value="APPLE PAY"  name="payment_method" /><span>APPLE PAY</span></div>
+                    <div><input type="radio" value="مدى"  name="payment_method" /><span>مدى</span></div>
+                    <div><input type="radio" value=" البطاقة الائتمانية"  name="payment_method" /><span> البطاقة الائتمانية</span></div>
+                    <div><input type="radio" value="حوالة بنكية" name="payment_method" checked/><span>حوالة بنكية</span></div>
+                    <div><input type="radio" value="APPLE PAY"  name="payment_method" /><span>APPLE PAY</span></div>
 
                   </div>
                 </div>

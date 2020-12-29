@@ -51,11 +51,12 @@
                   <i class="fa fa-calendar"></i>
                      فترة التنفيذ :- {{$project->from}} - {{$project->to}}  {{$project->period_type}}
                 </div>
-                <div class="project_period">
+              <!--  <div class="project_period">
                   <i class="fas fa-money-bill-wave-alt"></i>
                    عدد الطلبات المنفذة :-  {{$project->requests()->count()}}
 
                 </div>
+              -->
               </div>
             </div>
           </div>
@@ -115,7 +116,7 @@
                   </div>
                   <div class="row">
                     <div class="col-lg-12">
-                      @php $projects = \App\Project::where("project_category",$project->project_category)->where("id","!=",$project->id)->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(4)->get();    @endphp
+                      @php $projects = \App\Project::where("project_category",$project->project_category)->where("id","!=",$project->id)->where("add_to_store",1)->where("project_status","مفعل")->orderby("id","desc")->take(2)->get();    @endphp
                       @foreach($projects as $relatedproject)
                         <div class="row project_block">
                           <div class="col-lg-4">
@@ -190,9 +191,9 @@
                     <div><i class="fa fa-square"></i> <span>{{$special->title}}</span></div>
                 @endforeach
 
-                @if($count%5 != 0)
+
                   </div>
-                @endif
+
               </div>
             </div>
           </div>
