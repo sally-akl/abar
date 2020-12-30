@@ -23,7 +23,7 @@ class BannerController extends Controller
     }
     public function index()
     {
-       $banners = Banner::orderBy("id","desc")->where("user_id",Auth::user()->id)->paginate($this->pagination_num);
+       $banners = Banner::orderBy("id","desc")->paginate($this->pagination_num);
        return view('dashboard.banners.index',compact('banners'));
     }
 
@@ -66,7 +66,7 @@ class BannerController extends Controller
       $banner->banner_img = $photo_name;
       $banner->banner_size = $request->size;
       $banner->is_enable = $request->enable;
-      $banner->user_id  = Auth::user()->id;
+    //  $banner->user_id  = Auth::user()->id;
       $banner->save();
       return json_encode(array("sucess"=>true,"sucess_text"=>trans('site.add_sucessfully')));
     }

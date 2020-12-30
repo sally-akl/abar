@@ -23,7 +23,7 @@ class TextController extends Controller
     }
     public function index()
     {
-       $texts = Text::orderBy("id","desc")->where("user_id",Auth::user()->id)->paginate($this->pagination_num);
+       $texts = Text::orderBy("id","desc")->paginate($this->pagination_num);
        return view('dashboard.texts.index',compact('texts'));
     }
 
@@ -68,7 +68,7 @@ class TextController extends Controller
       $text->text_color = $request->text_color;
       $text->background_color = $request->background_color;
       $text->is_enable = $request->enable;
-      $text->user_id  = Auth::user()->id;
+      //$text->user_id  = Auth::user()->id;
       $text->save();
       return json_encode(array("sucess"=>true,"sucess_text"=>trans('site.add_sucessfully')));
     }

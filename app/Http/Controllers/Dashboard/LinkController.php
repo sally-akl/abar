@@ -23,7 +23,7 @@ class LinkController extends Controller
     }
     public function index()
     {
-       $links = Link::orderBy("id","desc")->where("user_id",Auth::user()->id)->paginate($this->pagination_num);
+       $links = Link::orderBy("id","desc")->paginate($this->pagination_num);
        return view('dashboard.links.index',compact('links'));
     }
 
@@ -60,7 +60,7 @@ class LinkController extends Controller
       $link->link = $request->link;
       $link->link_title = $request->link_title;
       $link->is_enable = $request->enable;
-      $link->user_id  = Auth::user()->id;
+      //$link->user_id  = Auth::user()->id;
       $link->save();
       return json_encode(array("sucess"=>true,"sucess_text"=>trans('site.add_sucessfully')));
     }

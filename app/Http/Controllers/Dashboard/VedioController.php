@@ -23,7 +23,7 @@ class VedioController extends Controller
     }
     public function index()
     {
-       $vedios = Vedio::orderBy("id","desc")->where("user_id",Auth::user()->id)->paginate($this->pagination_num);
+       $vedios = Vedio::orderBy("id","desc")->paginate($this->pagination_num);
        return view('dashboard.vedios.index',compact('vedios'));
     }
 
@@ -66,7 +66,7 @@ class VedioController extends Controller
       $vedio->width = $request->width;
       $vedio->height = $request->height;
       $vedio->button_txt = $request->button_txt;
-      $vedio->user_id  = Auth::user()->id;
+      //$vedio->user_id  = Auth::user()->id;
       $vedio->save();
       return json_encode(array("sucess"=>true,"sucess_text"=>trans('site.add_sucessfully')));
     }

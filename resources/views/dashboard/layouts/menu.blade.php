@@ -8,27 +8,23 @@
       </span>
     </a>
   </li>
-  <li class="nav-item {{$controller == 'DashboardController' && $action=='settings' ?'active':'' }}">
-    <a class="nav-link" href='{{url("/dashboard/settings")}}' >
+  <li class="nav-item {{ ($controller == 'CountryController' ?'active':'') || ($controller == 'DashboardController' && $action=='settings' ?'active':'')  }} dropdown">
+    <a class="nav-link dropdown-toggle" href="#navbar-base" data-toggle="dropdown" role="button" aria-expanded="false" >
       <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6-6a6 6 0 0 1 -8 -8l3.5 3.5"></path></svg>
       </span>
       <span class="nav-link-title">
         الاعدادات
       </span>
     </a>
-  </li>
-  <li class="nav-item {{$controller == 'CountryController' ?'active':'' }} dropdown">
-    <a class="nav-link dropdown-toggle" href="#navbar-base" data-toggle="dropdown" role="button" aria-expanded="false" >
-      <span class="nav-link-icon d-md-none d-lg-inline-block"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="12" cy="12" r="9"></circle><line x1="3.6" y1="9" x2="20.4" y2="9"></line><line x1="3.6" y1="15" x2="20.4" y2="15"></line><path d="M11.5 3a17 17 0 0 0 0 18"></path><path d="M12.5 3a17 17 0 0 1 0 18"></path></svg>
-      </span>
-      <span class="nav-link-title">
-        @lang('site.main_part')
-      </span>
-    </a>
     <ul class="dropdown-menu dropdown-menu-columns  dropdown-menu-columns-2">
       <li >
         <a class="dropdown-item" href='{{url("/dashboard/country")}}'>
           @lang('site.countries')
+        </a>
+      </li>
+      <li >
+        <a class="dropdown-item" href='{{url("/dashboard/settings")}}'>
+          الاعدادات
         </a>
       </li>
     </ul>
@@ -86,6 +82,37 @@
         @lang('site.marketer')
       </span>
     </a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#navbar-extra" data-toggle="dropdown" role="button" aria-expanded="false" >
+      <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="12" cy="12" r="5"></circle><path d="M12 7v-4m-1 0h2"></path><path d="M12 7v-4m-1 0h2" transform="rotate(45 12 12)"></path><path d="M12 7v-4m-1 0h2" transform="rotate(90 12 12)"></path><path d="M12 7v-4m-1 0h2" transform="rotate(135 12 12)"></path><path d="M12 7v-4m-1 0h2" transform="rotate(180 12 12)"></path><path d="M12 7v-4m-1 0h2" transform="rotate(225 12 12)"></path><path d="M12 7v-4m-1 0h2" transform="rotate(270 12 12)"></path><path d="M12 7v-4m-1 0h2" transform="rotate(315 12 12)"></path></svg>
+      </span>
+      <span class="nav-link-title">
+        @lang('site.affliate')
+      </span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-columns  dropdown-menu-columns-2">
+      <li >
+        <a class="dropdown-item" href='{{url("/dashboard/marketers/banner")}}' >
+          @lang('site.banner_ads')
+        </a>
+      </li>
+      <li >
+        <a class="dropdown-item" href='{{url("/dashboard/marketers/link")}}' >
+          @lang('site.link_ads')
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item" href='{{url("/dashboard/marketers/text")}}' >
+          @lang('site.text_ads')
+        </a>
+      </li>
+      <li >
+        <a class="dropdown-item" href='{{url("/dashboard/marketers/vedio")}}' >
+          @lang('site.vedop_ads')
+        </a>
+      </li>
+    </ul>
   </li>
   <li class="nav-item {{$controller == 'RequestsController' ?'active':'' }}">
     <a class="nav-link" href='{{url("/dashboard/requests")}}' >

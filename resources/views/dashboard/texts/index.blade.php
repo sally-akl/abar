@@ -6,15 +6,17 @@
     <img src="{{url('/')}}/img/illustrations/undraw_printing_invoices_5r4r.svg" height="128" class="mb-4"  alt="">
   </div>
   <p class="empty-title h3">@lang('site.no_result')</p>
-  <p class="empty-subtitle text-muted">
-    @lang('site.add_new_records')
-  </p>
-  <div class="empty-action">
-    <a href="#" class="btn btn-primary add_btn">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-      @lang('site.new_add')
-    </a>
-  </div>
+  @if(Auth::user()->role->name =="admin")
+    <p class="empty-subtitle text-muted">
+      @lang('site.add_new_records')
+    </p>
+    <div class="empty-action">
+      <a href="#" class="btn btn-primary add_btn">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+        @lang('site.new_add')
+      </a>
+    </div>
+  @endif
 </div>
 @else
 <div class="card">
@@ -22,12 +24,14 @@
     <h3 class="card-title">@lang('site.text_ads')</h3>
   </div>
   <div class="card-body border-bottom py-3">
-    <div class="d-flex">
-      <a href="./." class="btn btn-primary add_btn">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-        @lang('site.new_add')
-      </a>
-    </div>
+    @if(Auth::user()->role->name =="admin")
+      <div class="d-flex">
+        <a href="./." class="btn btn-primary add_btn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+          @lang('site.new_add')
+        </a>
+      </div>
+    @endif
     <div class="table-responsive">
       @include("dashboard.utility.sucess_message")
       <table class="table card-table table-vcenter text-nowrap datatable">
@@ -79,12 +83,14 @@
               @endif
             </td>
             <td class="text-right">
-              <a class='btn btn-info btn-xs edit_btn' bt-data="{{$text->id}}">
-    						<i class="far fa-edit"></i>
-    					</a>
-    					<a href="#" class="btn btn-danger btn-xs delete_btn"  bt-data="{{$text->id}}">
-    						<i class="far fa-trash-alt"></i>
-    					</a>
+              @if(Auth::user()->role->name =="admin")
+                <a class='btn btn-info btn-xs edit_btn' bt-data="{{$text->id}}">
+      						<i class="far fa-edit"></i>
+      					</a>
+      					<a href="#" class="btn btn-danger btn-xs delete_btn"  bt-data="{{$text->id}}">
+      						<i class="far fa-trash-alt"></i>
+      					</a>
+              @endif
             </td>
           </tr>
           @endforeach
