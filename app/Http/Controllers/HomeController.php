@@ -274,7 +274,7 @@ class HomeController extends Controller
       $request_customer->request_date = date("Y-m-d");
       $request_customer->request_num = $user_id."_".$this->getCode(10);
       $request_customer->request_status = "طلب";
-      $request_customer->project_status= 1;
+      $request_customer->project_status= 3;
       $request_customer->board_name = $request->name_in_board;
       $request_customer->save();
 

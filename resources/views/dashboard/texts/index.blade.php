@@ -62,6 +62,7 @@
                @lang('site.banner_enable')
             </th>
             <th></th>
+            <th>مشاركة</th>
           </tr>
         </thead>
         <tbody>
@@ -91,6 +92,13 @@
       						<i class="far fa-trash-alt"></i>
       					</a>
               @endif
+            </td>
+            <td>
+              @php  $drect_ln = $text->link."?code=".Auth::user()->mareter_code;  @endphp
+              @php  $style = "padding : 5px;white-space : pre-line;display : inline-block;line-height : 1;border : 1px solid ".$text->border_color.";color :".$text->text_color.";background-color :".$text->background_color.";font-size :".$text->text_size." px;";  @endphp
+              @php $share_text = "<span style='".$style."'><a style='display: block;color: inherit;font-size: inherit;' href=".$drect_ln.">".$text->content."</a></span>";   @endphp
+
+              <textarea type="text" onclick="this.focus();this.select()" class="code-input form-control" readonly="">{{ $share_text }}</textarea>
             </td>
           </tr>
           @endforeach

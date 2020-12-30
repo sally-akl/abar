@@ -50,6 +50,7 @@
                @lang('site.banner_enable')
             </th>
             <th></th>
+            <th>مشاركة</th>
           </tr>
         </thead>
         <tbody>
@@ -74,6 +75,12 @@
       						<i class="far fa-trash-alt"></i>
       					</a>
               @endif
+            </td>
+            <td>
+              @php  $drect_ln = $link->link."?code=".Auth::user()->mareter_code;  @endphp
+              @php $share_text = "<div><a style='display: block;font-size: 12px;'  href=".$drect_ln.">".$link->link_title."</a></div>";   @endphp
+
+              <textarea type="text" onclick="this.focus();this.select()" class="code-input form-control" readonly="">{{ $share_text }}</textarea>
             </td>
           </tr>
           @endforeach

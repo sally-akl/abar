@@ -61,6 +61,7 @@ class MarketerController extends Controller
       $user->role_id = $this->role_num;
       $user->identity_num = $request->identity_num;
       $user->mobile = $request->mobile;
+      $user->mareter_code = $this->genetateMareterCode();
       $user->save();
       return json_encode(array("sucess"=>true,"sucess_text"=>trans('site.add_sucessfully')));
     }
@@ -127,5 +128,24 @@ class MarketerController extends Controller
       $user->delete();
       Session::put('message', trans('site.delete_sucessfully'));
       return json_encode(array("sucess"=>true));
+    }
+    private  function genetateMareterCode()
+    {
+       $code  = $this->getCode();
+       $check = User::where("mareter_code",$code)->first();
+       if($check != null)
+         $this->genetateMareterCode();
+       return $code;
+    }
+    private  function getCode($length = 10)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+
     }
 }

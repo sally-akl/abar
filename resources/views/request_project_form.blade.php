@@ -189,12 +189,7 @@
                       <input id="inputHorizontalSuccess" name= "how_to_know_us"  value="{{ old('how_to_know_us') }}" placeholder="" class="form-control {{ $errors->has('how_to_know_us') ? ' is-invalid' : '' }} form-control-success" type="text">
                     </div>
                   </div>
-                  <div class="form-group row">
 
-                    <div class="col-sm-12">
-                      <input  name= "agree_to"  class="{{ $errors->has('agree_to') ? ' is-invalid' : '' }} form-control-success" type="checkbox"> <a href="" target="_blank">الموافقة على الشروط والاحكام</a>
-                    </div>
-                  </div>
                   <div class="form-group row choose_bank_transfer">
                     <div class="col-sm-6">
                       <div class="choose_bank_transfer_div"><input type="radio" value="مصرف الانماء - 68202442131000 - SA3705000068202442131000" name="bank_transfer_val" checked/> <img src="{{url('/')}}/img/anm.png" class="img-fluid">  </div>
@@ -208,6 +203,22 @@
 
                     </div>
                   </div>
+                  <div class="form-group row">
+
+                    <div class="col-sm-12">
+                      <input  name= "agree_to"  class="{{ $errors->has('agree_to') ? ' is-invalid' : '' }} form-control-success" type="checkbox"> 
+                        تصنف جميع مشاريع وخدمات آبار السقاية للمقاولات داخل المملكة العربية السعودية أو
+       خارجـهــا تحت بند المقاولات العامة لذا نأمل عند التحويل ضرورة اتباع التعليمات الواردة
+       أدناه لتفادي إرجـاع الحوالة وحـــفاظـاً على وقــتــكم:
+       يرجى اختيار شراء بضاعة أو مشتريات , و عدم عدم اختيار سبب التحويل تبرع أو خيري
+       بعد عملية التحويل يرجى ارسال صورة الإيصال أو صورة واضحة للشاشة إلى :
+       واتس آب : 00966553006174
+       او البريد الالكترونى :- {{\App\Settings::find(1)->email}}
+
+
+
+                    </div>
+                  </div>
                   <input type="hidden" name="select_payment_method" value="حوالة بنكية" />
                   <input type="hidden" name="project_type" value="{{$type}}" />
                   <input type="hidden" name="project_d" value="{{$id}}" />
@@ -215,24 +226,6 @@
                </form>
               </div>
             </div>
-
-
-            <div class="card other_details bank_transfer_div" style="margin-top:20px;">
-              <div class="card-body">
-                <p>
-                  تصنف جميع مشاريع وخدمات آبار السقاية للمقاولات داخل المملكة العربية السعودية أو
- خارجـهــا تحت بند المقاولات العامة لذا نأمل عند التحويل ضرورة اتباع التعليمات الواردة
- أدناه لتفادي إرجـاع الحوالة وحـــفاظـاً على وقــتــكم:
- يرجى اختيار شراء بضاعة أو مشتريات , و عدم عدم اختيار سبب التحويل تبرع أو خيري
- بعد عملية التحويل يرجى ارسال صورة الإيصال أو صورة واضحة للشاشة إلى :
- واتس آب : 00966553006174
- او البريد الالكترونى :- {{\App\Settings::find(1)->email}}
-
-
-                </p>
-              </div>
-            </div>
-
 
 
           </div>

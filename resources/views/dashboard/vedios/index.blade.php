@@ -59,6 +59,7 @@
                @lang('site.banner_enable')
             </th>
             <th></th>
+            <th>مشاركة</th>
           </tr>
         </thead>
         <tbody>
@@ -86,6 +87,17 @@
       						<i class="far fa-trash-alt"></i>
       					</a>
               @endif
+            </td>
+            <td>
+              @php  $drect_ln = $vedio->link."?code=".Auth::user()->mareter_code;  @endphp
+              @php
+
+                   $wdth =  $vedio->width." px";
+                   $share_text = "<iframe class='dt-youtube' width=".$wdth." height=".$vedio->height." px src=".$vedio->vedio_link." frameborder='0' allow='fullscreen' allowfullscreen></iframe>";
+                   $share_text .= "<div style='display:table;clear:both;'></div><br>";
+                   $share_text .="<a style='-moz-box-shadow:inset 0 1px 0 0 #fff;-webkit-box-shadow:inset 0 1px 0 0 #fff;box-shadow:inset 0 1px 0 0 #fff;background:-webkit-gradient(linear,left top,left bottom,color-stop(.05,#f9f9f9),color-stop(1,#e9e9e9));background:-moz-linear-gradient(top,#f9f9f9 5%,#e9e9e9 100%);background:-webkit-linear-gradient(top,#f9f9f9 5%,#e9e9e9 100%);background:-o-linear-gradient(top,#f9f9f9 5%,#e9e9e9 100%);background:-ms-linear-gradient(top,#f9f9f9 5%,#e9e9e9 100%);background:linear-gradient(to bottom,#f9f9f9 5%,#e9e9e9 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9', GradientType=0);background-color:#f9f9f9;-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;border:1px solid #dcdcdc;display:inline-block;cursor:pointer;color:#666;font-family:Arial;font-size:15px;font-weight:700;padding:6px 24px;text-decoration:none;text-shadow:0 1px 0 #fff' href=".$drect_ln.">".$vedio->button_txt."</a>";
+               @endphp
+              <textarea type="text" onclick="this.focus();this.select()" class="code-input form-control" readonly="">{{ $share_text }}</textarea>
             </td>
           </tr>
           @endforeach
