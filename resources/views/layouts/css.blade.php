@@ -32,6 +32,15 @@
 <meta property="og:image"  content="" />
 
 
+@if(Auth::user())
+  @if(Auth::user()->role->name=="customer")
+  <link href="{{ asset('css/tabler2.min.css') }}" rel="stylesheet"/>
+  <link href="{{ asset('css/demo.min.css') }}" rel="stylesheet"/>
+  <link href="{{ asset('css/custom.css') }}" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ asset('css/fonts/fontawesome/css/fontawesome-all.css') }}">
+  <link href="{{ asset('css/spectrum.css') }}" rel="stylesheet"/>
+  @endif
+@endif
 
 <!-- Main CSS File -->
 <link rel="stylesheet" href="{{ asset('css/front/main.css') }}">
@@ -40,6 +49,7 @@
 <link href="{{ asset('js/front/lib/animate/animate.min.css') }}" rel="stylesheet">
 <link href="{{ asset('js/front/lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-likes/dist/social-likes_flat.css">
+
 
 <title>آبار السقاية </title>
 <link rel="shortcut icon" href="" type="image/x-icon" />
