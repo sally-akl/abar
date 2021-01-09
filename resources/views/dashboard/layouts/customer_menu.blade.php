@@ -8,7 +8,7 @@
       </span>
     </a>
   </li>
-  <li class="nav-item {{$controller == 'ProjectController' && $action=='customerFavProjects' ?'active':'' }} dropdown">
+  <li class="nav-item  dropdown">
     <a class="nav-link dropdown-toggle" href="#navbar-extra" data-toggle="dropdown" role="button" aria-expanded="false" >
       <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M12 17.75l-6.172 3.245 1.179-6.873-4.993-4.867 6.9-1.002L12 2l3.086 6.253 6.9 1.002-4.993 4.867 1.179 6.873z" /></svg>
       </span>
@@ -24,7 +24,7 @@
       </li>
     </ul>
   </li>
-  <li class="nav-item {{$controller == 'CustomerController' ?'active':'' }}">
+  <li class="nav-item">
     <a class="nav-link" href='{{url("/dashboard/customers")}}' >
       <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="8.5" cy="7" r="4"></circle><path d="M2 21v-2a4 4 0 0 1 4 -4h5a4 4 0 0 1 4 4v2"></path><path d="M16 11l2 2l4 -4"></path></svg>
       </span>
@@ -33,7 +33,7 @@
       </span>
     </a>
   </li>
-  <li class="nav-item {{$controller == 'ProjectController' && $action=='customerprojects' ?'active':'' }}">
+  <li class="nav-item">
     <a class="nav-link" href='{{url("/dashboard/customers/projects")}}' >
       <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="8.5" cy="7" r="4"></circle><path d="M2 21v-2a4 4 0 0 1 4 -4h5a4 4 0 0 1 4 4v2"></path><path d="M16 11l2 2l4 -4"></path></svg>
       </span>

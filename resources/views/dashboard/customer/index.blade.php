@@ -62,6 +62,9 @@
     					<a href="#" class="btn btn-danger btn-xs delete_btn"  bt-data="{{$user->id}}">
     						<i class="far fa-trash-alt"></i>
     					</a>
+              <a class='btn btn-info btn-xs send_email_btn' bt-data="{{$user->id}}" style="color:#fff;">
+    						@lang("site.send_email")
+    					</a>
             </td>
           </tr>
           @endforeach
@@ -141,6 +144,56 @@
             @lang('site.cancel')
           </a>
           <button type="submit" class="btn btn-primary">+ {{ __('site.save') }} </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal modal-blur fade" id="email_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">@lang('site.send_email')</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+        </button>
+      </div>
+      <div class="alert alert-danger alert-danger-modal" style="display:none">
+
+      </div>
+      <div class="alert alert-success alert-success-modal" style="display:none">
+
+      </div>
+      <form method="POST" action="{{ url('dashboard/marketers/send/email') }}" class="form_submit_emal_model">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="mb-3">
+                <label class="form-label">@lang('site.subject')</label>
+                <input type="text" class="form-control" name="subject" >
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="mb-3">
+                <label class="form-label">@lang('site.email')</label>
+                <input type="text" class="form-control" name="email" value="{{Auth::user()->email}}">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+                <label class="form-label">@lang('site.message')</label>
+                <textarea class="form-control message" rows="3" name="message"></textarea>
+            </div>
+          </div>
+          <input type="hidden" name="customer_val" value="0" />
+          <input type="hidden" name="method_type" value="add" />
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-dismiss="modal">
+            @lang('site.cancel')
+          </a>
+          <button type="submit" class="btn btn-primary">{{ __('site.send') }} </button>
         </div>
       </form>
     </div>
@@ -277,6 +330,40 @@
               window.location.href = '{{url("/dashboard/customer")}}';
             }
     }});
+  });
+  $(".form_submit_emal_model").submit(function(e){
+
+      e.preventDefault();
+      var submit_form_url = $(this).attr('action');
+      var $method_is = "POST";
+      var formData = new FormData($(this)[0]);
+      $(".alert-success-modal").css("display","none");
+      $(".alert-danger-modal").css("display","none");
+
+        $.ajax({
+                  url: submit_form_url,
+                  type: $method_is,
+                  data: formData,
+                  async: false,
+                  dataType: 'json',
+                  success: function (response) {
+                    _sucess(response);
+                  },
+                error : function( data )
+                {
+
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+        });
+
+        return false;
+  });
+  $(".send_email_btn").on("click",function(){
+    var val = $(this).attr("bt-data");
+    $("input[name='customer_val']").val(val);
+    $('#email_modal').modal('show');
   });
 </script>
 @endsection

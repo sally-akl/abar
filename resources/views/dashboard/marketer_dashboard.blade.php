@@ -5,11 +5,9 @@
   <div class="row align-items-center">
     <div class="col-auto">
       <!-- Page pre-title -->
-      <div class="page-pretitle">
 
-      </div>
       <h2 class="page-title">
-          لوحة التحكم
+        لوحة التحكم
       </h2>
     </div>
     <!-- Page title actions -->
@@ -23,137 +21,26 @@
     <div class="card">
       <div class="card-body">
         <div class="d-flex align-items-center">
-          <div class="subheader">عدد العملاء</div>
-        </div>
-        @php  $customers_count = \App\User::where("role_id",2)->count(); @endphp
-        <div class="h1 mb-3">{{$customers_count}}</div>
-        <div class="progress progress-sm">
-          <div class="progress-bar bg-blue" style="width: {{$customers_count}}%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <span class="sr-only">{{$customers_count}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-lg-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div class="subheader">عدد المسوقين</div>
-        </div>
-        @php  $maret_count  = \App\User::where("role_id",3)->count();  @endphp
-        <div class="h1 mb-3">{{$maret_count}}</div>
-        <div class="progress progress-sm">
-          <div class="progress-bar bg-blue" style="width: {{$maret_count}}%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <span class="sr-only">{{$maret_count}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-lg-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div class="subheader">عدد المشاريع الجديدة</div>
-        </div>
-        @php  $pendng_project = \App\Project::join("requests","requests.project_id","projects.id")->where("requests.project_status",3)->count();   @endphp
-        <div class="h1 mb-3">{{$pendng_project}}</div>
-        <div class="progress progress-sm">
-          <div class="progress-bar bg-blue" style="width: {{$pendng_project}}%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <span class="sr-only">{{$pendng_project}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-lg-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div class="subheader">عدد المشاريع قيد التنفيذ</div>
-        </div>
-        @php  $under_project = \App\Project::join("requests","requests.project_id","projects.id")->where("requests.project_status",1)->count();
-
-           @endphp
-        <div class="h1 mb-3">{{$under_project}}</div>
-        <div class="progress progress-sm">
-          <div class="progress-bar bg-blue" style="width: {{$under_project}}%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <span class="sr-only">{{$under_project}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-lg-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div class="subheader">عدد المشاريع المسلمة</div>
-        </div>
-        @php  $done_project = \App\Project::join("requests","requests.project_id","projects.id")->where("requests.project_status",2)->count();   @endphp
-        <div class="h1 mb-3">{{$done_project}}</div>
-        <div class="progress progress-sm">
-          <div class="progress-bar bg-blue" style="width: {{$done_project}}%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <span class="sr-only">{{$done_project}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-lg-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div class="subheader">عدد الطلبات</div>
-        </div>
-        @php  $request_numbers = \App\CustomerRequests::count();   @endphp
-        <div class="h1 mb-3">{{$request_numbers}}</div>
-        <div class="progress progress-sm">
-          <div class="progress-bar bg-blue" style="width: {{$request_numbers}}%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <span class="sr-only">{{$request_numbers}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-lg-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div class="subheader">عدد المسوقين المؤثرين</div>
-        </div>
-          @php $most_mareters =  \App\Transactions::selectraw("sum(amount) as user_count , mareter_code")->where("is_payable",1)->groupby("mareter_code")->count(); @endphp
-        <div class="h1 mb-3">{{$most_mareters}}</div>
-        <div class="progress progress-sm">
-          <div class="progress-bar bg-blue" style="width: {{$most_mareters}}%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <span class="sr-only">{{$most_mareters}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-lg-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
           <div class="subheader">مبيعات الشهر</div>
+          @php
+            $sales_ths_month_sum = \App\Transactions::where("mareter_code",Auth::user()->mareter_code)->where("is_payable",1)->whereraw("month(transfer_date) = ".date("n")." and year(transfer_date)= ".date("Y"))->sum("amount");
+            $sales_last_month_sum  = \App\Transactions::where("mareter_code",Auth::user()->mareter_code)->where("is_payable",1)->whereraw("month(transfer_date) = ".date('n', strtotime('-1 month'))." and year(transfer_date)= ".date("Y"))->sum("amount");
+            $sales_sum_chart   = [$sales_ths_month_sum , $sales_last_month_sum];
+          @endphp
+
         </div>
-          @php $sales_ths_month =  \App\Transactions::where("is_payable",1)->whereraw("month(transfer_date) = ".date("n")." and year(transfer_date)= ".date("Y"))->sum("amount"); @endphp
-        <div class="h1 mb-3">{{$sales_ths_month}}</div>
-        <div class="progress progress-sm">
-          <div class="progress-bar bg-blue" style="width: {{$sales_ths_month}}%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <span class="sr-only">{{$sales_ths_month}}</span>
-          </div>
-        </div>
+        <div class="h1 mb-3">{{$sales_ths_month_sum}}</div>
+        <div id="chart-total-sales"></div>
       </div>
     </div>
   </div>
-  <div class="col-lg-12">
+
+
+  <div class="col-lg-9">
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">عدد مبيعات الشهر</h3>
-        @php  $traner_month_days = \App\Transactions::selectraw("transfer_date")->where("is_payable",1)->whereraw("month(transfer_date) = ".date("n")." and year(transfer_date)= ".date("Y"))->get();
+        @php  $traner_month_days = \App\Transactions::selectraw("transfer_date")->where("mareter_code",Auth::user()->mareter_code)->where("is_payable",1)->whereraw("month(transfer_date) = ".date("n")." and year(transfer_date)= ".date("Y"))->get();
             $tr_month_days = [];
             foreach($traner_month_days as $month_day)
             {
@@ -162,12 +49,13 @@
             }
 
       @endphp
-      @php $query_users_month_count =  \App\Transactions::selectraw("count(id) as user_count , transfer_date")->where("is_payable",1)->whereraw("month(transfer_date) = ".date("n")." and year(transfer_date)= ".date("Y"))->groupby("transfer_date")->get();
+      @php $query_users_month_count =  \App\Transactions::selectraw("count(id) as user_count , transfer_date")->where("mareter_code",Auth::user()->mareter_code)->where("is_payable",1)->whereraw("month(transfer_date) = ".date("n")." and year(transfer_date)= ".date("Y"))->groupby("transfer_date")->get();
            $trs_month_count = array();
            $trs_months_year  = array();
            foreach($query_users_month_count as $u_count)
            {
               $trs_month_count[] = $u_count->user_count;
+              $trs_months_year[] = date("m",strtotime($u_count->transfer_date)) ;
            }
 
       @endphp
@@ -175,129 +63,144 @@
       </div>
     </div>
   </div>
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">عدد مبيعات السنة</h3>
+
+        <div id="chart-year-overview" class="chart-lg"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
   <div class="col-md-6 col-lg-12">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">المشاريع الاكثر طلبا</h4>
+        <h4 class="card-title">عملائك </h4>
       </div>
       <div class="table-responsive">
-          @php  $more_reqested_projects = \App\Project::selectRaw("projects.project_name,projects.project_photo,projects.id,projects.category_id,projects.project_category,count(requests.project_id) as project_count")->join("requests","requests.project_id","projects.id")->where("projects.project_status","مفعل")->orderBy("project_count","desc")->groupby("projects.project_name","projects.project_photo","projects.id","projects.category_id","projects.project_category")->get();  @endphp
+        @php $your_customers = \App\Transactions::selectraw("name")->join("requests","requests.id","transactions.request_id")->join("users","requests.user_id","users.id")->where("transactions.mareter_code",Auth::user()->mareter_code)->get();   @endphp
         <table class="table card-table table-vcenter">
           <thead>
             <tr>
+              <th>اسم العميل</th>
+
+            </tr>
+          </thead>
+          @foreach($your_customers as $customer)
+            <tr>
+              <td>
+                {{$customer->name}}
+              </td>
+            </tr>
+          @endforeach
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">مشاريع العملاء الخاصيين بك </h4>
+      </div>
+      <div class="table-responsive">
+        @php $projects = \App\Project::selectRaw("projects.*,requests.project_status,requests.user_id,requests.id as related_request_id")->join("requests","requests.project_id","projects.id")->join("transactions","requests.id","transactions.request_id")->orderBy("projects.id","desc")->where("transactions.mareter_code",Auth::user()->mareter_code)->take(5)->get();   @endphp
+        <table class="table card-table table-vcenter">
+          <thead>
+            <tr>
+              <th>
+                 @lang('site.project_num')
+              </th>
               <th>
                  @lang('site.proj_name')
               </th>
               <th>
                  @lang('site.project_category')
               </th>
-              <th>
-                عدد الطلبات
-              </th>
-            </tr>
-          </thead>
-          @foreach ($more_reqested_projects as $key => $project )
-           <tr>
-            <td>{{$project->project_name}}</td>
-            <td><span class="badge bg-indigo">{{$project->project_category}}</span></td>
-            <td>{{$project->project_count}}</td>
-          </tr>
-          @endforeach
-        </table>
-      </div>
-    </div>
-  </div>
+               <th>
+                  @lang('site.exist_in_store')
+               </th>
+               <th>
+                  @lang('site.price')
+               </th>
+               <th>
+                  @lang('site.under_country')
+               </th>
+               <th>
+                  @lang('site.project_staus')
+               </th>
+               <th>
+                  @lang('site.which_customer')
+               </th>
 
-  <div class="col-md-6 col-lg-8">
-    <div class="card">
-      <div class="card-header">
-        <h4 class="card-title">الطلبات الجديدة</h4>
-      </div>
-      <div class="table-responsive">
-        @php  $customer_requests = \App\CustomerRequests::orderBy("id","desc")->take(5)->get();  @endphp
-        <table class="table card-table table-vcenter">
-          <thead>
-            <tr>
-              <th>
-                 @lang('site.request_num')
-              </th>
-              <th>
-                 @lang('site.which_customer')
-              </th>
-              <th>
-                 @lang('site.which_project')
-              </th>
-              <th>
-                 @lang('site.request_date')
-              </th>
-              <th>@lang('site.request_status')</th>
-              <th>
-                @lang('site.project_staus')
-              </th>
-              <th></th>
             </tr>
           </thead>
-          @foreach ($customer_requests as $key => $crequest)
+          @foreach ($projects as $key => $project)
         <tr>
-          <td>{{$crequest->request_num}}</td>
-          <td>
-            @if($crequest->customer != null)
-             <span>{{$crequest->customer->name}}</span>
-            @endif
-          </td>
-          <td>
-            @if($crequest->project != null)
-              <span>{{$crequest->project->project_num }}</span>
-            @endif
-          </td>
-          <td>{{$crequest->request_date}}</td>
-          <td>{{$crequest->request_status}}</td>
-            <td>
-            @if($crequest->project_status == 3)
-              <span>@lang('site.new')</span>
-            @elseif($crequest->project_status == 1)
-              <span>@lang('site.under_work')</span>
-            @elseif($crequest->project_status == 2)
-              <span>@lang('site.done_ok')</span>
-
-            @endif
-           </td>
+          <td>{{$project->project_num }}</td>
+          <td>{{$project->project_name}}</td>
+          <td><span class="badge bg-indigo">{{$project->project_category}}</span></td>
+          @if($project->add_to_store == 0)
+            <td><span class="badge bg-red">@lang('site.no')</span>    </td>
+          @else
+            <td> <span class="badge bg-green"> @lang('site.yes')</span>    </td>
+          @endif
+          <td>{{$project->first_price}}</td>
+          <td>{{$project->country->title}}</td>
+          @if($project->project_status == 1)
+            <td>@lang('site.under_work')</td>
+          @elseif($project->project_status == 2)
+            <td>@lang('site.done_ok')</td>
+          @else
+            <td></td>
+          @endif
+          <td>{{\App\User::find($project->user_id)->name}}</td>
 
         </tr>
         @endforeach
+
         </table>
       </div>
     </div>
   </div>
 
   <div class="col-md-6 col-lg-4">
-    <div class="card">
-      <div class="card-header">
-        <h4 class="card-title">اكثر المسوقين المؤثرين</h4>
-      </div>
-        @php $most_mareters =  \App\Transactions::selectraw("sum(amount) as user_count , name")->join("users","users.mareter_code","transactions.mareter_code")->where("is_payable",1)->groupby("name")->orderby("user_count","desc")->get(); @endphp
-      <table class="table card-table table-vcenter">
-        <thead>
-          <tr>
-            <th>الاسم</th>
-            <th>القيمة</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($most_mareters as $mareter)
-          <tr>
-            <td>{{$mareter->name}}</td>
-            <td>{{$mareter->user_count}}</td>
-          </tr>
-          @endforeach
-
-
-
-
-        </tbody>
-      </table>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">مبيعات الاشهر</h4>
     </div>
+
+    @php $sales_years =  \App\Transactions::selectraw("sum(amount) as user_count , transfer_date")->where("mareter_code",Auth::user()->mareter_code)->where("is_payable",1)->whereraw("year(transfer_date)= ".date("Y"))->groupby("transfer_date")->get();
+
+
+    @endphp
+
+    <table class="table card-table table-vcenter">
+      <thead>
+        <tr>
+          <th>الشهر</th>
+          <th>القيمة</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($sales_years as $t)
+        <tr>
+          <td>{{date("m",strtotime($t->transfer_date))}}</td>
+          <td>{{$t->user_count}}</td>
+
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
   </div>
+</div>
+
 </div>
 @endsection
 @section('footerjscontent')
@@ -363,7 +266,98 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   })).render();
 });
+document.addEventListener("DOMContentLoaded", function () {
+  window.ApexCharts && (new ApexCharts(document.getElementById('chart-year-overview'), {
+    chart: {
+      type: "bar",
+      fontFamily: 'inherit',
+      height: 320,
+      parentHeightOffset: 0,
+      toolbar: {
+        show: false,
+      },
+      animations: {
+        enabled: false
+      },
+    },
+    plotOptions: {
+      bar: {
+        columnWidth: '50%',
+      }
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    fill: {
+      opacity: 1,
+    },
+    series: [{
+      name: "Sales",
+      data: {!! json_encode($trs_month_count) !!}
+    }],
+    grid: {
+      padding: {
+        top: -20,
+        right: 0,
+        left: -4,
+        bottom: -4
+      },
+      strokeDashArray: 4,
+    },
+    xaxis: {
+      labels: {
+        padding: 0
+      },
+      tooltip: {
+        enabled: false
+      },
+      axisBorder: {
+        show: false,
+      },
+      categories:  {!! json_encode($trs_months_year) !!} ,
+    },
+    yaxis: {
+      labels: {
+        padding: 4
+      },
+    },
+    colors: ["#206bc4"],
+    legend: {
+      show: false,
+    },
+  })).render();
+});
 
+document.addEventListener("DOMContentLoaded", function () {
+  window.ApexCharts && (new ApexCharts(document.getElementById('chart-total-sales'), {
+    chart: {
+      type: "donut",
+      fontFamily: 'inherit',
+      height: 240,
+      sparkline: {
+        enabled: true
+      },
+      animations: {
+        enabled: false
+      },
+    },
+    fill: {
+      opacity: 1,
+    },
+    series: {!! json_encode($sales_sum_chart) !!},
+    labels: ["هذا الشهر", "الشهر السابق"],
+    grid: {
+      strokeDashArray: 4,
+    },
+    colors: ["#206bc4", "#79a6dc"],
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      fillSeriesColor: false
+    },
+  })).render();
+});
   // @formatter:off
   document.addEventListener("DOMContentLoaded", function () {
     window.ApexCharts && (new ApexCharts(document.getElementById('chart-revenue-bg'), {
@@ -548,92 +542,85 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
   // @formatter:off
   document.addEventListener("DOMContentLoaded", function () {
-    window.ApexCharts && (new ApexCharts(document.getElementById('chart-mentions'), {
-      chart: {
-        type: "bar",
-        fontFamily: 'inherit',
-        height: 240,
-        parentHeightOffset: 0,
-        toolbar: {
-          show: false,
+      window.ApexCharts && (new ApexCharts(document.getElementById('chart-mentions'), {
+        chart: {
+          type: "bar",
+          fontFamily: 'inherit',
+          height: 240,
+          parentHeightOffset: 0,
+          toolbar: {
+            show: false,
+          },
+          animations: {
+            enabled: false
+          },
+          stacked: true,
         },
-        animations: {
-          enabled: false
-        },
-        stacked: true,
-      },
-      plotOptions: {
-        bar: {
-          columnWidth: '50%',
-        }
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      fill: {
-        opacity: 1,
-      },
-      series: [{
-        name: "Web",
-        data: [1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 2, 12, 5, 8, 22, 6, 8, 6, 4, 1, 8, 24, 29, 51, 40, 47, 23, 26, 50, 26, 41, 22, 46, 47, 81, 46, 6]
-      },{
-        name: "Social",
-        data: [2, 5, 4, 3, 3, 1, 4, 7, 5, 1, 2, 5, 3, 2, 6, 7, 7, 1, 5, 5, 2, 12, 4, 6, 18, 3, 5, 2, 13, 15, 20, 47, 18, 15, 11, 10, 0]
-      },{
-        name: "Other",
-        data: [2, 9, 1, 7, 8, 3, 6, 5, 5, 4, 6, 4, 1, 9, 3, 6, 7, 5, 2, 8, 4, 9, 1, 2, 6, 7, 5, 1, 8, 3, 2, 3, 4, 9, 7, 1, 6]
-      }],
-      grid: {
-        padding: {
-          top: -20,
-          right: 0,
-          left: -4,
-          bottom: -4
-        },
-        strokeDashArray: 4,
-        xaxis: {
-          lines: {
-            show: true
+        plotOptions: {
+          bar: {
+            columnWidth: '50%',
           }
         },
-      },
-      xaxis: {
-        labels: {
-          padding: 0
+        dataLabels: {
+          enabled: false,
         },
-        tooltip: {
-          enabled: false
+        fill: {
+          opacity: 1,
         },
-        axisBorder: {
-          show: false,
+        series: [{
+          name: "Sales",
+          data: {!!  json_encode($trs_month_count) !!}
+        }
+        ],
+        grid: {
+          padding: {
+            top: -20,
+            right: 0,
+            left: -4,
+            bottom: -4
+          },
+          strokeDashArray: 4,
+          xaxis: {
+            lines: {
+              show: true
+            }
+          },
         },
-        type: 'datetime',
-      },
-      yaxis: {
-        labels: {
-          padding: 4
+        xaxis: {
+          labels: {
+            padding: 0
+          },
+          tooltip: {
+            enabled: false
+          },
+          axisBorder: {
+            show: false,
+          },
+          type: 'datetime',
         },
-      },
-      labels: [
-        '2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19', '2020-07-20', '2020-07-21', '2020-07-22', '2020-07-23', '2020-07-24', '2020-07-25', '2020-07-26'
-      ],
-      colors: ["#206bc4", "#79a6dc", "#bfe399"],
-      legend: {
-        show: true,
-        position: 'bottom',
-        height: 32,
-        offsetY: 8,
-        markers: {
-          width: 8,
-          height: 8,
-          radius: 100,
+        yaxis: {
+          labels: {
+            padding: 4
+          },
         },
-        itemMargin: {
-          horizontal: 8,
+        labels: {!! json_encode($tr_month_days)  !!},
+        colors: ["#206bc4"],
+        legend: {
+          show: true,
+          position: 'bottom',
+          height: 32,
+          offsetY: 8,
+          markers: {
+            width: 8,
+            height: 8,
+            radius: 100,
+          },
+          itemMargin: {
+            horizontal: 8,
+          },
         },
-      },
-    })).render();
-  });
+      })).render();
+    });
   // @formatter:on
 </script>
 <script>

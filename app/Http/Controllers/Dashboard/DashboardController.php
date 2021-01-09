@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class DashboardController extends Controller
@@ -25,7 +26,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
+      if(Auth::user()->role->name=="admin")
         return view('dashboard.home');
+      else if(Auth::user()->role->name=="marketer")
+        return view('dashboard.marketer_dashboard');
     }
     public function settings(Request $request)
     {

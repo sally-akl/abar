@@ -53,7 +53,7 @@
                {{ method_field('PUT') }}
                @csrf
                <select name="project_status" class="form-control">
-                 <option value="0" {{$crequest->project_status == 0?"selected":""}}>@lang('site.new')</option>
+                 <option value="3" {{$crequest->project_status == 3?"selected":""}}>@lang('site.new')</option>
                  <option value="1" {{$crequest->project_status == 1?"selected":""}}>@lang('site.under_work')</option>
                  <option value="2" {{$crequest->project_status == 2?"selected":""}}>@lang('site.done_ok') </option>
                </select>

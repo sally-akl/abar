@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar"  dir="rtl" >
-
 <head>
   @include('layouts.css')
 </head>
@@ -17,5 +16,4 @@
   @include('layouts.js')
 @yield('footerjscontent')
 </body>
-
 </html>

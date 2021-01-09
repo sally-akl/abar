@@ -290,6 +290,8 @@ class HomeController extends Controller
       $transaction->bank_name = $bank_values[0];
       $transaction->bank_account_number =$bank_values[1];
       $transaction->bank_ibn =$bank_values[2];
+      if(Session::get('market_code') != null)
+         $transaction->mareter_code = Session::get('market_code');
       $transaction->save();
       return  json_encode(array("sucess"=>true));
     }
