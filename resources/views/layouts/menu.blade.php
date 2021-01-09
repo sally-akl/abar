@@ -61,13 +61,17 @@
                  @guest
                   <a href="{{url('/')}}/auth-customer" class="btn btn-transparent btn-borderd">تسجيل الدخول / التسجيل</a>
                  @else
-                   <a href="{{url('/')}}/dashboard" target="_blank" class="btn btn-transparent btn-borderd name_login">{{ Auth::user()->name }}</a>
+                 @if(Auth::user()->role->name=="customer")
+                   <a href="{{url('/')}}/dashboard/customers/projects/favorate" target="_blank" class="btn btn-transparent btn-borderd name_login">{{ Auth::user()->name }}</a>
                    <a href="{{ route('logout') }}"
                       onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();" class="btn btn-transparent btn-borderd">تسجيل الخروج</a>
                     <form id="logout-form" action="{{ url('/') }}/signout" method="POST" style="display: none;">
                       @csrf
                     </form>
+
+                 @endif
+
                  @endguest
             </div>
         </div>

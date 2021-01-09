@@ -39,6 +39,7 @@
 <link href="{{ asset('js/front/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 <link href="{{ asset('js/front/lib/animate/animate.min.css') }}" rel="stylesheet">
 <link href="{{ asset('js/front/lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-likes/dist/social-likes_flat.css">
 
 <title>آبار السقاية </title>
 <link rel="shortcut icon" href="" type="image/x-icon" />
