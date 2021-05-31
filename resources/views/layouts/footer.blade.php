@@ -5,7 +5,7 @@
             <div class="col-md-4 col-lg-4">
                 <div class="single-col">
                     <div class="header-col" style="height:100px;">
-                        <img src="{{url('/')}}/img/logo.png" alt="tahaqom" class="img-fluid lozad">
+                        <img src="{{url('/')}}/img/logo.jpg" alt="tahaqom" class="img-fluid lozad">
                     </div>
                     <ul class="list-unstyled">
                         <li class="footer-link">
@@ -54,7 +54,7 @@
                             <span class="icon"><i class="fa fa-chevron-left"></i></span>
                             <a href="{{url('/')}}/questions" class="link">اسئلة شائعة</a>
                         </li>
-                      
+
                         <li class="footer-link">
                             <span class="icon"><i class="fa fa-chevron-left"></i></span>
                             <a href="" class="link">سياسة الخصوصية</a>
@@ -133,7 +133,7 @@
 
 <div class="side-panel-menu">
     <a class="logo logo-side-panel" href="">
-        <img src="img/logo.png" class="lozad" alt="">
+        <img src="img/logo.jpg" class="lozad" alt="">
     </a><!-- .logo end -->
     <div class="mobile-side-panel-menu">
         <ul id="menu-mobile" class="menu-mobile">

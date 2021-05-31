@@ -64,6 +64,103 @@
         <div class="row">
           <div class="col-lg-8">
             <img src="{{url('/')}}{{$project->project_photo}}" alt="" class="img-fluid rounded">
+              @if($project->project_category == "ابار" || $project->project_category == "مراكز ومدارس")
+
+                <div class="additional_details">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <h4>مواصفات المشروع</h4>
+                    </div>
+                  </div>
+                  <div class="row chara_list">
+                    @php  $count = 0; @endphp
+                    @foreach($project->specialize as $k=>$special)
+                        @php  $count++; @endphp
+                        @if($k == 0)
+                          <div class="col-lg-6">
+                        @endif
+
+                        @if($k != 0 && $k%5 == 0)
+                           </div>
+                           <div class="col-lg-6">
+                        @endif
+
+                        <div><i class="fa fa-square"></i> <span>{{$special->title}}</span></div>
+                    @endforeach
+
+
+                      </div>
+
+                  </div>
+                </div>
+
+              @else
+
+              <div class="additional_details">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h4>انواع المساجد للطلب</h4>
+                  </div>
+                </div>
+              <div class="row">
+
+                @foreach($project->extracharacters as $extra )
+                 <div class="col-lg-2 col-sm-2 msg_details_sm">
+                    <div>{{$extra->project_details}}</div>
+                  </div>
+
+                  <div class="col-lg-2 col-sm-2 msg_details_sm">
+                    <div>{{$extra->prayer_num}}</div>
+                  </div>
+
+                  <div class="col-lg-2 col-sm-2 msg_details_sm">
+                    <div>{{$extra->ceil_type}}</div>
+                  </div>
+
+                  <div class="col-lg-2 col-sm-2 msg_details_sm">
+                    <div>{{$extra->area}}</div>
+                  </div>
+                  <div class="col-lg-2 col-sm-2 msg_details_sm">
+                     <div><i class="fas fa-money-bill-wave"></i> {{$extra->price}}</div>
+                  </div>
+                  @if($project->is_require_for_request == 1)
+                  <div class="col-lg-2 col-sm-2 msg_details_sm">
+                    <div> <a href="{{url('/')}}/project/request/{{$project->project_category}}/{{$extra->id}}">  طلب المشروع  </a></div>
+                  </div>
+
+                  @endif
+
+                @endforeach
+
+              </div>
+            </div>
+            <div class="additional_details">
+              <div class="row">
+                <div class="col-lg-12">
+                  <h4>مواصفات المشروع</h4>
+                </div>
+              </div>
+              <div class="row chara_list">
+                <div class="col-lg-12">
+                  <p>{{$project->details}}</p>
+                </div>
+
+              </div>
+            </div>
+            @endif
+
+            @if($project->project_category == "ابار" || $project->project_category == "مراكز ومدارس")
+            <div class="row" style="margin-top:20px;">
+              <div class="col-lg-2">
+                @if($project->is_require_for_request == 1)
+                <a href="{{url('/')}}/project/request/{{$project->project_category}}/{{$project->id}}" class="btn  btn-block">
+                          اطلب
+                          </a>
+                @endif
+              </div>
+            </div>
+
+            @endif
           </div>
           <div class="col-lg-4">
             <div class="card other_details">
@@ -165,151 +262,8 @@
 
         </div>
 
-        @if($project->project_category == "ابار" || $project->project_category == "مراكز ومدارس")
-
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="additional_details">
-              <div class="row">
-                <div class="col-lg-12">
-                  <h4>مواصفات المشروع</h4>
-                </div>
-              </div>
-              <div class="row chara_list">
-                @php  $count = 0; @endphp
-                @foreach($project->specialize as $k=>$special)
-                    @php  $count++; @endphp
-                    @if($k == 0)
-                      <div class="col-lg-6">
-                    @endif
-
-                    @if($k != 0 && $k%5 == 0)
-                       </div>
-                       <div class="col-lg-6">
-                    @endif
-
-                    <div><i class="fa fa-square"></i> <span>{{$special->title}}</span></div>
-                @endforeach
 
 
-                  </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        @else
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="additional_details">
-              <div class="row">
-                <div class="col-lg-12">
-                  <h4>انواع المساجد للطلب</h4>
-                </div>
-              </div>
-            <div class="row">
-
-              <div class="col-lg-2">
-                <div class="row">
-                  <div class="col-lg-12 msg_details_sm">
-                    @foreach($project->extracharacters as $extra )
-                    <div>{{$extra->project_details}}</div>
-                    @endforeach
-                  </div>
-                </div>
-
-              </div>
-              <div class="col-lg-2">
-                <div class="row">
-                  <div class="col-lg-12 msg_details_sm">
-                    @foreach($project->extracharacters as $extra )
-                    <div>{{$extra->prayer_num}}</div>
-                    @endforeach
-                  </div>
-                </div>
-
-              </div>
-              <div class="col-lg-2">
-                <div class="row">
-                  <div class="col-lg-12 msg_details_sm">
-                    @foreach($project->extracharacters as $extra )
-                    <div>{{$extra->ceil_type}}</div>
-                    @endforeach
-                  </div>
-                </div>
-
-              </div>
-              <div class="col-lg-2">
-                <div class="row">
-                  <div class="col-lg-12 msg_details_sm">
-                    @foreach($project->extracharacters as $extra )
-                    <div>{{$extra->area}}</div>
-                    @endforeach
-                  </div>
-                </div>
-
-              </div>
-              <div class="col-lg-2">
-
-                <div class="row">
-                  <div class="col-lg-12 msg_details_sm">
-                    @foreach($project->extracharacters as $extra )
-                    <div><i class="fas fa-money-bill-wave"></i> {{$extra->price}}</div>
-                    @endforeach
-                  </div>
-                </div>
-
-              </div>
-              @if($project->is_require_for_request == 1)
-              <div class="col-lg-2">
-
-                <div class="row">
-                  <div class="col-lg-12 msg_details_sm">
-                    @foreach($project->extracharacters as $extra )
-                    <div> <a href="{{url('/')}}/project/request/{{$project->project_category}}/{{$extra->id}}">  طلب المشروع  </a></div>
-                    @endforeach
-                  </div>
-                </div>
-
-              </div>
-              @endif
-            </div>
-          </div>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="additional_details">
-              <div class="row">
-                <div class="col-lg-12">
-                  <h4>مواصفات المشروع</h4>
-                </div>
-              </div>
-              <div class="row chara_list">
-                <div class="col-lg-12">
-                  <p>{{$project->details}}</p>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        @endif
-
-        @if($project->project_category == "ابار" || $project->project_category == "مراكز ومدارس")
-        <div class="row" style="margin-top:20px;">
-          <div class="col-lg-2">
-            @if($project->is_require_for_request == 1)
-            <a href="{{url('/')}}/project/request/{{$project->project_category}}/{{$project->id}}" class="btn  btn-block">
-                      اطلب
-                      </a>
-            @endif
-          </div>
-        </div>
-
-        @endif
 
     </div>
 </section>

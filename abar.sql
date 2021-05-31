@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2020 at 11:19 AM
+-- Generation Time: Jan 10, 2021 at 10:14 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -34,7 +34,7 @@ CREATE TABLE `bannerads` (
   `banner_img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `banner_size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_enable` int(11) NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -257,7 +257,7 @@ CREATE TABLE `linkads` (
   `link` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `link_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_enable` int(11) NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -488,7 +488,7 @@ INSERT INTO `requests` (`id`, `user_id`, `project_id`, `how_know_me`, `request_d
 (2, 11, 7, '', '2020-12-16 22:00:00', '2020-12-17 10:58:46', '2020-12-17 10:58:46', '11_yCJHe6sbwJ', 1, 'طلب', 'احمد احمد محمد', 0, NULL, 6),
 (3, 11, 3, '', '2020-12-16 22:00:00', '2020-12-17 11:26:22', '2020-12-17 11:26:22', '11_wKSaghu19Q', 1, 'طلب', 'احمد احمد محمد', 0, NULL, NULL),
 (4, 3, 7, '', '2020-12-19 22:00:00', '2020-12-20 06:58:22', '2020-12-20 06:58:22', '3_5PEgKUz3r1', 1, 'طلب', 'customer1', 0, NULL, 6),
-(5, 15, 7, '', '2020-12-19 22:00:00', '2020-12-20 08:07:50', '2020-12-20 08:07:50', '15_me9LEyrZP6', 1, 'طلب', 'customer 5555', 0, NULL, 6);
+(5, 15, 7, '', '2020-12-30 17:04:32', '2020-12-20 08:07:50', '2020-12-20 08:07:50', '15_me9LEyrZP6', 3, 'طلب', 'customer 5555', 0, NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -567,7 +567,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `header_text`, `done_projects_num`, `customer_num`, `countries_num`, `befend_num`, `phone`, `email`, `facebook`, `youtube`, `instegrame`, `twitter`, `updated_at`, `created_at`, `address`, `vedio_intro`) VALUES
-(1, 'أحفر بئراً أو أبني مسجداً لدى جهة رسمية و مرخصة تُتقدر قيمة مشروعك', '700', '500', '8', '50,000', '+0553006174', 'info@yahoo.com', 'https://www.facebook.com/100647691526982', 'https://www.youtube.com/channel/UCk8zYF_K_uf9pxuiWBpxBHA', 'https://www.instagram.com/abar.alseqaya', 'https://twitter.com/abar66041292', '2020-12-15 06:37:15', '2020-12-14 15:49:15', 'جده – حي الفيحاء – شارع عبدالله السليمان – بجوار جامع الحمودي', 'https://www.youtube.com/watch?v=F6mvChPzuV8');
+(1, 'أحفر بئراً أو أبني مسجداً لدى جهة رسمية و مرخصة تُتقدر قيمة مشروعك', '700', '500', '8', '50,000', '+051153006174', 'info@yahoo.com', 'https://www.facebook.com', 'https://www.youtube.com', 'https://www.instagram.com', 'https://twitter.com', '2021-01-10 07:13:25', '2020-12-14 15:49:15', 'جده – حي الفيحاء – شارع عبدالله السليمان – بجوار جامع الحمودي', 'https://www.youtube.com/watch?v=F6mvChPzuV8');
 
 -- --------------------------------------------------------
 
@@ -617,7 +617,7 @@ CREATE TABLE `textads` (
   `text_size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `text_color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `background_color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -650,19 +650,20 @@ CREATE TABLE `transactions` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `bank_name` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bank_account_number` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `bank_ibn` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `bank_ibn` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mareter_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `transactions`
 --
 
-INSERT INTO `transactions` (`id`, `transaction_num`, `project_id`, `request_id`, `transfer_date`, `is_payable`, `transfer_payment_type`, `paymentToken`, `paymentId`, `amount`, `created_at`, `updated_at`, `bank_name`, `bank_account_number`, `bank_ibn`) VALUES
-(1, '#try_88575mj', 1, 1, '2020-12-18 08:15:55', 0, 'حوالة بنكية', '', '', 200.00, NULL, NULL, 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000'),
-(2, '#AXGvhaGqsL', 7, 2, '2020-12-16 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 22000.00, '2020-12-17 10:58:46', '2020-12-17 10:58:46', 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000'),
-(3, '#Y5sF0mm8CP', 3, 3, '2020-12-16 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 3500.00, '2020-12-17 11:26:22', '2020-12-17 11:26:22', 'البنك الاهلى ', ' 12600000352800 ', ' SA9210000012600000352800'),
-(4, '#kbTLEsFiVJ', 7, 4, '2020-12-19 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 2200.00, '2020-12-20 06:58:22', '2020-12-20 06:58:22', 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000'),
-(5, '#nXDZ4x60xp', 7, 5, '2020-12-19 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 2200.00, '2020-12-20 08:07:50', '2020-12-20 08:07:50', 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000');
+INSERT INTO `transactions` (`id`, `transaction_num`, `project_id`, `request_id`, `transfer_date`, `is_payable`, `transfer_payment_type`, `paymentToken`, `paymentId`, `amount`, `created_at`, `updated_at`, `bank_name`, `bank_account_number`, `bank_ibn`, `mareter_code`) VALUES
+(1, '#try_88575mj', 1, 1, '2021-01-06 20:17:09', 1, 'حوالة بنكية', '', '', 100.00, NULL, NULL, 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000', '0EOk1W1X2D'),
+(2, '#AXGvhaGqsL', 7, 2, '2020-12-16 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 22000.00, '2020-12-17 10:58:46', '2020-12-17 10:58:46', 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000', NULL),
+(3, '#Y5sF0mm8CP', 3, 3, '2020-12-16 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 3500.00, '2020-12-17 11:26:22', '2020-12-17 11:26:22', 'البنك الاهلى ', ' 12600000352800 ', ' SA9210000012600000352800', NULL),
+(4, '#kbTLEsFiVJ', 7, 4, '2020-12-19 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 2200.00, '2020-12-20 06:58:22', '2020-12-20 06:58:22', 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000', NULL),
+(5, '#nXDZ4x60xp', 7, 5, '2020-12-19 22:00:00', 0, 'حوالة بنكية', NULL, NULL, 2200.00, '2020-12-20 08:07:50', '2020-12-20 08:07:50', 'مصرف الانماء ', ' 68202442131000 ', ' SA3705000068202442131000', NULL);
 
 -- --------------------------------------------------------
 
@@ -681,21 +682,23 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `role_id` int(10) UNSIGNED NOT NULL,
   `identity_num` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mobile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `mobile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mareter_code` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role_id`, `identity_num`, `mobile`) VALUES
-(2, 'admin', 'admin@admin.com', NULL, '$2y$10$T1HpU833cwqKxqHTr0nXCOvQLMs0w19Z.Vg0I6WZzSEut//qQX7z2', NULL, '2020-11-05 14:06:33', '2020-11-05 14:06:33', 1, NULL, NULL),
-(3, 'customer1', 'customer@yahoo.com', NULL, '$2y$10$.XAPL924rhMXsUsy4kQyFuCEdRw7eZFp/.ZBZfj2twPK/lDOYhSNC', NULL, '2020-11-05 20:01:09', '2020-11-09 08:15:06', 2, '12345678465', '01009875647'),
-(5, 'customer2', 'customer2@yahoo.com', NULL, '$2y$10$MfWhrIop0/RfYcm4cpF8MODIXUbCTlur1r3EhVbktCvm8KV3NZJZG', NULL, '2020-11-09 08:26:48', '2020-11-09 08:26:48', 2, '12345678465', '01009876543'),
-(9, 'المسوق1', 'marketer1@yahoo.com', NULL, '$2y$10$6/UnkMQhcrukKA.Z1wopIOLmwZyss4.ZGqCeaYV1MvvBwLq0kGMJy', NULL, '2020-11-09 09:55:05', '2020-11-09 09:55:05', 3, '12345678465', '01007654345'),
-(11, 'احمد احمد محمد', 'customer3@yahoo.com', NULL, '$2y$10$DUMPYXv/GT/vvdt5NgPwEecYH5FDZxtmTXH5/WjSJdIRo.l.DN51W', NULL, '2020-12-17 10:53:39', '2020-12-17 10:53:39', 2, '66426476247624', '7384782648264'),
-(12, 'اية محمد', 'customer4@yahoo.com', NULL, '$2y$10$KoGv62OXhhn4HaefL.FWEu/0BQiqjilfinMCp8Hdv5oS0CLnQhngy', NULL, '2020-12-20 06:50:36', '2020-12-20 06:50:36', 2, '48623682638', '374374834'),
-(15, 'customer 5555', 'sally_akl@yahoo.com', NULL, '$2y$10$gWzTBFbQpmBRglReg1fx6.1UDxCj3rFs3C4hg6TDnXzLfogFFyMBC', NULL, '2020-12-20 08:07:50', '2020-12-20 08:07:50', 2, '82394823', '2340820438234');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role_id`, `identity_num`, `mobile`, `mareter_code`) VALUES
+(2, 'admin', 'admin@admin.com', NULL, '$2y$10$T1HpU833cwqKxqHTr0nXCOvQLMs0w19Z.Vg0I6WZzSEut//qQX7z2', NULL, '2020-11-05 14:06:33', '2020-11-05 14:06:33', 1, NULL, NULL, NULL),
+(3, 'customer1', 'customer@yahoo.com', NULL, '$2y$10$.XAPL924rhMXsUsy4kQyFuCEdRw7eZFp/.ZBZfj2twPK/lDOYhSNC', NULL, '2020-11-05 20:01:09', '2020-11-09 08:15:06', 2, '12345678465', '01009875647', NULL),
+(5, 'customer2', 'customer2@yahoo.com', NULL, '$2y$10$MfWhrIop0/RfYcm4cpF8MODIXUbCTlur1r3EhVbktCvm8KV3NZJZG', NULL, '2020-11-09 08:26:48', '2020-11-09 08:26:48', 2, '12345678465', '01009876543', NULL),
+(9, 'المسوق1', 'marketer1@yahoo.com', NULL, '$2y$10$6/UnkMQhcrukKA.Z1wopIOLmwZyss4.ZGqCeaYV1MvvBwLq0kGMJy', NULL, '2020-11-09 09:55:05', '2020-11-09 09:55:05', 3, '12345678465', '01007654345', '0EOk1W1X2D'),
+(11, 'احمد احمد محمد', 'customer3@yahoo.com', NULL, '$2y$10$DUMPYXv/GT/vvdt5NgPwEecYH5FDZxtmTXH5/WjSJdIRo.l.DN51W', NULL, '2020-12-17 10:53:39', '2020-12-17 10:53:39', 2, '66426476247624', '7384782648264', NULL),
+(12, 'اية محمد', 'customer4@yahoo.com', NULL, '$2y$10$KoGv62OXhhn4HaefL.FWEu/0BQiqjilfinMCp8Hdv5oS0CLnQhngy', NULL, '2020-12-20 06:50:36', '2020-12-20 06:50:36', 2, '48623682638', '374374834', NULL),
+(15, 'customer 5555', 'sally_akl@yahoo.com', NULL, '$2y$10$gWzTBFbQpmBRglReg1fx6.1UDxCj3rFs3C4hg6TDnXzLfogFFyMBC', NULL, '2020-12-20 08:07:50', '2020-12-20 08:07:50', 2, '82394823', '2340820438234', NULL),
+(16, 'marketer2', 'marketer2@yahoo.com', NULL, '$2y$10$9g/skChynHaBNgFrZUhMSepR4gl9IFaZBS3VyX11FsLUO6SKS03ty', NULL, '2020-12-30 14:34:02', '2020-12-30 14:34:02', 3, '7723742734', '72947234', '0EOk1W1X2Dmm');
 
 -- --------------------------------------------------------
 
@@ -712,7 +715,7 @@ CREATE TABLE `vedioads` (
   `width` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `height` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `button_txt` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1102,7 +1105,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `vedioads`

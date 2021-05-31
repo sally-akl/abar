@@ -546,3 +546,8 @@
 .project_block strong{
   font-size: 12px;
 }
+@media (max-width: 75.23rem){
+  .card{
+        margin-top: 30px;
+  }
+}

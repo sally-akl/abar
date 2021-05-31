@@ -40,13 +40,13 @@
                 <span class="hamburger-menu"></span>
             </button>
             <a class="navbar-brand" href="{{url('/')}}">
-                <img src="{{url('/')}}/img/logo.png" class="hidden-mobile lozad" alt="آبار السقاية">
-                <img src="{{url('/')}}/img/logo.png" class="only-mobile lozad" alt="آبار السقاية">
+                <img src="{{url('/')}}/img/logo.jpg" class="hidden-mobile lozad" alt="آبار السقاية">
+                <img src="{{url('/')}}/img/logo.jpg" class="only-mobile lozad" alt="آبار السقاية">
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="top-block only-mobile">
                     <a class="navbar-brand" href="{{url('/')}}">
-                        <img src="{{url('/')}}/img/logo.png" class="lozad" alt="آبار السقاية">
+                        <img src="{{url('/')}}/img/logo.jpg" class="lozad" alt="آبار السقاية">
                     </a>
                 </div>
                 <ul id="menu-main" class="menu-main">
@@ -62,7 +62,7 @@
                   <a href="{{url('/')}}/auth-customer" class="btn btn-transparent btn-borderd">تسجيل الدخول / التسجيل</a>
                  @else
                  @if(Auth::user()->role->name=="customer")
-                   <a href="{{url('/')}}/dashboard/customers/projects/favorate"  class="btn btn-transparent btn-borderd name_login">{{ Auth::user()->name }}</a>
+                   <a href="{{url('/')}}/dashboard/customers/projects/favorate"  class="btn btn-transparent btn-borderd name_login">حسابى</a>
                    <a href="{{ route('logout') }}"
                       onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();" class="btn btn-transparent btn-borderd">تسجيل الخروج</a>
